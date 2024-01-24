@@ -30,14 +30,16 @@
         {
             splitContainer1 = new SplitContainer();
             tabControl1 = new TabControl();
-            tabPage1 = new TabPage();
-            tabPage2 = new TabPage();
-            button1 = new Button();
+            readers = new TabPage();
+            addReader = new Button();
+            books = new TabPage();
+            addBook = new Button();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel2.SuspendLayout();
             splitContainer1.SuspendLayout();
             tabControl1.SuspendLayout();
-            tabPage1.SuspendLayout();
+            readers.SuspendLayout();
+            books.SuspendLayout();
             SuspendLayout();
             // 
             // splitContainer1
@@ -46,53 +48,69 @@
             splitContainer1.Location = new Point(0, 0);
             splitContainer1.Name = "splitContainer1";
             // 
+            // splitContainer1.Panel1
+            // 
+            splitContainer1.Panel1.Paint += splitContainer1_Panel1_Paint;
+            // 
             // splitContainer1.Panel2
             // 
             splitContainer1.Panel2.Controls.Add(tabControl1);
             splitContainer1.Size = new Size(800, 450);
-            splitContainer1.SplitterDistance = 591;
+            splitContainer1.SplitterDistance = 608;
             splitContainer1.TabIndex = 0;
             // 
             // tabControl1
             // 
-            tabControl1.Controls.Add(tabPage1);
-            tabControl1.Controls.Add(tabPage2);
+            tabControl1.Controls.Add(readers);
+            tabControl1.Controls.Add(books);
             tabControl1.Dock = DockStyle.Fill;
             tabControl1.Location = new Point(0, 0);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(205, 450);
+            tabControl1.Size = new Size(188, 450);
             tabControl1.TabIndex = 0;
             // 
-            // tabPage1
+            // readers
             // 
-            tabPage1.Controls.Add(button1);
-            tabPage1.Location = new Point(4, 24);
-            tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(197, 422);
-            tabPage1.TabIndex = 0;
-            tabPage1.Text = "tabPage1";
-            tabPage1.UseVisualStyleBackColor = true;
+            readers.Controls.Add(addReader);
+            readers.Location = new Point(4, 24);
+            readers.Name = "readers";
+            readers.Padding = new Padding(3);
+            readers.Size = new Size(180, 422);
+            readers.TabIndex = 0;
+            readers.Text = "Readers";
+            readers.UseVisualStyleBackColor = true;
             // 
-            // tabPage2
+            // addReader
             // 
-            tabPage2.Location = new Point(4, 24);
-            tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(522, 422);
-            tabPage2.TabIndex = 1;
-            tabPage2.Text = "tabPage2";
-            tabPage2.UseVisualStyleBackColor = true;
+            addReader.Dock = DockStyle.Top;
+            addReader.Location = new Point(3, 3);
+            addReader.Name = "addReader";
+            addReader.Size = new Size(174, 23);
+            addReader.TabIndex = 0;
+            addReader.Text = "Add new reader";
+            addReader.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // books
             // 
-            button1.Location = new Point(6, 6);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 0;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
+            books.Controls.Add(addBook);
+            books.Location = new Point(4, 24);
+            books.Name = "books";
+            books.Padding = new Padding(3);
+            books.Size = new Size(180, 422);
+            books.TabIndex = 1;
+            books.Text = "Books";
+            books.UseVisualStyleBackColor = true;
+            // 
+            // addBook
+            // 
+            addBook.Dock = DockStyle.Top;
+            addBook.Location = new Point(3, 3);
+            addBook.Name = "addBook";
+            addBook.Size = new Size(174, 23);
+            addBook.TabIndex = 0;
+            addBook.Text = "add new Book";
+            addBook.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -106,7 +124,8 @@
             ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
             splitContainer1.ResumeLayout(false);
             tabControl1.ResumeLayout(false);
-            tabPage1.ResumeLayout(false);
+            readers.ResumeLayout(false);
+            books.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -114,8 +133,9 @@
 
         private SplitContainer splitContainer1;
         private TabControl tabControl1;
-        private TabPage tabPage1;
-        private Button button1;
-        private TabPage tabPage2;
+        private TabPage readers;
+        private Button addReader;
+        private TabPage books;
+        private Button addBook;
     }
 }
