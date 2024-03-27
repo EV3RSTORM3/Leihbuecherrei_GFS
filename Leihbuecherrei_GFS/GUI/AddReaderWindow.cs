@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Leihbuecherrei_GFS.GUI
 {
-    public partial class AddBook : Form
+    public partial class AddReaderWindow : Form
     {
-        public AddBook()
+        public AddReaderWindow()
         {
             InitializeComponent();
         }

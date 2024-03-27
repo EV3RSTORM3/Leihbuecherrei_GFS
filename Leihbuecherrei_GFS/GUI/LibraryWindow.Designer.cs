@@ -1,6 +1,6 @@
 ﻿namespace Leihbuecherrei_GFS
 {
-    partial class Form1
+    partial class LibraryWindow
     {
         /// <summary>
         ///  Required designer variable.
@@ -31,9 +31,9 @@
             splitContainer1 = new SplitContainer();
             tabControl1 = new TabControl();
             readers = new TabPage();
-            addReader = new Button();
+            BtnAddReader = new Button();
             books = new TabPage();
-            addBook = new Button();
+            BtnAddBook = new Button();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel2.SuspendLayout();
             splitContainer1.SuspendLayout();
@@ -75,7 +75,7 @@
             // 
             // readers
             // 
-            readers.Controls.Add(addReader);
+            readers.Controls.Add(BtnAddReader);
             readers.Location = new Point(4, 34);
             readers.Margin = new Padding(4, 5, 4, 5);
             readers.Name = "readers";
@@ -85,50 +85,52 @@
             readers.Text = "Readers";
             readers.UseVisualStyleBackColor = true;
             // 
-            // addReader
+            // BtnAddReader
             // 
-            addReader.Dock = DockStyle.Top;
-            addReader.Location = new Point(4, 5);
-            addReader.Margin = new Padding(4, 5, 4, 5);
-            addReader.Name = "addReader";
-            addReader.Size = new Size(240, 38);
-            addReader.TabIndex = 0;
-            addReader.Text = "Add new reader";
-            addReader.UseVisualStyleBackColor = true;
-            addReader.Click += addReader_Click;
+            BtnAddReader.Dock = DockStyle.Top;
+            BtnAddReader.Location = new Point(4, 5);
+            BtnAddReader.Margin = new Padding(4, 5, 4, 5);
+            BtnAddReader.Name = "BtnAddReader";
+            BtnAddReader.Size = new Size(240, 38);
+            BtnAddReader.TabIndex = 0;
+            BtnAddReader.Text = "Add new reader";
+            BtnAddReader.UseVisualStyleBackColor = true;
+            BtnAddReader.Click += BtnAddReader_Click;
             // 
             // books
             // 
-            books.Controls.Add(addBook);
+            books.Controls.Add(BtnAddBook);
             books.Location = new Point(4, 34);
             books.Margin = new Padding(4, 5, 4, 5);
             books.Name = "books";
             books.Padding = new Padding(4, 5, 4, 5);
-            books.Size = new Size(247, 712);
+            books.Size = new Size(248, 712);
             books.TabIndex = 1;
             books.Text = "Books";
             books.UseVisualStyleBackColor = true;
             // 
-            // addBook
+            // BtnAddBook
             // 
-            addBook.Dock = DockStyle.Top;
-            addBook.Location = new Point(4, 5);
-            addBook.Margin = new Padding(4, 5, 4, 5);
-            addBook.Name = "addBook";
-            addBook.Size = new Size(239, 38);
-            addBook.TabIndex = 0;
-            addBook.Text = "add new Book";
-            addBook.UseVisualStyleBackColor = true;
+            BtnAddBook.Dock = DockStyle.Top;
+            BtnAddBook.Location = new Point(4, 5);
+            BtnAddBook.Margin = new Padding(4, 5, 4, 5);
+            BtnAddBook.Name = "BtnAddBook";
+            BtnAddBook.Size = new Size(240, 38);
+            BtnAddBook.TabIndex = 0;
+            BtnAddBook.Text = "Add new book";
+            BtnAddBook.UseVisualStyleBackColor = true;
+            BtnAddBook.Click += BtnAddBook_Click;
             // 
-            // Form1
+            // LibraryWindow
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1143, 750);
             Controls.Add(splitContainer1);
             Margin = new Padding(4, 5, 4, 5);
-            Name = "Form1";
-            Text = "Form1";
+            Name = "LibraryWindow";
+            Text = "Library";
+            Load += Form1_Load;
             splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
             splitContainer1.ResumeLayout(false);
@@ -143,9 +145,9 @@
         private SplitContainer splitContainer1;
         private TabControl tabControl1;
         private TabPage readers;
-        private Button addReader;
+        private Button BtnAddReader;
         private TabPage books;
-        private Button addBook;
+        private Button BtnAddBook;
 
 
     }

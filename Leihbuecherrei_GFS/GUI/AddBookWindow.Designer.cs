@@ -1,6 +1,6 @@
 ﻿namespace Leihbuecherrei_GFS.GUI
 {
-    partial class AddBook
+    partial class AddBookWindow
     {
         /// <summary>
         /// Required designer variable.
