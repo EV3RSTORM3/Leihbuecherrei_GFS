@@ -28,11 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             DtpBirthday = new DateTimePicker();
             LblName = new Label();
             LblAdress = new Label();
             LblCity = new Label();
-            label1 = new Label();
+            LblBirthday = new Label();
             TxtCity = new TextBox();
             TxtAdress = new TextBox();
             TxtName = new TextBox();
@@ -46,6 +47,7 @@
             DtpBirthday.Name = "DtpBirthday";
             DtpBirthday.Size = new Size(148, 31);
             DtpBirthday.TabIndex = 0;
+            DtpBirthday.ValueChanged += DtpBirthday_ValueChanged;
             // 
             // LblName
             // 
@@ -74,14 +76,14 @@
             LblCity.TabIndex = 3;
             LblCity.Text = "City:";
             // 
-            // label1
+            // LblBirthday
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(21, 184);
-            label1.Name = "label1";
-            label1.Size = new Size(81, 25);
-            label1.TabIndex = 4;
-            label1.Text = "Birthday:";
+            LblBirthday.AutoSize = true;
+            LblBirthday.Location = new Point(21, 184);
+            LblBirthday.Name = "LblBirthday";
+            LblBirthday.Size = new Size(81, 25);
+            LblBirthday.TabIndex = 4;
+            LblBirthday.Text = "Birthday:";
             // 
             // TxtCity
             // 
@@ -112,6 +114,7 @@
             BtnSave.TabIndex = 8;
             BtnSave.Text = "Save";
             BtnSave.UseVisualStyleBackColor = true;
+            BtnSave.Click += BtnSave_Click;
             // 
             // AddReaderWindow
             // 
@@ -122,7 +125,7 @@
             Controls.Add(TxtName);
             Controls.Add(TxtAdress);
             Controls.Add(TxtCity);
-            Controls.Add(label1);
+            Controls.Add(LblBirthday);
             Controls.Add(LblCity);
             Controls.Add(LblAdress);
             Controls.Add(LblName);
@@ -139,10 +142,11 @@
         private Label LblName;
         private Label LblAdress;
         private Label LblCity;
-        private Label label1;
+        private Label LblBirthday;
         private TextBox TxtCity;
         private TextBox TxtAdress;
         private TextBox TxtName;
         private Button BtnSave;
+
     }
 }

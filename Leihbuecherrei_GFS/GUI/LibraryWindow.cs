@@ -32,7 +32,7 @@ namespace Leihbuecherrei_GFS
 
         private void BtnAddReader_Click( object sender, EventArgs e )
         {
-            AddReaderWindow addReaderWindow = new AddReaderWindow();
+            AddReaderWindow addReaderWindow = new AddReaderWindow(control);
 
             addReaderWindow.Location = new Point( 0, 0);
             addReaderWindow.Show();
