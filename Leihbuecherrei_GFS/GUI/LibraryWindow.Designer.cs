@@ -28,18 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             splitContainer1 = new SplitContainer();
             tabControl1 = new TabControl();
             readers = new TabPage();
+            TxtSearchReader = new TextBox();
+            LbReaders = new ListBox();
             BtnAddReader = new Button();
             books = new TabPage();
             BtnAddBook = new Button();
+            controlBindingSource = new BindingSource(components);
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel2.SuspendLayout();
             splitContainer1.SuspendLayout();
             tabControl1.SuspendLayout();
             readers.SuspendLayout();
             books.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)controlBindingSource).BeginInit();
             SuspendLayout();
             // 
             // splitContainer1
@@ -48,10 +53,6 @@
             splitContainer1.Location = new Point(0, 0);
             splitContainer1.Margin = new Padding(4, 5, 4, 5);
             splitContainer1.Name = "splitContainer1";
-            // 
-            // splitContainer1.Panel1
-            // 
-            splitContainer1.Panel1.Paint += splitContainer1_Panel1_Paint;
             // 
             // splitContainer1.Panel2
             // 
@@ -75,6 +76,8 @@
             // 
             // readers
             // 
+            readers.Controls.Add(TxtSearchReader);
+            readers.Controls.Add(LbReaders);
             readers.Controls.Add(BtnAddReader);
             readers.Location = new Point(4, 34);
             readers.Margin = new Padding(4, 5, 4, 5);
@@ -84,6 +87,24 @@
             readers.TabIndex = 0;
             readers.Text = "Readers";
             readers.UseVisualStyleBackColor = true;
+            // 
+            // TxtSearchReader
+            // 
+            TxtSearchReader.Location = new Point(4, 63);
+            TxtSearchReader.Name = "TxtSearchReader";
+            TxtSearchReader.PlaceholderText = "Search Reader";
+            TxtSearchReader.Size = new Size(240, 31);
+            TxtSearchReader.TabIndex = 2;
+            TxtSearchReader.TextAlign = HorizontalAlignment.Center;
+            // 
+            // LbReaders
+            // 
+            LbReaders.FormattingEnabled = true;
+            LbReaders.ItemHeight = 25;
+            LbReaders.Location = new Point(4, 100);
+            LbReaders.Name = "LbReaders";
+            LbReaders.Size = new Size(240, 604);
+            LbReaders.TabIndex = 1;
             // 
             // BtnAddReader
             // 
@@ -121,6 +142,10 @@
             BtnAddBook.UseVisualStyleBackColor = true;
             BtnAddBook.Click += BtnAddBook_Click;
             // 
+            // controlBindingSource
+            // 
+            controlBindingSource.DataSource = typeof(Control);
+            // 
             // LibraryWindow
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -130,13 +155,14 @@
             Margin = new Padding(4, 5, 4, 5);
             Name = "LibraryWindow";
             Text = "Library";
-            Load += Form1_Load;
             splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
             splitContainer1.ResumeLayout(false);
             tabControl1.ResumeLayout(false);
             readers.ResumeLayout(false);
+            readers.PerformLayout();
             books.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)controlBindingSource).EndInit();
             ResumeLayout(false);
         }
 
@@ -148,7 +174,8 @@
         private Button BtnAddReader;
         private TabPage books;
         private Button BtnAddBook;
-
-
+        private TextBox TxtSearchReader;
+        private ListBox LbReaders;
+        private BindingSource controlBindingSource;
     }
 }

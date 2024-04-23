@@ -5,22 +5,14 @@ namespace Leihbuecherrei_GFS
     public partial class LibraryWindow : Form
     {
         private Control control;
+
         public LibraryWindow(Control pControl)
         {
             control = pControl;
             InitializeComponent();
+
+            showReaderList();
         }
-
-        private void splitContainer1_Panel1_Paint( object sender, PaintEventArgs e )
-        {
-
-        }
-
-        private void Form1_Load( object sender, EventArgs e )
-        {
-
-        }
-
 
         private void BtnAddBook_Click( object sender, EventArgs e )
         {
@@ -36,6 +28,13 @@ namespace Leihbuecherrei_GFS
 
             addReaderWindow.Location = new Point( 0, 0);
             addReaderWindow.Show();
+        }
+
+        public void showReaderList()
+        {
+            LbReaders.DataSource = control.GetReaders();
+
+            LbReaders.DisplayMember = "Name";
         }
     }
 }

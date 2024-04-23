@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Leihbuecherrei_GFS
 {
-    internal class BorrowEntry
+    public class BorrowEntry
     {
         private Book book;
         private Reader reader;

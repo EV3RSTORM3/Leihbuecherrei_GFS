@@ -6,67 +6,28 @@ using System.Threading.Tasks;
 
 namespace Leihbuecherrei_GFS
 {
-    internal class Reader
+    public class Reader
     {
         private string name;
         private string address;
         private string city;
         private DateTime birthday;
 
+        public string Name { get => name; set => name = value; }
+        public string Address { get => address; set => address = value; }
+        public string City { get => city; set => city = value; }
+        public DateTime Birthday { get => birthday; set => birthday = value; }
+
         public Reader( string pName, string pAddress, string pCity )
         {
-            setName(pName);
-            setAdress(pAddress);
-            setCity(pCity);
+            Name = pName;
+            Address = pAddress;
+            City = pCity;
         }
 
         public Reader( string pName, string pAddress, string pCity, DateTime pBirthday) : this(pName, pAddress, pCity)
         {
-            setBirthday(pBirthday);
-        }
-
-        //Getter and Setter for 'name' parameter
-        public void setName( string pName )
-        {
-            name = pName;
-        }
-
-        public string getName()
-        {
-            return name;
-        }
-
-        //Getter and Setter for 'address' parameter
-        public void setAdress( string pAddress )
-        {
-            address = pAddress;
-        }
-
-        public string getAdress()
-        {
-            return address;
-        }
-
-        //Getter and Setter for 'City' parameter
-        public void setCity( string pCity )
-        {
-            city = pCity;
-        }
-
-        public string getCity()
-        {
-            return city;
-        }
-
-        //Getter and Setter for 'birthday' parameter
-        public void setBirthday( DateTime pBirthday )
-        {
-            birthday = pBirthday;
-        }
-
-        public DateTime getBirthday()
-        {
-            return birthday;
+            Birthday = pBirthday;
         }
     }
 }

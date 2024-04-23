@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             DtpBirthday = new DateTimePicker();
             LblName = new Label();
             LblAdress = new Label();
@@ -38,6 +37,7 @@
             TxtAdress = new TextBox();
             TxtName = new TextBox();
             BtnSave = new Button();
+            LblMandetoryInfos = new Label();
             SuspendLayout();
             // 
             // DtpBirthday
@@ -116,11 +116,21 @@
             BtnSave.UseVisualStyleBackColor = true;
             BtnSave.Click += BtnSave_Click;
             // 
+            // LblMandetoryInfos
+            // 
+            LblMandetoryInfos.AutoSize = true;
+            LblMandetoryInfos.Location = new Point(-1, 9);
+            LblMandetoryInfos.Name = "LblMandetoryInfos";
+            LblMandetoryInfos.Size = new Size(310, 25);
+            LblMandetoryInfos.TabIndex = 9;
+            LblMandetoryInfos.Text = "Name, Adress and city are mandetory";
+            // 
             // AddReaderWindow
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(300, 272);
+            ClientSize = new Size(309, 272);
+            Controls.Add(LblMandetoryInfos);
             Controls.Add(BtnSave);
             Controls.Add(TxtName);
             Controls.Add(TxtAdress);
@@ -147,6 +157,6 @@
         private TextBox TxtAdress;
         private TextBox TxtName;
         private Button BtnSave;
-
+        private Label LblMandetoryInfos;
     }
 }
