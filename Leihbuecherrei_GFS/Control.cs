@@ -32,6 +32,7 @@ namespace Leihbuecherrei_GFS
 
         public bool addReaderBtnSaveClick( string pName, string pAdress, string pCity, DateTime pBirthday )
         {
+            //checks if the mandetory information is given if nor returns false 
             if (String.IsNullOrEmpty(pName) || String.IsNullOrEmpty(pAdress) || String.IsNullOrEmpty(pCity)) { return false; }
             else
             {
