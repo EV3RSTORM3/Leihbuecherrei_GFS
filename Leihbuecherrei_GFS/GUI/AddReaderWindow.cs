@@ -23,17 +23,12 @@ namespace Leihbuecherrei_GFS.GUI
         {
             if (control.addReaderBtnSaveClick(TxtName.Text, TxtAdress.Text, TxtCity.Text, DtpBirthday.Value) == false)
             {
-                MessageBox.Show("please fill out every mandetory information!");
+                MessageBox.Show("please fill out all of the mandetory information!");
             }
             else
             {
                 Close();
             }
-        }
-
-        private void DtpBirthday_ValueChanged( object sender, EventArgs e )
-        {
-
         }
     }
 }

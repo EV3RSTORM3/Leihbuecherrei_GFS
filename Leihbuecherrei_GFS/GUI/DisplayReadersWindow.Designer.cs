@@ -1,0 +1,189 @@
+﻿namespace Leihbuecherrei_GFS.GUI
+{
+    partial class DisplayReadersWindow
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose( bool disposing )
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            LblName = new Label();
+            LblId = new Label();
+            LblCity = new Label();
+            LblAdress = new Label();
+            LblBirthday = new Label();
+            TxtName = new TextBox();
+            TxtCity = new TextBox();
+            TxtId = new TextBox();
+            TxtAdress = new TextBox();
+            DtpBirthday = new DateTimePicker();
+            BtnSave = new Button();
+            BtnClose = new Button();
+            SuspendLayout();
+            // 
+            // LblName
+            // 
+            LblName.AutoSize = true;
+            LblName.Location = new Point(12, 22);
+            LblName.Name = "LblName";
+            LblName.Size = new Size(63, 25);
+            LblName.TabIndex = 0;
+            LblName.Text = "Name:";
+            // 
+            // LblId
+            // 
+            LblId.AutoSize = true;
+            LblId.Location = new Point(241, 22);
+            LblId.Name = "LblId";
+            LblId.Size = new Size(34, 25);
+            LblId.TabIndex = 1;
+            LblId.Text = "ID:";
+            // 
+            // LblCity
+            // 
+            LblCity.AutoSize = true;
+            LblCity.Location = new Point(12, 60);
+            LblCity.Name = "LblCity";
+            LblCity.Size = new Size(46, 25);
+            LblCity.TabIndex = 2;
+            LblCity.Text = "City:";
+            // 
+            // LblAdress
+            // 
+            LblAdress.AutoSize = true;
+            LblAdress.Location = new Point(230, 60);
+            LblAdress.Name = "LblAdress";
+            LblAdress.Size = new Size(70, 25);
+            LblAdress.TabIndex = 3;
+            LblAdress.Text = "Adress:";
+            // 
+            // LblBirthday
+            // 
+            LblBirthday.AutoSize = true;
+            LblBirthday.Location = new Point(472, 60);
+            LblBirthday.Name = "LblBirthday";
+            LblBirthday.Size = new Size(81, 25);
+            LblBirthday.TabIndex = 4;
+            LblBirthday.Text = "Birthday:";
+            // 
+            // TxtName
+            // 
+            TxtName.Location = new Point(81, 22);
+            TxtName.Name = "TxtName";
+            TxtName.Size = new Size(150, 31);
+            TxtName.TabIndex = 5;
+            TxtName.TextChanged += TxtName_TextChanged;
+            // 
+            // TxtCity
+            // 
+            TxtCity.Location = new Point(64, 60);
+            TxtCity.Name = "TxtCity";
+            TxtCity.Size = new Size(150, 31);
+            TxtCity.TabIndex = 6;
+            TxtCity.TextChanged += TxtCity_TextChanged;
+            // 
+            // TxtId
+            // 
+            TxtId.Enabled = false;
+            TxtId.Location = new Point(281, 22);
+            TxtId.Name = "TxtId";
+            TxtId.Size = new Size(150, 31);
+            TxtId.TabIndex = 7;
+            // 
+            // TxtAdress
+            // 
+            TxtAdress.Location = new Point(306, 60);
+            TxtAdress.Name = "TxtAdress";
+            TxtAdress.Size = new Size(150, 31);
+            TxtAdress.TabIndex = 8;
+            TxtAdress.TextChanged += TxtAdress_TextChanged;
+            // 
+            // DtpBirthday
+            // 
+            DtpBirthday.Format = DateTimePickerFormat.Short;
+            DtpBirthday.Location = new Point(559, 60);
+            DtpBirthday.Name = "DtpBirthday";
+            DtpBirthday.Size = new Size(148, 31);
+            DtpBirthday.TabIndex = 9;
+            DtpBirthday.ValueChanged += DtpBirthday_ValueChanged;
+            // 
+            // BtnSave
+            // 
+            BtnSave.Enabled = false;
+            BtnSave.Location = new Point(558, 404);
+            BtnSave.Name = "BtnSave";
+            BtnSave.Size = new Size(112, 34);
+            BtnSave.TabIndex = 10;
+            BtnSave.Text = "Save";
+            BtnSave.UseVisualStyleBackColor = true;
+            BtnSave.Click += BtnSave_Click;
+            // 
+            // BtnClose
+            // 
+            BtnClose.Location = new Point(676, 404);
+            BtnClose.Name = "BtnClose";
+            BtnClose.Size = new Size(112, 34);
+            BtnClose.TabIndex = 11;
+            BtnClose.Text = "Close";
+            BtnClose.UseVisualStyleBackColor = true;
+            // 
+            // DisplayReadersWindow
+            // 
+            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Controls.Add(BtnClose);
+            Controls.Add(BtnSave);
+            Controls.Add(DtpBirthday);
+            Controls.Add(TxtAdress);
+            Controls.Add(TxtId);
+            Controls.Add(TxtCity);
+            Controls.Add(TxtName);
+            Controls.Add(LblBirthday);
+            Controls.Add(LblAdress);
+            Controls.Add(LblCity);
+            Controls.Add(LblId);
+            Controls.Add(LblName);
+            Name = "DisplayReadersWindow";
+            Text = "DisplayReadercs";
+            ResumeLayout(false);
+            PerformLayout();
+        }
+
+        #endregion
+
+        private Label LblName;
+        private Label LblId;
+        private Label LblCity;
+        private Label LblAdress;
+        private Label LblBirthday;
+        private TextBox TxtName;
+        private TextBox TxtCity;
+        private TextBox TxtId;
+        private TextBox TxtAdress;
+        private DateTimePicker DtpBirthday;
+        private Button BtnSave;
+        private Button BtnClose;
+    }
+}

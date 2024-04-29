@@ -47,7 +47,6 @@
             DtpBirthday.Name = "DtpBirthday";
             DtpBirthday.Size = new Size(148, 31);
             DtpBirthday.TabIndex = 0;
-            DtpBirthday.ValueChanged += DtpBirthday_ValueChanged;
             // 
             // LblName
             // 

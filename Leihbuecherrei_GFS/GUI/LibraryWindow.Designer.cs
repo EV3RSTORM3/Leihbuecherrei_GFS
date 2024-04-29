@@ -105,6 +105,7 @@
             LbReaders.Name = "LbReaders";
             LbReaders.Size = new Size(240, 604);
             LbReaders.TabIndex = 1;
+            LbReaders.DoubleClick += LbReaders_DoubleClick;
             // 
             // BtnAddReader
             // 
