@@ -21,7 +21,7 @@ namespace Leihbuecherrei_GFS.GUI
 
         private void BtnSave_Click( object sender, EventArgs e )
         {
-            if (control.addReaderBtnSaveClick(TxtName.Text, TxtAdress.Text, TxtCity.Text, DtpBirthday.Value) == false)
+            if (control.addReaderBtnSaveClick(TxtName.Text, TxtAdress.Text, TxtCity.Text, DateOnly.FromDateTime(DtpBirthday.Value)) == false)
             {
                 MessageBox.Show("please fill out all of the mandetory information!");
             }

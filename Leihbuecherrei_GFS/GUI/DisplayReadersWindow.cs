@@ -36,13 +36,14 @@ namespace Leihbuecherrei_GFS.GUI
             TxtCity.Text = reader.City;
             TxtAdress.Text = reader.Address;
 
-            if (DateTime.Compare(reader.Birthday, DtpBirthday.MinDate) < 0)
+            if (reader.Birthday.CompareTo(DateOnly.FromDateTime(DtpBirthday.MinDate)) < 0)
             {
                 DtpBirthday.Value = DateTime.Today;
             }
             else
             {
-                DtpBirthday.Value = reader.Birthday;
+                //Have to Add a TimeOnly to the DateOnly to make a DateTime, because WinForms DateTimepicker only accepts DateTime variables
+                DtpBirthday.Value = reader.Birthday.ToDateTime(new TimeOnly(0,0));
             }
 
             //Save button has to be disabled after initializing the data because TextChanged methods detect the initialization as changed
@@ -71,7 +72,7 @@ namespace Leihbuecherrei_GFS.GUI
 
         private void BtnSave_Click( object sender, EventArgs e )
         {
-            control.DisplayReaderBtnSaveClick(reader, TxtName.Text, TxtAdress.Text, TxtCity.Text, DtpBirthday.Value);
+            control.DisplayReaderBtnSaveClick(reader, TxtName.Text, TxtAdress.Text, TxtCity.Text, DateOnly.FromDateTime(DtpBirthday.Value));
             
             //refreshes the title of the window after save
             this.Text = reader.Name;

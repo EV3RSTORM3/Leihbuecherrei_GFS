@@ -38,6 +38,7 @@
             books = new TabPage();
             BtnAddBook = new Button();
             controlBindingSource = new BindingSource(components);
+            readerBindingSource = new BindingSource(components);
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel2.SuspendLayout();
             splitContainer1.SuspendLayout();
@@ -45,6 +46,7 @@
             readers.SuspendLayout();
             books.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)controlBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)readerBindingSource).BeginInit();
             SuspendLayout();
             // 
             // splitContainer1
@@ -99,6 +101,7 @@
             // 
             // LbReaders
             // 
+            LbReaders.DataSource = readerBindingSource;
             LbReaders.FormattingEnabled = true;
             LbReaders.ItemHeight = 25;
             LbReaders.Location = new Point(4, 100);
@@ -147,6 +150,10 @@
             // 
             controlBindingSource.DataSource = typeof(Control);
             // 
+            // readerBindingSource
+            // 
+            readerBindingSource.DataSource = typeof(Reader);
+            // 
             // LibraryWindow
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -164,6 +171,7 @@
             readers.PerformLayout();
             books.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)controlBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)readerBindingSource).EndInit();
             ResumeLayout(false);
         }
 
@@ -178,5 +186,6 @@
         private TextBox TxtSearchReader;
         private ListBox LbReaders;
         private BindingSource controlBindingSource;
+        private BindingSource readerBindingSource;
     }
 }

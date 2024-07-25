@@ -20,6 +20,7 @@ namespace Leihbuecherrei_GFS
             ApplicationConfiguration.Initialize();
             mainWindow = new LibraryWindow(this);
             Application.Run(mainWindow);
+
         }
         public BindingList<Book> GetBooks()
         {
@@ -31,14 +32,14 @@ namespace Leihbuecherrei_GFS
             return reader;
         }
 
-        public bool addReaderBtnSaveClick( string pName, string pAdress, string pCity, DateTime pBirthday )
+        public bool addReaderBtnSaveClick( string pName, string pAdress, string pCity, DateOnly pBirthday )
         {
             //checks if the mandetory information is given if nor returns false 
             if (String.IsNullOrEmpty(pName) || String.IsNullOrEmpty(pAdress) || String.IsNullOrEmpty(pCity)) { return false; }
             else
             {
                 // Compare methods returns an signed integer if the integer is less than 0 the first date is erlier than the second date
-                if (DateTime.Compare(pBirthday, DateTime.Today) < 0)
+                if (pBirthday.CompareTo(DateOnly.FromDateTime(DateTime.Today)) < 0)
                 {
                     reader.Add(new Reader(pName, pAdress, pCity, pBirthday));
                 }
@@ -46,11 +47,18 @@ namespace Leihbuecherrei_GFS
                 {
                     reader.Add(new Reader(pName, pAdress, pCity));
                 }
+
+                using (var postgresDBContext = new PostgresDBContext())
+                {
+                    postgresDBContext.Readers.Add(reader.Last());
+                    postgresDBContext.SaveChanges();
+                }
+
                 return true;
             }
         }
 
-        public void DisplayReaderBtnSaveClick( Reader pReader, string pName, string pAdress, string pCity, DateTime pBirthday )
+        public void DisplayReaderBtnSaveClick( Reader pReader, string pName, string pAdress, string pCity, DateOnly pBirthday )
         {
             //checks if the mandetory information is given if nor returns false 
             if (String.IsNullOrEmpty(pName) || String.IsNullOrEmpty(pAdress) || String.IsNullOrEmpty(pCity)) { MessageBox.Show("please fill out all of th mandetory information!"); }
@@ -61,14 +69,14 @@ namespace Leihbuecherrei_GFS
                 pReader.City = pCity;
 
                 // Compare methods returns an signed integer if the integer is less than 0 the first date is erlier than the second date
-                if (DateTime.Compare(pBirthday, DateTime.Today) < 0)
+                if (pBirthday.CompareTo(DateOnly.FromDateTime(DateTime.Today)) < 0)
                 {
                     pReader.Birthday = pBirthday;
                 }
                 else
                 {
                     // if the Birtdate is set to today or the future the Birthday atribute is filled with the MinValue of DateTime, which is also used by the Readers constructor
-                    pReader.Birthday = DateTime.MinValue; 
+                    pReader.Birthday = DateOnly.MinValue; 
                 }
 
                 mainWindow.showReaderList(); // can also be used to refresh the listbox
