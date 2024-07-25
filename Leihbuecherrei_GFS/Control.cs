@@ -78,8 +78,17 @@ namespace Leihbuecherrei_GFS
                     // if the Birtdate is set to today or the future the Birthday atribute is filled with the MinValue of DateTime, which is also used by the Readers constructor
                     pReader.Birthday = DateOnly.MinValue; 
                 }
+            }
+        }
 
-                mainWindow.showReaderList(); // can also be used to refresh the listbox
+        public void DisplayReadersBtnDeleteClick(Reader pReader)
+        {
+
+            using (var postgresDBContext = new PostgresDBContext())
+            {
+                postgresDBContext.Readers.Remove(pReader);
+                postgresDBContext.SaveChanges();
+                mainWindow.showReaderList();
             }
         }
     }

@@ -34,19 +34,19 @@
             readers = new TabPage();
             TxtSearchReader = new TextBox();
             LbReaders = new ListBox();
+            readerBindingSource = new BindingSource(components);
             BtnAddReader = new Button();
             books = new TabPage();
             BtnAddBook = new Button();
             controlBindingSource = new BindingSource(components);
-            readerBindingSource = new BindingSource(components);
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel2.SuspendLayout();
             splitContainer1.SuspendLayout();
             tabControl1.SuspendLayout();
             readers.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)readerBindingSource).BeginInit();
             books.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)controlBindingSource).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)readerBindingSource).BeginInit();
             SuspendLayout();
             // 
             // splitContainer1
@@ -110,6 +110,10 @@
             LbReaders.TabIndex = 1;
             LbReaders.DoubleClick += LbReaders_DoubleClick;
             // 
+            // readerBindingSource
+            // 
+            readerBindingSource.DataSource = typeof(Reader);
+            // 
             // BtnAddReader
             // 
             BtnAddReader.Dock = DockStyle.Top;
@@ -150,10 +154,6 @@
             // 
             controlBindingSource.DataSource = typeof(Control);
             // 
-            // readerBindingSource
-            // 
-            readerBindingSource.DataSource = typeof(Reader);
-            // 
             // LibraryWindow
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -169,9 +169,9 @@
             tabControl1.ResumeLayout(false);
             readers.ResumeLayout(false);
             readers.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)readerBindingSource).EndInit();
             books.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)controlBindingSource).EndInit();
-            ((System.ComponentModel.ISupportInitialize)readerBindingSource).EndInit();
             ResumeLayout(false);
         }
 

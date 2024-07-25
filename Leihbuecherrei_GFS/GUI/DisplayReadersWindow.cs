@@ -43,39 +43,66 @@ namespace Leihbuecherrei_GFS.GUI
             else
             {
                 //Have to Add a TimeOnly to the DateOnly to make a DateTime, because WinForms DateTimepicker only accepts DateTime variables
-                DtpBirthday.Value = reader.Birthday.ToDateTime(new TimeOnly(0,0));
+                DtpBirthday.Value = reader.Birthday.ToDateTime(new TimeOnly(0, 0));
             }
 
             //Save button has to be disabled after initializing the data because TextChanged methods detect the initialization as changed
-            BtnSave.Enabled = false; 
+            BtnSave.Enabled = false;
+            BtnSaveAndClose.Enabled = false;
         }
 
         private void TxtAdress_TextChanged( object sender, EventArgs e )
         {
             BtnSave.Enabled = true;
+            BtnSaveAndClose.Enabled = true;
         }
 
         private void TxtName_TextChanged( object sender, EventArgs e )
         {
             BtnSave.Enabled = true;
+            BtnSaveAndClose.Enabled = true;
         }
 
         private void DtpBirthday_ValueChanged( object sender, EventArgs e )
         {
             BtnSave.Enabled = true;
+            BtnSaveAndClose.Enabled = true;
         }
 
         private void TxtCity_TextChanged( object sender, EventArgs e )
         {
             BtnSave.Enabled = true;
+            BtnSaveAndClose.Enabled = true;
         }
 
         private void BtnSave_Click( object sender, EventArgs e )
         {
             control.DisplayReaderBtnSaveClick(reader, TxtName.Text, TxtAdress.Text, TxtCity.Text, DateOnly.FromDateTime(DtpBirthday.Value));
-            
+
             //refreshes the title of the window after save
             this.Text = reader.Name;
+        }
+
+        private void BtnClose_Click( object sender, EventArgs e )
+        {
+            this.Close();
+        }
+
+        private void BtnSaveAndClose_Click( object sender, EventArgs e )
+        {
+            control.DisplayReaderBtnSaveClick(reader, TxtName.Text, TxtAdress.Text, TxtCity.Text, DateOnly.FromDateTime(DtpBirthday.Value));
+            this.Close();
+        }
+
+        private void BtnDelete_Click( object sender, EventArgs e )
+        {
+            var confirmResult = MessageBox.Show("Are you sure to delete this item ??", "Confirm Delete!!", MessageBoxButtons.YesNo);
+
+            if (confirmResult == DialogResult.Yes)
+            {
+                control.DisplayReadersBtnDeleteClick(reader);
+                this.Close();
+            }
         }
     }
 }

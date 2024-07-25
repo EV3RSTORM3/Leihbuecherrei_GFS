@@ -40,12 +40,14 @@
             DtpBirthday = new DateTimePicker();
             BtnSave = new Button();
             BtnClose = new Button();
+            BtnSaveAndClose = new Button();
+            BtnDelete = new Button();
             SuspendLayout();
             // 
             // LblName
             // 
             LblName.AutoSize = true;
-            LblName.Location = new Point(12, 22);
+            LblName.Location = new Point(12, 15);
             LblName.Name = "LblName";
             LblName.Size = new Size(63, 25);
             LblName.TabIndex = 0;
@@ -54,7 +56,7 @@
             // LblId
             // 
             LblId.AutoSize = true;
-            LblId.Location = new Point(241, 22);
+            LblId.Location = new Point(241, 15);
             LblId.Name = "LblId";
             LblId.Size = new Size(34, 25);
             LblId.TabIndex = 1;
@@ -89,7 +91,7 @@
             // 
             // TxtName
             // 
-            TxtName.Location = new Point(81, 22);
+            TxtName.Location = new Point(81, 12);
             TxtName.Name = "TxtName";
             TxtName.Size = new Size(150, 31);
             TxtName.TabIndex = 5;
@@ -106,7 +108,7 @@
             // TxtId
             // 
             TxtId.Enabled = false;
-            TxtId.Location = new Point(281, 22);
+            TxtId.Location = new Point(281, 12);
             TxtId.Name = "TxtId";
             TxtId.Size = new Size(150, 31);
             TxtId.TabIndex = 7;
@@ -131,7 +133,7 @@
             // BtnSave
             // 
             BtnSave.Enabled = false;
-            BtnSave.Location = new Point(558, 404);
+            BtnSave.Location = new Point(410, 404);
             BtnSave.Name = "BtnSave";
             BtnSave.Size = new Size(112, 34);
             BtnSave.TabIndex = 10;
@@ -141,18 +143,42 @@
             // 
             // BtnClose
             // 
-            BtnClose.Location = new Point(676, 404);
+            BtnClose.Location = new Point(528, 404);
             BtnClose.Name = "BtnClose";
             BtnClose.Size = new Size(112, 34);
             BtnClose.TabIndex = 11;
             BtnClose.Text = "Close";
             BtnClose.UseVisualStyleBackColor = true;
+            BtnClose.Click += BtnClose_Click;
+            // 
+            // BtnSaveAndClose
+            // 
+            BtnSaveAndClose.Enabled = false;
+            BtnSaveAndClose.Location = new Point(646, 404);
+            BtnSaveAndClose.Name = "BtnSaveAndClose";
+            BtnSaveAndClose.Size = new Size(142, 34);
+            BtnSaveAndClose.TabIndex = 12;
+            BtnSaveAndClose.Text = "Save and Close";
+            BtnSaveAndClose.UseVisualStyleBackColor = true;
+            BtnSaveAndClose.Click += BtnSaveAndClose_Click;
+            // 
+            // BtnDelete
+            // 
+            BtnDelete.Location = new Point(646, 10);
+            BtnDelete.Name = "BtnDelete";
+            BtnDelete.Size = new Size(142, 34);
+            BtnDelete.TabIndex = 13;
+            BtnDelete.Text = "Delete Reader";
+            BtnDelete.UseVisualStyleBackColor = true;
+            BtnDelete.Click += BtnDelete_Click;
             // 
             // DisplayReadersWindow
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(BtnDelete);
+            Controls.Add(BtnSaveAndClose);
             Controls.Add(BtnClose);
             Controls.Add(BtnSave);
             Controls.Add(DtpBirthday);
@@ -185,5 +211,7 @@
         private DateTimePicker DtpBirthday;
         private Button BtnSave;
         private Button BtnClose;
+        private Button BtnSaveAndClose;
+        private Button BtnDelete;
     }
 }
