@@ -20,31 +20,25 @@ namespace Leihbuecherrei_GFS.GUI
         public DisplayReadersWindow( Control pControl, Reader pReader )
         {
             control = pControl;
-            InitializeComponent();
-
             reader = pReader;
-
+            InitializeComponent();
             initialize();
         }
 
         private void initialize()
         {
-            this.Text = reader.Name;
+            Text = reader.Name;
 
             TxtName.Text = reader.Name;
             TxtId.Text = Convert.ToString(reader.Id);
             TxtCity.Text = reader.City;
             TxtAdress.Text = reader.Address;
 
-            if (reader.Birthday.CompareTo(DateOnly.FromDateTime(DtpBirthday.MinDate)) < 0)
-            {
-                DtpBirthday.Value = DateTime.Today;
-            }
-            else
-            {
-                //Have to Add a TimeOnly to the DateOnly to make a DateTime, because WinForms DateTimepicker only accepts DateTime variables
-                DtpBirthday.Value = reader.Birthday.ToDateTime(new TimeOnly(0, 0));
-            }
+            //?? handles the possibility of Birthday being null
+            DateOnly temp = reader.Birthday ?? DateOnly.FromDateTime(DateTime.Now);
+
+            //Have to Add a TimeOnly to the DateOnly to make a DateTime, because WinForms DateTimepicker only accepts DateTime variables
+            DtpBirthday.Value = temp.ToDateTime(new TimeOnly(0, 0));
 
             //Save button has to be disabled after initializing the data because TextChanged methods detect the initialization as changed
             BtnSave.Enabled = false;

@@ -18,7 +18,7 @@ namespace Leihbuecherrei_GFS
         public string Name { get; set; }
         public string Address { get; set; }
         public string City { get; set; }
-        public DateOnly Birthday { get; set; }
+        public Nullable<DateOnly> Birthday { get; set; }
 
         public Reader() { }
 
@@ -27,7 +27,8 @@ namespace Leihbuecherrei_GFS
             Name = pName;
             Address = pAddress;
             City = pCity;
-            Birthday = DateOnly.MinValue;
+            Birthday = null;
+            
         }
 
         public Reader( string pName, string pAddress, string pCity, DateOnly pBirthday) : this(pName, pAddress, pCity)
