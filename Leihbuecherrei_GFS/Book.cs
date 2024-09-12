@@ -8,15 +8,13 @@ namespace Leihbuecherrei_GFS
 {
     public class Book
     {
-        private string title;
-        private string author;
-        private string publisher;
-        private bool available;
+        public int Id { get; set; }
+        public string Title { get; set; }
+        public string Author { get; set; }
+        public string Publisher { get; set; }
+        public bool Available { get; set; }
 
-        public string Title { get => title; set => title = value; }
-        public string Author { get => author; set => author = value; }
-        public string Publisher { get => publisher; set => publisher = value; }
-        public bool Available { get => available; set => available = value; }
+        public Book() { }
 
         public Book(string pTitle, string pAuthor, string pPublisher)
         {

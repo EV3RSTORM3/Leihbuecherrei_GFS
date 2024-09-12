@@ -8,17 +8,14 @@ namespace Leihbuecherrei_GFS
 {
     public class BorrowEntry
     {
-        private Book book;
-        private Reader reader;
-        private DateTime borrowedOn;
-        private DateTime dueTo;
-        private bool closed;
+        public int Id { get; set; }
+        public Book Book { get; set; }
+        public Reader Reader { get; set; }
+        public DateTime BorrowedOn { get; set; }
+        public DateTime DueTo { get; set; }
+        public bool Closed { get; set; }
 
-        public Book Book { get => book; set => book = value; }
-        public Reader Reader { get => reader; set => reader = value; }
-        public DateTime BorrowedOn { get => borrowedOn; set => borrowedOn = value; }
-        public DateTime DueTo { get => dueTo; set => dueTo = value; }
-        public bool Closed { get => closed; set => closed = value; }
+        public BorrowEntry() { }
 
         public BorrowEntry( Book pBook, Reader pReader, DateTime pDueTo )
         {

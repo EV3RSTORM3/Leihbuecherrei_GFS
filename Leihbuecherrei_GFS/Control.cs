@@ -25,6 +25,9 @@ namespace Leihbuecherrei_GFS
             mainWindow = new LibraryWindow(this, database);
             Application.Run(mainWindow);
 
+            database.Books.Add(new Book("Herr der Ringe", "Tolkien", "no clue"));
+            database.SaveChanges();
+
         }
         public BindingList<Book> GetBooks()
         {

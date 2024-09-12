@@ -10,6 +10,8 @@ namespace Leihbuecherrei_GFS
     public class PostgresDBContext : DbContext
     {
         public DbSet<Reader> Readers { get; set; }
+        public DbSet<Book> Books { get; set; }
+        public DbSet<BorrowEntry> BorrowEntries { get; set; }
 
         protected override void OnConfiguring( DbContextOptionsBuilder optionsBuilder )
         {
