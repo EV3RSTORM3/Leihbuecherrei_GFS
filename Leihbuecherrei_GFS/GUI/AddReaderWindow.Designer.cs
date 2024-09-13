@@ -42,43 +42,48 @@
             // 
             // DtpBirthday
             // 
+            DtpBirthday.Anchor = AnchorStyles.Top;
             DtpBirthday.Format = DateTimePickerFormat.Short;
-            DtpBirthday.Location = new Point(117, 184);
+            DtpBirthday.Location = new Point(96, 145);
             DtpBirthday.Name = "DtpBirthday";
             DtpBirthday.Size = new Size(148, 31);
-            DtpBirthday.TabIndex = 0;
+            DtpBirthday.TabIndex = 4;
             // 
             // LblName
             // 
+            LblName.Anchor = AnchorStyles.Top;
             LblName.AutoSize = true;
-            LblName.Location = new Point(39, 59);
+            LblName.Location = new Point(19, 23);
             LblName.Name = "LblName";
-            LblName.Size = new Size(63, 25);
+            LblName.Size = new Size(71, 25);
             LblName.TabIndex = 1;
-            LblName.Text = "Name:";
+            LblName.Text = "*Name:";
             // 
             // LblAdress
             // 
+            LblAdress.Anchor = AnchorStyles.Top;
             LblAdress.AutoSize = true;
-            LblAdress.Location = new Point(32, 103);
+            LblAdress.Location = new Point(12, 67);
             LblAdress.Name = "LblAdress";
-            LblAdress.Size = new Size(70, 25);
+            LblAdress.Size = new Size(78, 25);
             LblAdress.TabIndex = 2;
-            LblAdress.Text = "Adress:";
+            LblAdress.Text = "*Adress:";
             // 
             // LblCity
             // 
+            LblCity.Anchor = AnchorStyles.Top;
             LblCity.AutoSize = true;
-            LblCity.Location = new Point(56, 146);
+            LblCity.Location = new Point(36, 110);
             LblCity.Name = "LblCity";
-            LblCity.Size = new Size(46, 25);
+            LblCity.Size = new Size(54, 25);
             LblCity.TabIndex = 3;
-            LblCity.Text = "City:";
+            LblCity.Text = "*City:";
             // 
             // LblBirthday
             // 
+            LblBirthday.Anchor = AnchorStyles.Top;
             LblBirthday.AutoSize = true;
-            LblBirthday.Location = new Point(21, 184);
+            LblBirthday.Location = new Point(9, 150);
             LblBirthday.Name = "LblBirthday";
             LblBirthday.Size = new Size(81, 25);
             LblBirthday.TabIndex = 4;
@@ -86,49 +91,54 @@
             // 
             // TxtCity
             // 
-            TxtCity.Location = new Point(117, 146);
+            TxtCity.Anchor = AnchorStyles.Top;
+            TxtCity.Location = new Point(96, 107);
             TxtCity.Name = "TxtCity";
             TxtCity.Size = new Size(148, 31);
-            TxtCity.TabIndex = 5;
+            TxtCity.TabIndex = 3;
             // 
             // TxtAdress
             // 
-            TxtAdress.Location = new Point(117, 103);
+            TxtAdress.Anchor = AnchorStyles.Top;
+            TxtAdress.Location = new Point(96, 64);
             TxtAdress.Name = "TxtAdress";
             TxtAdress.Size = new Size(148, 31);
-            TxtAdress.TabIndex = 6;
+            TxtAdress.TabIndex = 2;
             // 
             // TxtName
             // 
-            TxtName.Location = new Point(117, 59);
+            TxtName.Anchor = AnchorStyles.Top;
+            TxtName.Location = new Point(96, 20);
             TxtName.Name = "TxtName";
             TxtName.Size = new Size(148, 31);
-            TxtName.TabIndex = 7;
+            TxtName.TabIndex = 1;
             // 
             // BtnSave
             // 
-            BtnSave.Location = new Point(97, 226);
+            BtnSave.Anchor = AnchorStyles.Top;
+            BtnSave.Location = new Point(76, 226);
             BtnSave.Name = "BtnSave";
             BtnSave.Size = new Size(112, 34);
-            BtnSave.TabIndex = 8;
+            BtnSave.TabIndex = 5;
             BtnSave.Text = "Save";
             BtnSave.UseVisualStyleBackColor = true;
             BtnSave.Click += BtnSave_Click;
             // 
             // LblMandetoryInfos
             // 
+            LblMandetoryInfos.Anchor = AnchorStyles.Top;
             LblMandetoryInfos.AutoSize = true;
-            LblMandetoryInfos.Location = new Point(-1, 9);
+            LblMandetoryInfos.Location = new Point(50, 179);
             LblMandetoryInfos.Name = "LblMandetoryInfos";
-            LblMandetoryInfos.Size = new Size(310, 25);
+            LblMandetoryInfos.Size = new Size(165, 25);
             LblMandetoryInfos.TabIndex = 9;
-            LblMandetoryInfos.Text = "Name, Adress and city are mandetory";
+            LblMandetoryInfos.Text = "* = mandetory info";
             // 
             // AddReaderWindow
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(309, 272);
+            ClientSize = new Size(266, 272);
             Controls.Add(LblMandetoryInfos);
             Controls.Add(BtnSave);
             Controls.Add(TxtName);

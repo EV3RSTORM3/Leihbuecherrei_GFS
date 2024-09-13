@@ -84,8 +84,14 @@ namespace Leihbuecherrei_GFS.GUI
 
         private void BtnSaveAndClose_Click( object sender, EventArgs e )
         {
-            control.DisplayReaderBtnSaveClick(reader, TxtName.Text, TxtAdress.Text, TxtCity.Text, DateOnly.FromDateTime(DtpBirthday.Value));
-            this.Close();
+            if (control.DisplayReaderBtnSaveClick(reader, TxtName.Text, TxtAdress.Text, TxtCity.Text, DateOnly.FromDateTime(DtpBirthday.Value)) == false)
+            {
+                MessageBox.Show("Please fill out all of the mandetory information!");
+            }
+            else
+            {
+                this.Close();
+            }
         }
 
         private void BtnDelete_Click( object sender, EventArgs e )

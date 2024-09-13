@@ -56,17 +56,18 @@ namespace Leihbuecherrei_GFS
                     }
 
                     database.SaveChanges();
+                    mainWindow.refreshReadersList();
                     return true;
                 }
         }
 
-        public void DisplayReaderBtnSaveClick( Reader pReader, string pName, string pAdress, string pCity, DateOnly pBirthday )
+        public bool DisplayReaderBtnSaveClick( Reader pReader, string pName, string pAdress, string pCity, DateOnly pBirthday )
         {
             //finds the reader in the database and tracks it to make the changes
             pReader = database.Readers.Find(pReader.Id);
 
             //checks if the mandetory information is given if nor returns false 
-            if (String.IsNullOrEmpty(pName) || String.IsNullOrEmpty(pAdress) || String.IsNullOrEmpty(pCity)) { MessageBox.Show("please fill out all of th mandetory information!"); }
+            if (String.IsNullOrEmpty(pName) || String.IsNullOrEmpty(pAdress) || String.IsNullOrEmpty(pCity)) { return false; }
             else
             {    
                 pReader.Name = pName;
@@ -80,12 +81,13 @@ namespace Leihbuecherrei_GFS
                 }
                 else
                 {
-                    // if the Birtdate is set to today or the future the Birthday atribute is filled with the MinValue of DateTime, which is also used by the Readers constructor
-                    pReader.Birthday = DateOnly.MinValue; 
+                    // if the Birtdate is set to today or the future the Birthday atribute is set to null
+                    pReader.Birthday = null; 
                 }
 
                 database.SaveChanges();
                 mainWindow.refreshReadersList();
+                return true;
             }
         }
 

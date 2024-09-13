@@ -21,7 +21,7 @@ namespace Leihbuecherrei_GFS
         {
             base.OnLoad(e);
 
-            this.database.Readers.Load();
+            database.Readers.Load();
             LbReaders.DataSource = database.Readers.Local.ToBindingList();
 
             LbReaders.DisplayMember = "idAndName";
@@ -29,7 +29,7 @@ namespace Leihbuecherrei_GFS
 
         private void BtnAddBook_Click( object sender, EventArgs e )
         {
-            AddBookWindow addBookWindow = new AddBookWindow();
+            AddBookWindow addBookWindow = new AddBookWindow(control);
 
             addBookWindow.Location = new Point(0, 0);
             addBookWindow.Show();
@@ -46,6 +46,7 @@ namespace Leihbuecherrei_GFS
         public void refreshReadersList()
         {                                                                                                                                              
             database.ChangeTracker.Clear();
+            database.Readers.Load();
             LbReaders.DataSource = database.Readers.Local.ToBindingList();
         }
 

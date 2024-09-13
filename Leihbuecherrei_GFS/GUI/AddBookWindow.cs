@@ -7,14 +7,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace Leihbuecherrei_GFS.GUI
 {
     public partial class AddBookWindow : Form
     {
-        public AddBookWindow()
+        private Control control;
+
+        public AddBookWindow(Control pControl)
         {
+            control = pControl;
             InitializeComponent();
+        }
+
+        private void BtnSave_Click( object sender, EventArgs e )
+        {
+            /*
+            if (control.addReaderBtnSaveClick(TxtName.Text, TxtAdress.Text, TxtCity.Text, DateOnly.FromDateTime(DtpBirthday.Value)) == false)
+            {
+                MessageBox.Show("Please fill out all of the mandetory information!");
+            }
+            else
+            {
+                Close();
+            }
+            */
         }
     }
 }

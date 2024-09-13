@@ -23,7 +23,7 @@ namespace Leihbuecherrei_GFS.GUI
         {
             if (control.addReaderBtnSaveClick(TxtName.Text, TxtAdress.Text, TxtCity.Text, DateOnly.FromDateTime(DtpBirthday.Value)) == false)
             {
-                MessageBox.Show("please fill out all of the mandetory information!");
+                MessageBox.Show("Please fill out all of the mandetory information!");
             }
             else
             {
