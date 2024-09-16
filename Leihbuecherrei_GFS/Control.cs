@@ -24,10 +24,6 @@ namespace Leihbuecherrei_GFS
             database = new PostgresDBContext();
             mainWindow = new LibraryWindow(this, database);
             Application.Run(mainWindow);
-
-            database.Books.Add(new Book("Herr der Ringe", "Tolkien", "no clue"));
-            database.SaveChanges();
-
         }
         public BindingList<Book> GetBooks()
         {
@@ -41,7 +37,7 @@ namespace Leihbuecherrei_GFS
 
         public bool addReaderBtnSaveClick( string pName, string pAdress, string pCity, DateOnly pBirthday )
         {
-                //checks if the mandetory information is given if nor returns false 
+                //checks if the mandetory information is given if or returns false 
                 if (String.IsNullOrEmpty(pName) || String.IsNullOrEmpty(pAdress) || String.IsNullOrEmpty(pCity)) { return false; }
                 else
                 {
@@ -59,6 +55,19 @@ namespace Leihbuecherrei_GFS
                     mainWindow.refreshReadersList();
                     return true;
                 }
+        }
+
+        public bool addBookBtnSaveClick( string pTitle, string pAuthor, string pPublisher)
+        {
+            //checks if the mandetory information is given if or returns false 
+            if (String.IsNullOrEmpty(pTitle)) { return false; }
+            else
+            {
+                database.Books.Add(new Book(pTitle, pAuthor, pPublisher));
+                database.SaveChanges();
+                //mainWindow.refreshReadersList();
+                return true;
+            }
         }
 
         public bool DisplayReaderBtnSaveClick( Reader pReader, string pName, string pAdress, string pCity, DateOnly pBirthday )

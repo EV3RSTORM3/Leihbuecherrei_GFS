@@ -19,8 +19,13 @@ namespace Leihbuecherrei_GFS
         public Book(string pTitle, string pAuthor, string pPublisher)
         {
             Title = pTitle;
-            Author = pAuthor;
-            Publisher = pPublisher;
+
+            if (String.IsNullOrEmpty(pAuthor)) { Author = null; }
+            else { Author = pAuthor; }
+
+            if (String.IsNullOrEmpty(pPublisher)) { Publisher = null; }
+            else {  Publisher = pPublisher; }
+
             Available = true;
         }
     }

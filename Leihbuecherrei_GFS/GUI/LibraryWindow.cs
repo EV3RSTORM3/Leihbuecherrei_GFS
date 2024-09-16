@@ -9,7 +9,7 @@ namespace Leihbuecherrei_GFS
         private PostgresDBContext database;
 
 
-        public LibraryWindow( Control pControl, PostgresDBContext pDatabase)
+        public LibraryWindow( Control pControl, PostgresDBContext pDatabase )
         {
             control = pControl;
             database = pDatabase;
@@ -44,7 +44,7 @@ namespace Leihbuecherrei_GFS
         }
 
         public void refreshReadersList()
-        {                                                                                                                                              
+        {
             database.ChangeTracker.Clear();
             database.Readers.Load();
             LbReaders.DataSource = database.Readers.Local.ToBindingList();
