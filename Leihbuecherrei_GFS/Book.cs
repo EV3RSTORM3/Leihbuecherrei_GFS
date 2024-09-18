@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Leihbuecherrei_GFS
 {
@@ -10,8 +11,8 @@ namespace Leihbuecherrei_GFS
     {
         public int Id { get; set; }
         public string Title { get; set; }
-        public string Author { get; set; }
-        public string Publisher { get; set; }
+        public string? Author { get; set; }
+        public string? Publisher { get; set; }
         public bool Available { get; set; }
 
         public Book() { }
@@ -27,6 +28,15 @@ namespace Leihbuecherrei_GFS
             else {  Publisher = pPublisher; }
 
             Available = true;
+        }
+
+        //returns a string with Id and Name
+        public string idAndTitle
+        {
+            get
+            {
+                return Id + "\t" + Title;
+            }
         }
     }
 }

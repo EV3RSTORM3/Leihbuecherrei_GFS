@@ -23,8 +23,11 @@ namespace Leihbuecherrei_GFS
 
             database.Readers.Load();
             LbReaders.DataSource = database.Readers.Local.ToBindingList();
-
             LbReaders.DisplayMember = "idAndName";
+
+            database.Books.Load();
+            LbBooks.DataSource = database.Books.Local.ToBindingList();
+            LbBooks.DisplayMember = "idAndTitle";
         }
 
         private void BtnAddBook_Click( object sender, EventArgs e )
