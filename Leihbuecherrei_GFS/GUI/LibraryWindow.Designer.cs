@@ -169,6 +169,7 @@
             LbBooks.Name = "LbBooks";
             LbBooks.Size = new Size(268, 629);
             LbBooks.TabIndex = 2;
+            LbBooks.DoubleClick += LbBooks_DoubleClick;
             // 
             // bookBindingSource
             // 

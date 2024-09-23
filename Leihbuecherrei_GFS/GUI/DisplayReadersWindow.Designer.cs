@@ -56,7 +56,7 @@
             // LblId
             // 
             LblId.AutoSize = true;
-            LblId.Location = new Point(241, 15);
+            LblId.Location = new Point(382, 15);
             LblId.Name = "LblId";
             LblId.Size = new Size(34, 25);
             LblId.TabIndex = 1;
@@ -108,7 +108,7 @@
             // TxtId
             // 
             TxtId.Enabled = false;
-            TxtId.Location = new Point(281, 12);
+            TxtId.Location = new Point(422, 12);
             TxtId.Name = "TxtId";
             TxtId.Size = new Size(150, 31);
             TxtId.TabIndex = 7;
@@ -192,7 +192,7 @@
             Controls.Add(LblId);
             Controls.Add(LblName);
             Name = "DisplayReadersWindow";
-            Text = "DisplayReadercs";
+            Text = "DisplayReaders";
             ResumeLayout(false);
             PerformLayout();
         }

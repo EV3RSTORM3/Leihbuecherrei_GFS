@@ -22,10 +22,10 @@ namespace Leihbuecherrei_GFS.GUI
             control = pControl;
             reader = pReader;
             InitializeComponent();
-            initialize();
+            Initialize();
         }
 
-        private void initialize()
+        private void Initialize()
         {
             Text = reader.Name;
 
@@ -71,10 +71,15 @@ namespace Leihbuecherrei_GFS.GUI
 
         private void BtnSave_Click( object sender, EventArgs e )
         {
-            control.DisplayReaderBtnSaveClick(reader, TxtName.Text, TxtAdress.Text, TxtCity.Text, DateOnly.FromDateTime(DtpBirthday.Value));
-
-            //refreshes the title of the window after save
-            this.Text = reader.Name;
+            if (control.DisplayReaderBtnSaveClick(reader, TxtName.Text, TxtAdress.Text, TxtCity.Text, DateOnly.FromDateTime(DtpBirthday.Value)) == false)
+            {
+                MessageBox.Show("Please fill out all of the mandetory information!");
+            }
+            else
+            {
+                //refreshes the title of the window after save
+                this.Text = TxtName.Text;
+            }
         }
 
         private void BtnClose_Click( object sender, EventArgs e )

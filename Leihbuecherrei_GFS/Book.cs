@@ -30,8 +30,9 @@ namespace Leihbuecherrei_GFS
             Available = true;
         }
 
+
         //returns a string with Id and Name
-        public string idAndTitle
+        public string IdAndTitle
         {
             get
             {

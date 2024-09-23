@@ -23,11 +23,11 @@ namespace Leihbuecherrei_GFS
 
             database.Readers.Load();
             LbReaders.DataSource = database.Readers.Local.ToBindingList();
-            LbReaders.DisplayMember = "idAndName";
+            LbReaders.DisplayMember = "IdAndName";
 
             database.Books.Load();
             LbBooks.DataSource = database.Books.Local.ToBindingList();
-            LbBooks.DisplayMember = "idAndTitle";
+            LbBooks.DisplayMember = "IdAndTitle";
         }
 
         private void BtnAddBook_Click( object sender, EventArgs e )
@@ -46,7 +46,7 @@ namespace Leihbuecherrei_GFS
             addReaderWindow.Show();
         }
 
-        public void refreshReadersList()
+        public void RefreshReadersList()
         {
             database.ChangeTracker.Clear();
             database.Readers.Load();
@@ -57,7 +57,14 @@ namespace Leihbuecherrei_GFS
         {
             Reader selectedReader = LbReaders.SelectedItem as Reader;
 
-            control.libraryWindowLbReaders_DoubleClick(selectedReader);
+            control.LibraryWindowLbReaders_DoubleClick(selectedReader);
+        }
+
+        private void LbBooks_DoubleClick( object sender, EventArgs e )
+        {
+            Book selectedBook = LbBooks.SelectedItem as Book;
+
+            control.LibraryWindowLbBooks_DoubleClick(selectedBook);
         }
     }
 }

@@ -24,7 +24,7 @@ namespace Leihbuecherrei_GFS.GUI
         private void BtnSave_Click( object sender, EventArgs e )
         {
             
-            if (control.addBookBtnSaveClick(TxtTitle.Text, TxtAuthor.Text, TxtPublisher.Text) == false)
+            if (control.AddBookBtnSaveClick(TxtTitle.Text, TxtAuthor.Text, TxtPublisher.Text) == false)
             {
                 MessageBox.Show("Please fill out all of the mandetory information!");
             }

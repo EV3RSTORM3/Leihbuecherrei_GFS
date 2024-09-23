@@ -37,7 +37,7 @@ namespace Leihbuecherrei_GFS
         }
 
         //returns a string with Id and Name
-        public string idAndName 
+        public string IdAndName 
         {
             get
             {

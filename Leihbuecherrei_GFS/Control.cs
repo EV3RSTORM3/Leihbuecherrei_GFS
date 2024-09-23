@@ -12,9 +12,6 @@ namespace Leihbuecherrei_GFS
 {
     public class Control
     {
-        //BindingList supports binding with ListBox so you dont have to refresh the Listbox
-        private BindingList<Book> books = new BindingList<Book>();
-        private BindingList<Reader> reader = new BindingList<Reader>();  
         private LibraryWindow mainWindow;
         private PostgresDBContext database;
 
@@ -25,17 +22,8 @@ namespace Leihbuecherrei_GFS
             mainWindow = new LibraryWindow(this, database);
             Application.Run(mainWindow);
         }
-        public BindingList<Book> GetBooks()
-        {
-            return books;
-        }
 
-        public BindingList<Reader> GetReaders()
-        {
-            return reader;
-        }
-
-        public bool addReaderBtnSaveClick( string pName, string pAdress, string pCity, DateOnly pBirthday )
+        public bool AddReaderBtnSaveClick(string pName, string pAdress, string pCity, DateOnly pBirthday)
         {
                 //checks if the mandetory information is given if or returns false 
                 if (String.IsNullOrEmpty(pName) || String.IsNullOrEmpty(pAdress) || String.IsNullOrEmpty(pCity)) { return false; }
@@ -52,12 +40,12 @@ namespace Leihbuecherrei_GFS
                     }
 
                     database.SaveChanges();
-                    mainWindow.refreshReadersList();
+                    mainWindow.RefreshReadersList();
                     return true;
                 }
         }
 
-        public bool addBookBtnSaveClick( string pTitle, string pAuthor, string pPublisher)
+        public bool AddBookBtnSaveClick( string pTitle, string pAuthor, string pPublisher)
         {
             //checks if the mandetory information is given if or returns false 
             if (String.IsNullOrEmpty(pTitle)) { return false; }
@@ -70,7 +58,15 @@ namespace Leihbuecherrei_GFS
             }
         }
 
-        public bool DisplayReaderBtnSaveClick( Reader pReader, string pName, string pAdress, string pCity, DateOnly pBirthday )
+        public void LibraryWindowLbReaders_DoubleClick(Reader selectedReader) 
+        {
+            DisplayReadersWindow displayReaders = new DisplayReadersWindow(this, database.Readers.Find(selectedReader.Id));
+
+            displayReaders.Location = new Point(0, 0);
+            displayReaders.Show();
+        }
+
+        public bool DisplayReaderBtnSaveClick(Reader pReader, string pName, string pAdress, string pCity, DateOnly pBirthday)
         {
             //finds the reader in the database and tracks it to make the changes
             pReader = database.Readers.Find(pReader.Id);
@@ -95,17 +91,9 @@ namespace Leihbuecherrei_GFS
                 }
 
                 database.SaveChanges();
-                mainWindow.refreshReadersList();
+                mainWindow.RefreshReadersList();
                 return true;
             }
-        }
-
-        public void libraryWindowLbReaders_DoubleClick(Reader selectedReader) 
-        {
-            DisplayReadersWindow displayReaders = new DisplayReadersWindow(this, database.Readers.Find(selectedReader.Id));
-
-            displayReaders.Location = new Point(0, 0);
-            displayReaders.Show();
         }
 
         public void DisplayReadersBtnDeleteClick(Reader pReader)
@@ -113,6 +101,41 @@ namespace Leihbuecherrei_GFS
             database.Readers.Remove(pReader);
             database.SaveChanges();
             //mainWindow.refreshReadersList();
+        }
+
+        public void LibraryWindowLbBooks_DoubleClick(Book selectedBook)
+        {
+            DisplayBookWindow displayBook = new DisplayBookWindow(this, database.Books.Find(selectedBook.Id));
+
+            displayBook.Location = new Point(0, 0);
+            displayBook.Show();
+        }
+
+        public bool DisplayBookBtnSaveClick(Book pBook, string pTitle, string pAuthor, string pPublisher)
+        {
+            //finds the reader in the database and tracks it to make the changes
+            pBook = database.Books.Find(pBook.Id);
+
+            //checks if the mandetory information is given if nor returns false 
+            if (String.IsNullOrEmpty(pTitle)) { return false; }
+            else
+            {
+                pBook.Title = pTitle;
+                pBook.Author = pAuthor;
+                pBook.Publisher = pPublisher;
+
+                
+
+                database.SaveChanges();
+                //mainWindow.refreshReadersList();
+                return true;
+            }
+        }
+
+        public void DisplayBookBtnDeleteClick(Book pBook)
+        {
+            database.Books.Remove(pBook);
+            database.SaveChanges();
         }
     }
 }
