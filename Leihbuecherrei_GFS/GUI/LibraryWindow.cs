@@ -6,13 +6,11 @@ namespace Leihbuecherrei_GFS
     public partial class LibraryWindow : Form
     {
         private Control control;
-        private PostgresDBContext database;
 
 
-        public LibraryWindow( Control pControl, PostgresDBContext pDatabase )
+        public LibraryWindow( Control pControl )
         {
             control = pControl;
-            database = pDatabase;
             InitializeComponent();
 
         }
@@ -21,12 +19,11 @@ namespace Leihbuecherrei_GFS
         {
             base.OnLoad(e);
 
-            database.Readers.Load();
-            LbReaders.DataSource = database.Readers.Local.ToBindingList();
+            //Search Method can also be used to get all entries from the data base when searching for ""
+            LbReaders.DataSource = control.LibraryWindowSearchReader("");
             LbReaders.DisplayMember = "IdAndName";
 
-            database.Books.Load();
-            LbBooks.DataSource = database.Books.Local.ToBindingList();
+            LbBooks.DataSource = control.LibraryWindowSearchBook("");
             LbBooks.DisplayMember = "IdAndTitle";
         }
 
@@ -48,9 +45,7 @@ namespace Leihbuecherrei_GFS
 
         public void RefreshReadersList()
         {
-            database.ChangeTracker.Clear();
-            database.Readers.Load();
-            LbReaders.DataSource = database.Readers.Local.ToBindingList();
+            LbReaders.DataSource = control.LibraryWindowSearchReader(TxtSearchReader.Text);
         }
 
         private async void LbReaders_DoubleClick( object sender, EventArgs e )
@@ -65,6 +60,27 @@ namespace Leihbuecherrei_GFS
             Book selectedBook = LbBooks.SelectedItem as Book;
 
             control.LibraryWindowLbBooks_DoubleClick(selectedBook);
+        }
+
+        private void BtnNewBorrowEntry_Click( object sender, EventArgs e )
+        {
+
+        }
+
+        private void TxtSearchReader_KeyPress( object sender, KeyPressEventArgs e )
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                LbReaders.DataSource = control.LibraryWindowSearchReader(TxtSearchReader.Text);
+            }
+        }
+
+        private void TxtSearchBook_KeyPress( object sender, KeyPressEventArgs e )
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                LbBooks.DataSource = control.LibraryWindowSearchBook(TxtSearchBook.Text);
+            }
         }
     }
 }

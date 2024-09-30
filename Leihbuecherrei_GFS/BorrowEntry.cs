@@ -13,6 +13,7 @@ namespace Leihbuecherrei_GFS
         public Reader Reader { get; set; }
         public DateTime BorrowedOn { get; set; }
         public DateTime DueTo { get; set; }
+        public DateTime? ReturnedOn { get; set; }
         public bool Closed { get; set; }
 
         public BorrowEntry() { }
@@ -23,6 +24,7 @@ namespace Leihbuecherrei_GFS
             Reader = pReader;
             DueTo = pDueTo;
             BorrowedOn = DateTime.Today;
+            ReturnedOn = null;
             Closed = false;
         }
     }

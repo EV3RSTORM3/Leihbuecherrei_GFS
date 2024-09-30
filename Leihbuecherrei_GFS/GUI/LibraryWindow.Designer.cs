@@ -30,6 +30,8 @@
         {
             components = new System.ComponentModel.Container();
             splitContainer1 = new SplitContainer();
+            BtnNewBorrowEntry = new Button();
+            listView1 = new ListView();
             tabControl1 = new TabControl();
             readers = new TabPage();
             TxtSearchReader = new TextBox();
@@ -44,6 +46,7 @@
             controlBindingSource = new BindingSource(components);
             readerBindingSource1 = new BindingSource(components);
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
+            splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
             splitContainer1.SuspendLayout();
             tabControl1.SuspendLayout();
@@ -62,6 +65,11 @@
             splitContainer1.Margin = new Padding(4, 5, 4, 5);
             splitContainer1.Name = "splitContainer1";
             // 
+            // splitContainer1.Panel1
+            // 
+            splitContainer1.Panel1.Controls.Add(BtnNewBorrowEntry);
+            splitContainer1.Panel1.Controls.Add(listView1);
+            // 
             // splitContainer1.Panel2
             // 
             splitContainer1.Panel2.Controls.Add(tabControl1);
@@ -69,6 +77,25 @@
             splitContainer1.SplitterDistance = 839;
             splitContainer1.SplitterWidth = 20;
             splitContainer1.TabIndex = 0;
+            // 
+            // BtnNewBorrowEntry
+            // 
+            BtnNewBorrowEntry.Location = new Point(12, 12);
+            BtnNewBorrowEntry.Name = "BtnNewBorrowEntry";
+            BtnNewBorrowEntry.Size = new Size(164, 34);
+            BtnNewBorrowEntry.TabIndex = 1;
+            BtnNewBorrowEntry.Text = "New borrow entry";
+            BtnNewBorrowEntry.UseVisualStyleBackColor = true;
+            BtnNewBorrowEntry.Click += BtnNewBorrowEntry_Click;
+            // 
+            // listView1
+            // 
+            listView1.Dock = DockStyle.Bottom;
+            listView1.Location = new Point(0, 202);
+            listView1.Name = "listView1";
+            listView1.Size = new Size(839, 547);
+            listView1.TabIndex = 0;
+            listView1.UseCompatibleStateImageBehavior = false;
             // 
             // tabControl1
             // 
@@ -106,6 +133,7 @@
             TxtSearchReader.Size = new Size(268, 31);
             TxtSearchReader.TabIndex = 1;
             TxtSearchReader.TextAlign = HorizontalAlignment.Center;
+            TxtSearchReader.KeyPress += TxtSearchReader_KeyPress;
             // 
             // LbReaders
             // 
@@ -158,6 +186,7 @@
             TxtSearchBook.Size = new Size(268, 31);
             TxtSearchBook.TabIndex = 3;
             TxtSearchBook.TextAlign = HorizontalAlignment.Center;
+            TxtSearchBook.KeyPress += TxtSearchBook_KeyPress;
             // 
             // LbBooks
             // 
@@ -204,6 +233,7 @@
             Margin = new Padding(4, 5, 4, 5);
             Name = "LibraryWindow";
             Text = "Library";
+            splitContainer1.Panel1.ResumeLayout(false);
             splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
             splitContainer1.ResumeLayout(false);
@@ -235,5 +265,7 @@
         private ListBox LbBooks;
         private BindingSource readerBindingSource1;
         private BindingSource bookBindingSource;
+        private Button BtnNewBorrowEntry;
+        private ListView listView1;
     }
 }
