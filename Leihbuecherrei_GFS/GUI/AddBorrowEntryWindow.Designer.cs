@@ -1,6 +1,6 @@
 ﻿namespace Leihbuecherrei_GFS.GUI
 {
-    partial class AddBorrowEntry
+    partial class AddBorrowEntryWindow
     {
         /// <summary>
         /// Required designer variable.
@@ -29,14 +29,15 @@
         private void InitializeComponent()
         {
             GbBook = new GroupBox();
-            TxtSearchBook = new TextBox();
             LbBooks = new ListBox();
+            TxtSearchBook = new TextBox();
             GbReader = new GroupBox();
             LbReaders = new ListBox();
             TxtSearchReader = new TextBox();
             BtnAddEntry = new Button();
             LblDueTo = new Label();
             DtpDueTo = new DateTimePicker();
+            LblMandetoryInfos = new Label();
             GbBook.SuspendLayout();
             GbReader.SuspendLayout();
             SuspendLayout();
@@ -51,15 +52,7 @@
             GbBook.Size = new Size(206, 207);
             GbBook.TabIndex = 4;
             GbBook.TabStop = false;
-            GbBook.Text = "Book";
-            // 
-            // TxtSearchBook
-            // 
-            TxtSearchBook.Location = new Point(6, 30);
-            TxtSearchBook.Name = "TxtSearchBook";
-            TxtSearchBook.Size = new Size(194, 31);
-            TxtSearchBook.TabIndex = 0;
-            TxtSearchBook.Text = "Search Book";
+            GbBook.Text = "*Book";
             // 
             // LbBooks
             // 
@@ -69,6 +62,16 @@
             LbBooks.Name = "LbBooks";
             LbBooks.Size = new Size(194, 129);
             LbBooks.TabIndex = 1;
+            // 
+            // TxtSearchBook
+            // 
+            TxtSearchBook.Location = new Point(6, 30);
+            TxtSearchBook.Name = "TxtSearchBook";
+            TxtSearchBook.PlaceholderText = "Search Book";
+            TxtSearchBook.Size = new Size(194, 31);
+            TxtSearchBook.TabIndex = 1;
+            TxtSearchBook.TextAlign = HorizontalAlignment.Center;
+            TxtSearchBook.KeyPress += TxtSearchBook_KeyPress;
             // 
             // GbReader
             // 
@@ -80,7 +83,7 @@
             GbReader.Size = new Size(206, 207);
             GbReader.TabIndex = 5;
             GbReader.TabStop = false;
-            GbReader.Text = "Reader";
+            GbReader.Text = "*Reader";
             // 
             // LbReaders
             // 
@@ -95,49 +98,62 @@
             // 
             TxtSearchReader.Location = new Point(6, 30);
             TxtSearchReader.Name = "TxtSearchReader";
+            TxtSearchReader.PlaceholderText = "Search Reader";
             TxtSearchReader.Size = new Size(194, 31);
             TxtSearchReader.TabIndex = 0;
-            TxtSearchReader.Text = "Search Reader";
+            TxtSearchReader.TextAlign = HorizontalAlignment.Center;
+            TxtSearchReader.KeyPress += TxtSearchReader_KeyPress;
             // 
             // BtnAddEntry
             // 
             BtnAddEntry.Location = new Point(349, 288);
             BtnAddEntry.Name = "BtnAddEntry";
             BtnAddEntry.Size = new Size(112, 34);
-            BtnAddEntry.TabIndex = 6;
+            BtnAddEntry.TabIndex = 3;
             BtnAddEntry.Text = "Add entry";
             BtnAddEntry.UseVisualStyleBackColor = true;
+            BtnAddEntry.Click += BtnAddEntry_Click;
             // 
             // LblDueTo
             // 
             LblDueTo.AutoSize = true;
             LblDueTo.Location = new Point(12, 232);
             LblDueTo.Name = "LblDueTo";
-            LblDueTo.Size = new Size(70, 25);
+            LblDueTo.Size = new Size(78, 25);
             LblDueTo.TabIndex = 7;
-            LblDueTo.Text = "Due to:";
+            LblDueTo.Text = "*Due to:";
             // 
             // DtpDueTo
             // 
             DtpDueTo.Format = DateTimePickerFormat.Short;
-            DtpDueTo.Location = new Point(88, 227);
+            DtpDueTo.Location = new Point(96, 227);
             DtpDueTo.Name = "DtpDueTo";
             DtpDueTo.Size = new Size(144, 31);
-            DtpDueTo.TabIndex = 8;
+            DtpDueTo.TabIndex = 2;
             // 
-            // AddBorrowEntry
+            // LblMandetoryInfos
+            // 
+            LblMandetoryInfos.Anchor = AnchorStyles.Top;
+            LblMandetoryInfos.AutoSize = true;
+            LblMandetoryInfos.Location = new Point(169, 293);
+            LblMandetoryInfos.Name = "LblMandetoryInfos";
+            LblMandetoryInfos.Size = new Size(165, 25);
+            LblMandetoryInfos.TabIndex = 10;
+            LblMandetoryInfos.Text = "* = mandetory info";
+            // 
+            // AddBorrowEntryWindow
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(473, 334);
+            Controls.Add(LblMandetoryInfos);
             Controls.Add(DtpDueTo);
             Controls.Add(LblDueTo);
             Controls.Add(BtnAddEntry);
             Controls.Add(GbReader);
             Controls.Add(GbBook);
-            Name = "AddBorrowEntry";
+            Name = "AddBorrowEntryWindow";
             Text = "New borrow entry";
-            Load += AddBorrowEntry_Load;
             GbBook.ResumeLayout(false);
             GbBook.PerformLayout();
             GbReader.ResumeLayout(false);
@@ -156,5 +172,6 @@
         private Button BtnAddEntry;
         private Label LblDueTo;
         private DateTimePicker DtpDueTo;
+        private Label LblMandetoryInfos;
     }
 }

@@ -20,7 +20,7 @@ namespace Leihbuecherrei_GFS
             base.OnLoad(e);
 
             //Search Method can also be used to get all entries from the data base when searching for ""
-            LbReaders.DataSource = control.LibraryWindowSearchReader("");
+            LbReaders.DataSource = control.SearchReader("");
             LbReaders.DisplayMember = "IdAndName";
 
             LbBooks.DataSource = control.LibraryWindowSearchBook("");
@@ -45,7 +45,7 @@ namespace Leihbuecherrei_GFS
 
         public void RefreshReadersList()
         {
-            LbReaders.DataSource = control.LibraryWindowSearchReader(TxtSearchReader.Text);
+            LbReaders.DataSource = control.SearchReader(TxtSearchReader.Text);
         }
 
         private async void LbReaders_DoubleClick( object sender, EventArgs e )
@@ -64,14 +64,17 @@ namespace Leihbuecherrei_GFS
 
         private void BtnNewBorrowEntry_Click( object sender, EventArgs e )
         {
+            AddBorrowEntryWindow addBorrowEntryWindow = new AddBorrowEntryWindow(control);
 
+            addBorrowEntryWindow.Location = new Point(0, 0);
+            addBorrowEntryWindow.Show();
         }
 
         private void TxtSearchReader_KeyPress( object sender, KeyPressEventArgs e )
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
-                LbReaders.DataSource = control.LibraryWindowSearchReader(TxtSearchReader.Text);
+                LbReaders.DataSource = control.SearchReader(TxtSearchReader.Text);
             }
         }
 

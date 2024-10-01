@@ -36,7 +36,7 @@ namespace Leihbuecherrei_GFS
         {
             get
             {
-                return Id + "\t" + Title;
+                return Id + " | " + Title;
             }
         }
     }

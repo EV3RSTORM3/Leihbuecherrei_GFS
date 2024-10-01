@@ -1,4 +1,5 @@
 ﻿using Leihbuecherrei_GFS.GUI;
+using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
@@ -29,7 +30,7 @@ namespace Leihbuecherrei_GFS
                 if (String.IsNullOrEmpty(pName) || String.IsNullOrEmpty(pAdress) || String.IsNullOrEmpty(pCity)) { return false; }
                 else
                 {
-                    // Compare methods returns an signed integer if the integer is less than 0 the first date is erlier than the second date
+                    //Compare methods returns an signed integer if the integer is less than 0 the first date is earlier than the second date
                     if (pBirthday.CompareTo(DateOnly.FromDateTime(DateTime.Today)) < 0)
                     {
                         database.Readers.Add(new Reader(pName, pAdress, pCity, pBirthday));
@@ -50,7 +51,7 @@ namespace Leihbuecherrei_GFS
         {
             using (PostgresDBContext database = new PostgresDBContext())
             {
-                //checks if the mandetory information is given if or returns false 
+                //checks if the mandetory information is given if not returns false 
                 if (String.IsNullOrEmpty(pTitle)) { return false; }
                 else
                 {
@@ -80,7 +81,7 @@ namespace Leihbuecherrei_GFS
                 //finds the reader in the database and tracks it to make the changes
                 pReader = database.Readers.Find(pReader.Id);
 
-                //checks if the mandetory information is given if nor returns false 
+                //checks if the mandetory information is given if not returns false 
                 if (String.IsNullOrEmpty(pName) || String.IsNullOrEmpty(pAdress) || String.IsNullOrEmpty(pCity)) { return false; }
                 else
                 {
@@ -88,14 +89,14 @@ namespace Leihbuecherrei_GFS
                     pReader.Address = pAdress;
                     pReader.City = pCity;
 
-                    // Compare methods returns an signed integer if the integer is less than 0 the first date is erlier than the second date
+                    //Compare methods returns an signed integer if the integer is less than 0 the first date is earlier than the second date
                     if (pBirthday.CompareTo(DateOnly.FromDateTime(DateTime.Today)) < 0)
                     {
                         pReader.Birthday = pBirthday;
                     }
                     else
                     {
-                        // if the Birtdate is set to today or the future the Birthday atribute is set to null
+                        //if the Birthdate is set to today or the future the Birthday atribute is set to null
                         pReader.Birthday = null;
                     }
 
@@ -135,7 +136,7 @@ namespace Leihbuecherrei_GFS
                 //finds the reader in the database and tracks it to make the changes
                 pBook = database.Books.Find(pBook.Id);
 
-                //checks if the mandetory information is given if nor returns false 
+                //checks if the mandetory information is given if not returns false 
                 if (String.IsNullOrEmpty(pTitle)) { return false; }
                 else
                 {
@@ -161,7 +162,8 @@ namespace Leihbuecherrei_GFS
             }
         }
 
-        public List<Reader> LibraryWindowSearchReader(string pSearchFor) 
+        //can be used for all searches for readers as there are no usecases where more criteria are set
+        public List<Reader> SearchReader(string pSearchFor) 
         {
             List<Reader> list = new List<Reader>();
 
@@ -179,8 +181,7 @@ namespace Leihbuecherrei_GFS
             return list;
         }
 
-
-        public List<Book> LibraryWindowSearchBook( string pSearchFor )
+        public List<Book> LibraryWindowSearchBook(string pSearchFor)
         {
             List<Book> list = new List<Book>();
 
@@ -196,6 +197,40 @@ namespace Leihbuecherrei_GFS
                 }
             }
             return list;
+        }
+
+        //When searching for books to borow it only returns books that meet the search criteria and are available
+        public List<Book> BorrowEntrySearchBook(string pSearchFor)
+        {
+            List<Book> list = new List<Book>();
+
+            using (PostgresDBContext database = new PostgresDBContext())
+            {
+                try
+                {
+                    int searchForId = Convert.ToInt32(pSearchFor);
+                    list = database.Books.Where(b => b.Id == searchForId && b.Available == true).ToList();
+                }
+                catch (FormatException)
+                {
+                    list = database.Books.Where(b => b.Title.Contains(pSearchFor) && b.Available == true).OrderByDescending(b => b.Id).ToList();
+                }
+            }
+            return list;
+        }
+
+        public void AddBorrowEntryBtnSaveClick(Reader pReader, Book pBook, DateOnly pDueTo)
+        {
+            using (PostgresDBContext databse = new PostgresDBContext())
+            {
+                //pbook and pReader have to be tracked trough EF so it knowes they exisit and doesn't try to add the to the database which returnes an error
+                pBook = databse.Books.Find(pBook.Id);
+                pReader = databse.Readers.Find(pReader.Id);
+
+                databse.BorrowEntries.Add(new BorrowEntry(pBook, pReader, pDueTo));
+                databse.SaveChanges();
+                //mainWindow.RefreshBorrowEntryList();
+            }
         }
     }
 }

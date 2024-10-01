@@ -11,19 +11,21 @@ namespace Leihbuecherrei_GFS
         public int Id { get; set; }
         public Book Book { get; set; }
         public Reader Reader { get; set; }
-        public DateTime BorrowedOn { get; set; }
-        public DateTime DueTo { get; set; }
-        public DateTime? ReturnedOn { get; set; }
+        public DateOnly BorrowedOn { get; set; }
+        public DateOnly DueTo { get; set; }
+        public bool Returned { get; set; }
+        public DateOnly? ReturnedOn { get; set; }
         public bool Closed { get; set; }
 
         public BorrowEntry() { }
 
-        public BorrowEntry( Book pBook, Reader pReader, DateTime pDueTo )
+        public BorrowEntry( Book pBook, Reader pReader, DateOnly pDueTo )
         {
             Book = pBook;
             Reader = pReader;
             DueTo = pDueTo;
-            BorrowedOn = DateTime.Today;
+            BorrowedOn = DateOnly.FromDateTime(DateTime.Today);
+            Returned = false;
             ReturnedOn = null;
             Closed = false;
         }
