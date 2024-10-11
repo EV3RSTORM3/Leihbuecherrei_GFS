@@ -57,7 +57,8 @@ namespace Leihbuecherrei_GFS
                 {
                     database.Books.Add(new Book(pTitle, pAuthor, pPublisher));
                     database.SaveChanges();
-                    //mainWindow.refreshReadersList();
+
+                    mainWindow.RefreshBookList();
                     return true;
                 }
             }
@@ -147,7 +148,7 @@ namespace Leihbuecherrei_GFS
 
 
                     database.SaveChanges();
-                    //mainWindow.refreshReadersList();
+                    mainWindow.RefreshBookList();
                     return true;
                 }
             }
@@ -160,6 +161,7 @@ namespace Leihbuecherrei_GFS
                 database.Books.Remove(pBook);
                 database.SaveChanges();
             }
+            mainWindow.RefreshBookList();
         }
 
         //can be used for all searches for readers as there are no usecases where more criteria are set

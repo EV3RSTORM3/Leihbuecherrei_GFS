@@ -48,6 +48,11 @@ namespace Leihbuecherrei_GFS
             LbReaders.DataSource = control.SearchReader(TxtSearchReader.Text);
         }
 
+        public void RefreshBookList()
+        {
+            LbBooks.DataSource = control.LibraryWindowSearchBook(TxtSearchBook.Text);
+        }
+
         private async void LbReaders_DoubleClick( object sender, EventArgs e )
         {
             Reader selectedReader = LbReaders.SelectedItem as Reader;
