@@ -30,8 +30,18 @@
         {
             components = new System.ComponentModel.Container();
             splitContainer1 = new SplitContainer();
+            tabControl2 = new TabControl();
+            tabPage1 = new TabPage();
+            DgvBorrowEntries = new DataGridView();
+            borrowEntryBindingSource = new BindingSource(components);
+            GbFilters = new GroupBox();
+            BtnBorrowEntrySearch = new Button();
+            CbClosed = new CheckBox();
+            CbReturned = new CheckBox();
+            TxtSearchBorrowEntryBook = new TextBox();
+            TxtSearchBorrowEntryReader = new TextBox();
+            tabPage2 = new TabPage();
             BtnNewBorrowEntry = new Button();
-            listView1 = new ListView();
             tabControl1 = new TabControl();
             readers = new TabPage();
             TxtSearchReader = new TextBox();
@@ -43,19 +53,29 @@
             LbBooks = new ListBox();
             bookBindingSource = new BindingSource(components);
             BtnAddBook = new Button();
-            controlBindingSource = new BindingSource(components);
-            readerBindingSource1 = new BindingSource(components);
+            idDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            bookDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            readerDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            borrowedOnDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            dueToDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            returnedDataGridViewCheckBoxColumn = new DataGridViewCheckBoxColumn();
+            returnedOnDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            closedDataGridViewCheckBoxColumn = new DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
             splitContainer1.SuspendLayout();
+            tabControl2.SuspendLayout();
+            tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)DgvBorrowEntries).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)borrowEntryBindingSource).BeginInit();
+            GbFilters.SuspendLayout();
+            tabPage2.SuspendLayout();
             tabControl1.SuspendLayout();
             readers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)readerBindingSource).BeginInit();
             books.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)bookBindingSource).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)controlBindingSource).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)readerBindingSource1).BeginInit();
             SuspendLayout();
             // 
             // splitContainer1
@@ -67,8 +87,7 @@
             // 
             // splitContainer1.Panel1
             // 
-            splitContainer1.Panel1.Controls.Add(BtnNewBorrowEntry);
-            splitContainer1.Panel1.Controls.Add(listView1);
+            splitContainer1.Panel1.Controls.Add(tabControl2);
             // 
             // splitContainer1.Panel2
             // 
@@ -78,24 +97,138 @@
             splitContainer1.SplitterWidth = 20;
             splitContainer1.TabIndex = 0;
             // 
+            // tabControl2
+            // 
+            tabControl2.Controls.Add(tabPage1);
+            tabControl2.Controls.Add(tabPage2);
+            tabControl2.Dock = DockStyle.Fill;
+            tabControl2.Location = new Point(0, 0);
+            tabControl2.Name = "tabControl2";
+            tabControl2.SelectedIndex = 0;
+            tabControl2.Size = new Size(839, 749);
+            tabControl2.TabIndex = 2;
+            // 
+            // tabPage1
+            // 
+            tabPage1.Controls.Add(DgvBorrowEntries);
+            tabPage1.Controls.Add(GbFilters);
+            tabPage1.Location = new Point(4, 34);
+            tabPage1.Name = "tabPage1";
+            tabPage1.Padding = new Padding(3);
+            tabPage1.Size = new Size(831, 711);
+            tabPage1.TabIndex = 0;
+            tabPage1.Text = "tabPage1";
+            tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // DgvBorrowEntries
+            // 
+            DgvBorrowEntries.AllowUserToAddRows = false;
+            DgvBorrowEntries.AllowUserToDeleteRows = false;
+            DgvBorrowEntries.AutoGenerateColumns = false;
+            DgvBorrowEntries.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            DgvBorrowEntries.Columns.AddRange(new DataGridViewColumn[] { idDataGridViewTextBoxColumn, bookDataGridViewTextBoxColumn, readerDataGridViewTextBoxColumn, borrowedOnDataGridViewTextBoxColumn, dueToDataGridViewTextBoxColumn, returnedDataGridViewCheckBoxColumn, returnedOnDataGridViewTextBoxColumn, closedDataGridViewCheckBoxColumn });
+            DgvBorrowEntries.DataSource = borrowEntryBindingSource;
+            DgvBorrowEntries.Dock = DockStyle.Fill;
+            DgvBorrowEntries.Location = new Point(3, 127);
+            DgvBorrowEntries.Name = "DgvBorrowEntries";
+            DgvBorrowEntries.ReadOnly = true;
+            DgvBorrowEntries.RowHeadersWidth = 62;
+            DgvBorrowEntries.RowTemplate.Height = 33;
+            DgvBorrowEntries.Size = new Size(825, 581);
+            DgvBorrowEntries.TabIndex = 4;
+            // 
+            // borrowEntryBindingSource
+            // 
+            borrowEntryBindingSource.DataSource = typeof(BorrowEntry);
+            // 
+            // GbFilters
+            // 
+            GbFilters.BackColor = Color.Silver;
+            GbFilters.Controls.Add(BtnBorrowEntrySearch);
+            GbFilters.Controls.Add(CbClosed);
+            GbFilters.Controls.Add(CbReturned);
+            GbFilters.Controls.Add(TxtSearchBorrowEntryBook);
+            GbFilters.Controls.Add(TxtSearchBorrowEntryReader);
+            GbFilters.Dock = DockStyle.Top;
+            GbFilters.Location = new Point(3, 3);
+            GbFilters.Name = "GbFilters";
+            GbFilters.Size = new Size(825, 124);
+            GbFilters.TabIndex = 3;
+            GbFilters.TabStop = false;
+            GbFilters.Text = "Filters";
+            // 
+            // BtnBorrowEntrySearch
+            // 
+            BtnBorrowEntrySearch.Location = new Point(679, 84);
+            BtnBorrowEntrySearch.Name = "BtnBorrowEntrySearch";
+            BtnBorrowEntrySearch.Size = new Size(140, 34);
+            BtnBorrowEntrySearch.TabIndex = 9;
+            BtnBorrowEntrySearch.Text = "Search";
+            BtnBorrowEntrySearch.UseVisualStyleBackColor = true;
+            BtnBorrowEntrySearch.Click += BtnBorrowEntrySearch_Click;
+            // 
+            // CbClosed
+            // 
+            CbClosed.AutoSize = true;
+            CbClosed.Location = new Point(125, 81);
+            CbClosed.Name = "CbClosed";
+            CbClosed.Size = new Size(92, 29);
+            CbClosed.TabIndex = 7;
+            CbClosed.Text = "Closed";
+            CbClosed.ThreeState = true;
+            CbClosed.UseVisualStyleBackColor = true;
+            // 
+            // CbReturned
+            // 
+            CbReturned.AutoSize = true;
+            CbReturned.Location = new Point(10, 81);
+            CbReturned.Name = "CbReturned";
+            CbReturned.Size = new Size(109, 29);
+            CbReturned.TabIndex = 6;
+            CbReturned.Text = "Retruned";
+            CbReturned.ThreeState = true;
+            CbReturned.UseVisualStyleBackColor = true;
+            // 
+            // TxtSearchBorrowEntryBook
+            // 
+            TxtSearchBorrowEntryBook.Location = new Point(215, 37);
+            TxtSearchBorrowEntryBook.Margin = new Padding(10);
+            TxtSearchBorrowEntryBook.Name = "TxtSearchBorrowEntryBook";
+            TxtSearchBorrowEntryBook.PlaceholderText = "Book";
+            TxtSearchBorrowEntryBook.Size = new Size(182, 31);
+            TxtSearchBorrowEntryBook.TabIndex = 5;
+            TxtSearchBorrowEntryBook.TextAlign = HorizontalAlignment.Center;
+            // 
+            // TxtSearchBorrowEntryReader
+            // 
+            TxtSearchBorrowEntryReader.Location = new Point(13, 37);
+            TxtSearchBorrowEntryReader.Margin = new Padding(10);
+            TxtSearchBorrowEntryReader.Name = "TxtSearchBorrowEntryReader";
+            TxtSearchBorrowEntryReader.PlaceholderText = "Reader";
+            TxtSearchBorrowEntryReader.Size = new Size(182, 31);
+            TxtSearchBorrowEntryReader.TabIndex = 4;
+            TxtSearchBorrowEntryReader.TextAlign = HorizontalAlignment.Center;
+            // 
+            // tabPage2
+            // 
+            tabPage2.Controls.Add(BtnNewBorrowEntry);
+            tabPage2.Location = new Point(4, 34);
+            tabPage2.Name = "tabPage2";
+            tabPage2.Padding = new Padding(3);
+            tabPage2.Size = new Size(831, 711);
+            tabPage2.TabIndex = 1;
+            tabPage2.Text = "tabPage2";
+            tabPage2.UseVisualStyleBackColor = true;
+            // 
             // BtnNewBorrowEntry
             // 
-            BtnNewBorrowEntry.Location = new Point(12, 12);
+            BtnNewBorrowEntry.Location = new Point(442, 197);
             BtnNewBorrowEntry.Name = "BtnNewBorrowEntry";
             BtnNewBorrowEntry.Size = new Size(164, 34);
             BtnNewBorrowEntry.TabIndex = 1;
             BtnNewBorrowEntry.Text = "New borrow entry";
             BtnNewBorrowEntry.UseVisualStyleBackColor = true;
             BtnNewBorrowEntry.Click += BtnNewBorrowEntry_Click;
-            // 
-            // listView1
-            // 
-            listView1.Dock = DockStyle.Bottom;
-            listView1.Location = new Point(0, 202);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(839, 547);
-            listView1.TabIndex = 0;
-            listView1.UseCompatibleStateImageBehavior = false;
             // 
             // tabControl1
             // 
@@ -125,8 +258,8 @@
             // 
             // TxtSearchReader
             // 
-            TxtSearchReader.Dock = DockStyle.Bottom;
-            TxtSearchReader.Location = new Point(4, 46);
+            TxtSearchReader.Dock = DockStyle.Top;
+            TxtSearchReader.Location = new Point(4, 43);
             TxtSearchReader.Margin = new Padding(10);
             TxtSearchReader.Name = "TxtSearchReader";
             TxtSearchReader.PlaceholderText = "Search Reader";
@@ -216,13 +349,77 @@
             BtnAddBook.UseVisualStyleBackColor = true;
             BtnAddBook.Click += BtnAddBook_Click;
             // 
-            // controlBindingSource
+            // idDataGridViewTextBoxColumn
             // 
-            controlBindingSource.DataSource = typeof(Control);
+            idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            idDataGridViewTextBoxColumn.HeaderText = "Id";
+            idDataGridViewTextBoxColumn.MinimumWidth = 8;
+            idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            idDataGridViewTextBoxColumn.ReadOnly = true;
+            idDataGridViewTextBoxColumn.Width = 150;
             // 
-            // readerBindingSource1
+            // bookDataGridViewTextBoxColumn
             // 
-            readerBindingSource1.DataSource = typeof(Reader);
+            bookDataGridViewTextBoxColumn.DataPropertyName = "Book";
+            bookDataGridViewTextBoxColumn.HeaderText = "Book";
+            bookDataGridViewTextBoxColumn.MinimumWidth = 8;
+            bookDataGridViewTextBoxColumn.Name = "bookDataGridViewTextBoxColumn";
+            bookDataGridViewTextBoxColumn.ReadOnly = true;
+            bookDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // readerDataGridViewTextBoxColumn
+            // 
+            readerDataGridViewTextBoxColumn.DataPropertyName = "Reader";
+            readerDataGridViewTextBoxColumn.HeaderText = "Reader";
+            readerDataGridViewTextBoxColumn.MinimumWidth = 8;
+            readerDataGridViewTextBoxColumn.Name = "readerDataGridViewTextBoxColumn";
+            readerDataGridViewTextBoxColumn.ReadOnly = true;
+            readerDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // borrowedOnDataGridViewTextBoxColumn
+            // 
+            borrowedOnDataGridViewTextBoxColumn.DataPropertyName = "BorrowedOn";
+            borrowedOnDataGridViewTextBoxColumn.HeaderText = "BorrowedOn";
+            borrowedOnDataGridViewTextBoxColumn.MinimumWidth = 8;
+            borrowedOnDataGridViewTextBoxColumn.Name = "borrowedOnDataGridViewTextBoxColumn";
+            borrowedOnDataGridViewTextBoxColumn.ReadOnly = true;
+            borrowedOnDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // dueToDataGridViewTextBoxColumn
+            // 
+            dueToDataGridViewTextBoxColumn.DataPropertyName = "DueTo";
+            dueToDataGridViewTextBoxColumn.HeaderText = "DueTo";
+            dueToDataGridViewTextBoxColumn.MinimumWidth = 8;
+            dueToDataGridViewTextBoxColumn.Name = "dueToDataGridViewTextBoxColumn";
+            dueToDataGridViewTextBoxColumn.ReadOnly = true;
+            dueToDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // returnedDataGridViewCheckBoxColumn
+            // 
+            returnedDataGridViewCheckBoxColumn.DataPropertyName = "Returned";
+            returnedDataGridViewCheckBoxColumn.HeaderText = "Returned";
+            returnedDataGridViewCheckBoxColumn.MinimumWidth = 8;
+            returnedDataGridViewCheckBoxColumn.Name = "returnedDataGridViewCheckBoxColumn";
+            returnedDataGridViewCheckBoxColumn.ReadOnly = true;
+            returnedDataGridViewCheckBoxColumn.Width = 150;
+            // 
+            // returnedOnDataGridViewTextBoxColumn
+            // 
+            returnedOnDataGridViewTextBoxColumn.DataPropertyName = "ReturnedOn";
+            returnedOnDataGridViewTextBoxColumn.HeaderText = "ReturnedOn";
+            returnedOnDataGridViewTextBoxColumn.MinimumWidth = 8;
+            returnedOnDataGridViewTextBoxColumn.Name = "returnedOnDataGridViewTextBoxColumn";
+            returnedOnDataGridViewTextBoxColumn.ReadOnly = true;
+            returnedOnDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // closedDataGridViewCheckBoxColumn
+            // 
+            closedDataGridViewCheckBoxColumn.DataPropertyName = "Closed";
+            closedDataGridViewCheckBoxColumn.HeaderText = "Closed";
+            closedDataGridViewCheckBoxColumn.MinimumWidth = 8;
+            closedDataGridViewCheckBoxColumn.Name = "closedDataGridViewCheckBoxColumn";
+            closedDataGridViewCheckBoxColumn.ReadOnly = true;
+            closedDataGridViewCheckBoxColumn.Width = 150;
             // 
             // LibraryWindow
             // 
@@ -237,6 +434,13 @@
             splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
             splitContainer1.ResumeLayout(false);
+            tabControl2.ResumeLayout(false);
+            tabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)DgvBorrowEntries).EndInit();
+            ((System.ComponentModel.ISupportInitialize)borrowEntryBindingSource).EndInit();
+            GbFilters.ResumeLayout(false);
+            GbFilters.PerformLayout();
+            tabPage2.ResumeLayout(false);
             tabControl1.ResumeLayout(false);
             readers.ResumeLayout(false);
             readers.PerformLayout();
@@ -244,8 +448,6 @@
             books.ResumeLayout(false);
             books.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)bookBindingSource).EndInit();
-            ((System.ComponentModel.ISupportInitialize)controlBindingSource).EndInit();
-            ((System.ComponentModel.ISupportInitialize)readerBindingSource1).EndInit();
             ResumeLayout(false);
         }
 
@@ -259,13 +461,29 @@
         private Button BtnAddBook;
         private TextBox TxtSearchReader;
         private ListBox LbReaders;
-        private BindingSource controlBindingSource;
         private BindingSource readerBindingSource;
         private TextBox TxtSearchBook;
         private ListBox LbBooks;
-        private BindingSource readerBindingSource1;
         private BindingSource bookBindingSource;
         private Button BtnNewBorrowEntry;
-        private ListView listView1;
+        private TabControl tabControl2;
+        private TabPage tabPage1;
+        private TabPage tabPage2;
+        private GroupBox GbFilters;
+        private CheckBox CbReturned;
+        private TextBox TxtSearchBorrowEntryBook;
+        private TextBox TxtSearchBorrowEntryReader;
+        private CheckBox CbClosed;
+        private Button BtnBorrowEntrySearch;
+        private DataGridView DgvBorrowEntries;
+        private BindingSource borrowEntryBindingSource;
+        private DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn bookDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn readerDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn borrowedOnDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn dueToDataGridViewTextBoxColumn;
+        private DataGridViewCheckBoxColumn returnedDataGridViewCheckBoxColumn;
+        private DataGridViewTextBoxColumn returnedOnDataGridViewTextBoxColumn;
+        private DataGridViewCheckBoxColumn closedDataGridViewCheckBoxColumn;
     }
 }

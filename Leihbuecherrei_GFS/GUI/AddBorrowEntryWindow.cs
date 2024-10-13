@@ -25,7 +25,7 @@ namespace Leihbuecherrei_GFS.GUI
             LbReaders.DataSource = control.SearchReader("");
             LbReaders.DisplayMember = "IdAndName";
 
-            LbBooks.DataSource = control.BorrowEntrySearchBook("");
+            LbBooks.DataSource = control.AddBorrowEntrySearchBook("");
             LbBooks.DisplayMember = "IdAndTitle";
         }
 
@@ -41,7 +41,7 @@ namespace Leihbuecherrei_GFS.GUI
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
-                LbBooks.DataSource = control.BorrowEntrySearchBook(TxtSearchBook.Text);
+                LbBooks.DataSource = control.AddBorrowEntrySearchBook(TxtSearchBook.Text);
             }
         }
 

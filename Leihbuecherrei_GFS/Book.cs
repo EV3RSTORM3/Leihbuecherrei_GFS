@@ -30,14 +30,9 @@ namespace Leihbuecherrei_GFS
             Available = true;
         }
 
-
-        //returns a string with Id and Name
-        public string IdAndTitle
+        public override string ToString()
         {
-            get
-            {
-                return Id + " | " + Title;
-            }
+            return Id + " | " + Title;
         }
     }
 }

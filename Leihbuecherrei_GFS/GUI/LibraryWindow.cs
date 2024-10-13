@@ -7,12 +7,10 @@ namespace Leihbuecherrei_GFS
     {
         private Control control;
 
-
         public LibraryWindow( Control pControl )
         {
             control = pControl;
             InitializeComponent();
-
         }
 
         protected override void OnLoad( EventArgs e )
@@ -21,10 +19,9 @@ namespace Leihbuecherrei_GFS
 
             //Search Method can also be used to get all entries from the data base when searching for ""
             LbReaders.DataSource = control.SearchReader("");
-            LbReaders.DisplayMember = "IdAndName";
 
             LbBooks.DataSource = control.LibraryWindowSearchBook("");
-            LbBooks.DisplayMember = "IdAndTitle";
+
         }
 
         private void BtnAddBook_Click( object sender, EventArgs e )
@@ -90,5 +87,12 @@ namespace Leihbuecherrei_GFS
                 LbBooks.DataSource = control.LibraryWindowSearchBook(TxtSearchBook.Text);
             }
         }
+
+        private void BtnBorrowEntrySearch_Click( object sender, EventArgs e )
+        {
+            DgvBorrowEntries.DataSource = control.LibraryWindowBtnBorrowEntrySearchClick(TxtSearchBorrowEntryReader.Text, TxtSearchBorrowEntryBook.Text, CbClosed.CheckState, CbReturned.CheckState);
+
+        }
+
     }
 }

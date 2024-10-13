@@ -1,4 +1,5 @@
 ﻿using Leihbuecherrei_GFS.GUI;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.VisualBasic;
 using System;
@@ -167,58 +168,58 @@ namespace Leihbuecherrei_GFS
         //can be used for all searches for readers as there are no usecases where more criteria are set
         public List<Reader> SearchReader(string pSearchFor) 
         {
-            List<Reader> list = new List<Reader>();
+            List<Reader> listReaders = new List<Reader>();
 
             using (PostgresDBContext database = new PostgresDBContext())
             {
                 try
                 {
-                    list.Add(database.Readers.Find(Convert.ToInt32(pSearchFor)));
+                    listReaders.Add(database.Readers.Find(Convert.ToInt32(pSearchFor)));
                 }
                 catch (FormatException)
                 {
-                    list = database.Readers.Where(r => r.Name.Contains(pSearchFor)).OrderByDescending(r => r.Id).ToList();
+                    listReaders = database.Readers.Where(r => r.Name.Contains(pSearchFor)).OrderByDescending(r => r.Id).ToList();
                 }
             }
-            return list;
+            return listReaders;
         }
 
         public List<Book> LibraryWindowSearchBook(string pSearchFor)
         {
-            List<Book> list = new List<Book>();
+            List<Book> listBooks = new List<Book>();
 
             using (PostgresDBContext database = new PostgresDBContext())
             {
                 try
                 {
-                    list.Add(database.Books.Find(Convert.ToInt32(pSearchFor)));
+                    listBooks.Add(database.Books.Find(Convert.ToInt32(pSearchFor)));
                 }
                 catch (FormatException)
                 {
-                    list = database.Books.Where(b => b.Title.Contains(pSearchFor)).OrderByDescending(b => b.Id).ToList();
+                    listBooks = database.Books.Where(b => b.Title.Contains(pSearchFor)).OrderByDescending(b => b.Id).ToList();
                 }
             }
-            return list;
+            return listBooks;
         }
 
         //When searching for books to borow it only returns books that meet the search criteria and are available
-        public List<Book> BorrowEntrySearchBook(string pSearchFor)
+        public List<Book> AddBorrowEntrySearchBook(string pSearchFor)
         {
-            List<Book> list = new List<Book>();
+            List<Book> listBooks = new List<Book>();
 
             using (PostgresDBContext database = new PostgresDBContext())
             {
                 try
                 {
                     int searchForId = Convert.ToInt32(pSearchFor);
-                    list = database.Books.Where(b => b.Id == searchForId && b.Available == true).ToList();
+                    listBooks = database.Books.Where(b => b.Id == searchForId && b.Available == true).ToList();
                 }
                 catch (FormatException)
                 {
-                    list = database.Books.Where(b => b.Title.Contains(pSearchFor) && b.Available == true).OrderByDescending(b => b.Id).ToList();
+                    listBooks = database.Books.Where(b => b.Title.Contains(pSearchFor) && b.Available == true).OrderByDescending(b => b.Id).ToList();
                 }
             }
-            return list;
+            return listBooks;
         }
 
         public void AddBorrowEntryBtnSaveClick(Reader pReader, Book pBook, DateOnly pDueTo)
@@ -232,6 +233,19 @@ namespace Leihbuecherrei_GFS
                 databse.BorrowEntries.Add(new BorrowEntry(pBook, pReader, pDueTo));
                 databse.SaveChanges();
                 //mainWindow.RefreshBorrowEntryList();
+            }
+        }
+        
+        public List<BorrowEntry> LibraryWindowBtnBorrowEntrySearchClick(string pReader, string pBook, CheckState pClosed, CheckState pReturned)
+        {
+            List<BorrowEntry> listBorrowEntries = new List<BorrowEntry>();
+
+            
+
+            using (PostgresDBContext database = new PostgresDBContext())
+            {
+                //.include() tells EF to use Eager Loading which also loads the related entities
+                return database.BorrowEntries.Include(be => be.Reader).Include(be => be.Book).Where(be => be.Reader.Name.Contains(pReader)).ToList();
             }
         }
     }

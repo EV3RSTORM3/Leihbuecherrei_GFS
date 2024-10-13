@@ -28,7 +28,6 @@ namespace Leihbuecherrei_GFS
             Address = pAddress;
             City = pCity;
             Birthday = null;
-            
         }
 
         public Reader( string pName, string pAddress, string pCity, DateOnly pBirthday) : this(pName, pAddress, pCity)
@@ -36,13 +35,9 @@ namespace Leihbuecherrei_GFS
             Birthday = pBirthday;
         }
 
-        //returns a string with Id and Name
-        public string IdAndName 
+        public override string ToString()
         {
-            get
-            {
-                return Id + " | " + Name;
-            }
+            return Id + " | " + Name;
         }
     }
 }
