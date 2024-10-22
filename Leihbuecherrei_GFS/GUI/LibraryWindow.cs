@@ -93,6 +93,5 @@ namespace Leihbuecherrei_GFS
             DgvBorrowEntries.DataSource = control.LibraryWindowBtnBorrowEntrySearchClick(TxtSearchBorrowEntryReader.Text, TxtSearchBorrowEntryBook.Text, CbClosed.CheckState, CbReturned.CheckState);
 
         }
-
     }
 }

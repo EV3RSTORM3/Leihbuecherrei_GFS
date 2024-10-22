@@ -238,14 +238,63 @@ namespace Leihbuecherrei_GFS
         
         public List<BorrowEntry> LibraryWindowBtnBorrowEntrySearchClick(string pReader, string pBook, CheckState pClosed, CheckState pReturned)
         {
-            List<BorrowEntry> listBorrowEntries = new List<BorrowEntry>();
-
-            
-
             using (PostgresDBContext database = new PostgresDBContext())
-            {
+            {   
                 //.include() tells EF to use Eager Loading which also loads the related entities
-                return database.BorrowEntries.Include(be => be.Reader).Include(be => be.Book).Where(be => be.Reader.Name.Contains(pReader)).ToList();
+                //By using IQueriable I can build the query at runtime to take diffrent filter setting in to account
+                //defines the query with the part it always needs already in it
+                IQueryable<BorrowEntry> query = database.BorrowEntries.Include(be => be.Reader).Include(be => be.Book);
+
+                if(string.IsNullOrEmpty(pReader) == false)
+                {
+                    if(int.TryParse(pReader, out int pReaderId))
+                    {
+                        query = query.Where(be => be.Reader.Id == pReaderId);
+                    }
+                    else
+                    {
+                        query = query.Where(be => be.Reader.Name.Contains(pReader));
+                    }
+                }
+
+                if (string.IsNullOrEmpty(pBook) == false)
+                {
+                    if (int.TryParse(pBook, out int pBookId))
+                    {
+                        query = query.Where(be => be.Book.Id == pBookId);
+                    }
+                    else
+                    {
+                        query = query.Where(be => be.Book.Title.Contains(pBook));
+                    }
+                }
+
+                if (pClosed != CheckState.Indeterminate)
+                {
+                    if(pClosed == CheckState.Checked)
+                    {
+                        query = query.Where(be => be.Closed == true);
+                    }
+                    else
+                    {
+                        query = query.Where(be => be.Closed == false);
+                    }
+                }
+
+                if (pReturned != CheckState.Indeterminate)
+                {
+                    if (pReturned == CheckState.Checked)
+                    {
+                        query = query.Where(be => be.Returned == true);
+                    }
+                    else
+                    {
+                        query = query.Where(be => be.Returned == false);
+                    }
+                }
+
+                //executes the query and returns its results
+                return query.ToList();
             }
         }
     }
