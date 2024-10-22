@@ -43,6 +43,7 @@
             closedDataGridViewCheckBoxColumn = new DataGridViewCheckBoxColumn();
             borrowEntryBindingSource = new BindingSource(components);
             GbFilters = new GroupBox();
+            BtnReset = new Button();
             BtnBorrowEntrySearch = new Button();
             CbClosed = new CheckBox();
             CbReturned = new CheckBox();
@@ -52,14 +53,14 @@
             BtnNewBorrowEntry = new Button();
             tabControl1 = new TabControl();
             readers = new TabPage();
-            TxtSearchReader = new TextBox();
-            BtnAddReader = new Button();
             LbReaders = new ListBox();
             readerBindingSource = new BindingSource(components);
+            TxtSearchReader = new TextBox();
+            BtnAddReader = new Button();
             books = new TabPage();
-            TxtSearchBook = new TextBox();
             LbBooks = new ListBox();
             bookBindingSource = new BindingSource(components);
+            TxtSearchBook = new TextBox();
             BtnAddBook = new Button();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
@@ -134,8 +135,10 @@
             DgvBorrowEntries.ReadOnly = true;
             DgvBorrowEntries.RowHeadersWidth = 62;
             DgvBorrowEntries.RowTemplate.Height = 33;
+            DgvBorrowEntries.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             DgvBorrowEntries.Size = new Size(906, 581);
             DgvBorrowEntries.TabIndex = 4;
+            DgvBorrowEntries.DoubleClick += DgvBorrowEntries_DoubleClick;
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -216,6 +219,7 @@
             // GbFilters
             // 
             GbFilters.BackColor = Color.Silver;
+            GbFilters.Controls.Add(BtnReset);
             GbFilters.Controls.Add(BtnBorrowEntrySearch);
             GbFilters.Controls.Add(CbClosed);
             GbFilters.Controls.Add(CbReturned);
@@ -229,12 +233,23 @@
             GbFilters.TabStop = false;
             GbFilters.Text = "Filters";
             // 
+            // BtnReset
+            // 
+            BtnReset.Anchor = AnchorStyles.Right;
+            BtnReset.Location = new Point(672, 84);
+            BtnReset.Name = "BtnReset";
+            BtnReset.Size = new Size(111, 34);
+            BtnReset.TabIndex = 10;
+            BtnReset.Text = "Reset";
+            BtnReset.UseVisualStyleBackColor = true;
+            BtnReset.Click += BtnReset_Click;
+            // 
             // BtnBorrowEntrySearch
             // 
             BtnBorrowEntrySearch.Anchor = AnchorStyles.Right;
-            BtnBorrowEntrySearch.Location = new Point(760, 84);
+            BtnBorrowEntrySearch.Location = new Point(789, 84);
             BtnBorrowEntrySearch.Name = "BtnBorrowEntrySearch";
-            BtnBorrowEntrySearch.Size = new Size(140, 34);
+            BtnBorrowEntrySearch.Size = new Size(111, 34);
             BtnBorrowEntrySearch.TabIndex = 9;
             BtnBorrowEntrySearch.Text = "Search";
             BtnBorrowEntrySearch.UseVisualStyleBackColor = true;
@@ -333,6 +348,23 @@
             readers.Text = "Readers";
             readers.UseVisualStyleBackColor = true;
             // 
+            // LbReaders
+            // 
+            LbReaders.BorderStyle = BorderStyle.FixedSingle;
+            LbReaders.DataSource = readerBindingSource;
+            LbReaders.Dock = DockStyle.Fill;
+            LbReaders.FormattingEnabled = true;
+            LbReaders.ItemHeight = 25;
+            LbReaders.Location = new Point(4, 74);
+            LbReaders.Name = "LbReaders";
+            LbReaders.Size = new Size(298, 632);
+            LbReaders.TabIndex = 4;
+            LbReaders.DoubleClick += LbReaders_DoubleClick;
+            // 
+            // readerBindingSource
+            // 
+            readerBindingSource.DataSource = typeof(Reader);
+            // 
             // TxtSearchReader
             // 
             TxtSearchReader.Dock = DockStyle.Top;
@@ -357,23 +389,6 @@
             BtnAddReader.UseVisualStyleBackColor = true;
             BtnAddReader.Click += BtnAddReader_Click;
             // 
-            // LbReaders
-            // 
-            LbReaders.BorderStyle = BorderStyle.FixedSingle;
-            LbReaders.DataSource = readerBindingSource;
-            LbReaders.Dock = DockStyle.Fill;
-            LbReaders.FormattingEnabled = true;
-            LbReaders.ItemHeight = 25;
-            LbReaders.Location = new Point(4, 74);
-            LbReaders.Name = "LbReaders";
-            LbReaders.Size = new Size(298, 632);
-            LbReaders.TabIndex = 4;
-            LbReaders.DoubleClick += LbReaders_DoubleClick;
-            // 
-            // readerBindingSource
-            // 
-            readerBindingSource.DataSource = typeof(Reader);
-            // 
             // books
             // 
             books.Controls.Add(LbBooks);
@@ -387,17 +402,6 @@
             books.TabIndex = 1;
             books.Text = "Books";
             books.UseVisualStyleBackColor = true;
-            // 
-            // TxtSearchBook
-            // 
-            TxtSearchBook.Dock = DockStyle.Top;
-            TxtSearchBook.Location = new Point(4, 43);
-            TxtSearchBook.Name = "TxtSearchBook";
-            TxtSearchBook.PlaceholderText = "Search Book";
-            TxtSearchBook.Size = new Size(298, 31);
-            TxtSearchBook.TabIndex = 3;
-            TxtSearchBook.TextAlign = HorizontalAlignment.Center;
-            TxtSearchBook.KeyPress += TxtSearchBook_KeyPress;
             // 
             // LbBooks
             // 
@@ -414,6 +418,17 @@
             // bookBindingSource
             // 
             bookBindingSource.DataSource = typeof(Book);
+            // 
+            // TxtSearchBook
+            // 
+            TxtSearchBook.Dock = DockStyle.Top;
+            TxtSearchBook.Location = new Point(4, 43);
+            TxtSearchBook.Name = "TxtSearchBook";
+            TxtSearchBook.PlaceholderText = "Search Book";
+            TxtSearchBook.Size = new Size(298, 31);
+            TxtSearchBook.TabIndex = 3;
+            TxtSearchBook.TextAlign = HorizontalAlignment.Center;
+            TxtSearchBook.KeyPress += TxtSearchBook_KeyPress;
             // 
             // BtnAddBook
             // 
@@ -491,5 +506,6 @@
         private DataGridViewCheckBoxColumn returnedDataGridViewCheckBoxColumn;
         private DataGridViewTextBoxColumn returnedOnDataGridViewTextBoxColumn;
         private DataGridViewCheckBoxColumn closedDataGridViewCheckBoxColumn;
+        private Button BtnReset;
     }
 }

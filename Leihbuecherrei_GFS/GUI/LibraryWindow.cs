@@ -50,6 +50,11 @@ namespace Leihbuecherrei_GFS
             LbBooks.DataSource = control.LibraryWindowSearchBook(TxtSearchBook.Text);
         }
 
+        public void RefreshBorrowEntryList()
+        {
+            DgvBorrowEntries.DataSource = control.LibraryWindowBtnBorrowEntrySearchClick(TxtSearchBorrowEntryReader.Text, TxtSearchBorrowEntryBook.Text, CbClosed.CheckState, CbReturned.CheckState);
+        }
+
         private async void LbReaders_DoubleClick( object sender, EventArgs e )
         {
             Reader selectedReader = LbReaders.SelectedItem as Reader;
@@ -91,7 +96,23 @@ namespace Leihbuecherrei_GFS
         private void BtnBorrowEntrySearch_Click( object sender, EventArgs e )
         {
             DgvBorrowEntries.DataSource = control.LibraryWindowBtnBorrowEntrySearchClick(TxtSearchBorrowEntryReader.Text, TxtSearchBorrowEntryBook.Text, CbClosed.CheckState, CbReturned.CheckState);
+        }
 
+        private void DgvBorrowEntries_DoubleClick( object sender, EventArgs e )
+        {
+
+        }
+
+        private void BtnReset_Click( object sender, EventArgs e )
+        {
+            TxtSearchBorrowEntryReader.Text = string.Empty;
+            TxtSearchBorrowEntryBook.Text = string.Empty;
+            
+            //intermediet is the default state in which the filter is ignored
+            CbClosed.CheckState = CheckState.Indeterminate;
+            CbReturned.CheckState = CheckState.Indeterminate;
+
+            DgvBorrowEntries.DataSource = control.LibraryWindowBtnBorrowEntrySearchClick(TxtSearchBorrowEntryReader.Text, TxtSearchBorrowEntryBook.Text, CbClosed.CheckState, CbReturned.CheckState);
         }
     }
 }

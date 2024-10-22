@@ -232,7 +232,7 @@ namespace Leihbuecherrei_GFS
 
                 databse.BorrowEntries.Add(new BorrowEntry(pBook, pReader, pDueTo));
                 databse.SaveChanges();
-                //mainWindow.RefreshBorrowEntryList();
+                mainWindow.RefreshBorrowEntryList();
             }
         }
         
