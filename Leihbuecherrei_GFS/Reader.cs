@@ -22,7 +22,7 @@ namespace Leihbuecherrei_GFS
 
         public Reader() { }
 
-        public Reader( string pName, string pAddress, string pCity )
+        public Reader(string pName, string pAddress, string pCity)
         {
             Name = pName;
             Address = pAddress;
@@ -30,7 +30,7 @@ namespace Leihbuecherrei_GFS
             Birthday = null;
         }
 
-        public Reader( string pName, string pAddress, string pCity, DateOnly pBirthday) : this(pName, pAddress, pCity)
+        public Reader(string pName, string pAddress, string pCity, DateOnly pBirthday) : this(pName, pAddress, pCity)
         {
             Birthday = pBirthday;
         }

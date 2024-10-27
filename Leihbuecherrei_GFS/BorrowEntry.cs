@@ -20,7 +20,7 @@ namespace Leihbuecherrei_GFS
 
         public BorrowEntry() { }
 
-        public BorrowEntry( Book pBook, Reader pReader, DateOnly pDueTo )
+        public BorrowEntry(Book pBook, Reader pReader, DateOnly pDueTo)
         {
             Book = pBook;
             Reader = pReader;

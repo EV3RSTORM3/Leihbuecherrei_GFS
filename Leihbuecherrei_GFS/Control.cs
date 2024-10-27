@@ -28,8 +28,10 @@ namespace Leihbuecherrei_GFS
         {
             using (PostgresDBContext database = new PostgresDBContext()) {
                 //checks if the mandetory information is given if or returns false 
-                if (String.IsNullOrEmpty(pName) || String.IsNullOrEmpty(pAdress) || String.IsNullOrEmpty(pCity)) 
+                if (String.IsNullOrEmpty(pName) || String.IsNullOrEmpty(pAdress) || String.IsNullOrEmpty(pCity))
+                {
                     return false;
+                }
                 else
                 {
                     //Compare methods returns an signed integer if the integer is less than 0 the first date is earlier than the second date
@@ -49,13 +51,15 @@ namespace Leihbuecherrei_GFS
             }
         }
 
-        public bool AddBookBtnSaveClick( string pTitle, string pAuthor, string pPublisher)
+        public bool AddBookBtnSaveClick(string pTitle, string pAuthor, string pPublisher)
         {
             using (PostgresDBContext database = new PostgresDBContext())
             {
                 //checks if the mandetory information is given if not returns false 
-                if (String.IsNullOrEmpty(pTitle)) 
+                if (String.IsNullOrEmpty(pTitle))
+                {
                     return false;
+                }
                 else
                 {
                     database.Books.Add(new Book(pTitle, pAuthor, pPublisher));
@@ -86,8 +90,10 @@ namespace Leihbuecherrei_GFS
                 pReader = database.Readers.Find(pReader.Id);
 
                 //checks if the mandetory information is given if not returns false 
-                if (String.IsNullOrEmpty(pName) || String.IsNullOrEmpty(pAdress) || String.IsNullOrEmpty(pCity))  
-                    return false; 
+                if (String.IsNullOrEmpty(pName) || String.IsNullOrEmpty(pAdress) || String.IsNullOrEmpty(pCity))
+                {
+                    return false;
+                }
                 else
                 {
                     pReader.Name = pName;
@@ -142,8 +148,10 @@ namespace Leihbuecherrei_GFS
                 pBook = database.Books.Find(pBook.Id);
 
                 //checks if the mandetory information is given if not returns false 
-                if (String.IsNullOrEmpty(pTitle)) 
+                if (String.IsNullOrEmpty(pTitle))
+                {
                     return false;
+                }
                 else
                 {
                     pBook.Title = pTitle;

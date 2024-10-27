@@ -53,7 +53,7 @@ namespace Leihbuecherrei_GFS.GUI
         }
 
         //activates the save buttons whe the content of the window is changed
-        private void ContentChanged( object sender, EventArgs e )
+        private void ContentChanged(object sender, EventArgs e)
         {
             BtnSave.Enabled = true;
             BtnSaveAndClose.Enabled = true;

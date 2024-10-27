@@ -21,11 +21,23 @@ namespace Leihbuecherrei_GFS
         {
             Title = pTitle;
 
-            if (String.IsNullOrEmpty(pAuthor)) { Author = null; }
-            else { Author = pAuthor; }
+            if (String.IsNullOrEmpty(pAuthor))
+            {
+                Author = null;
+            }
+            else
+            {
+                Author = pAuthor;
+            }
 
-            if (String.IsNullOrEmpty(pPublisher)) { Publisher = null; }
-            else {  Publisher = pPublisher; }
+            if (String.IsNullOrEmpty(pPublisher))
+            {
+                Publisher = null;
+            }
+            else
+            {
+                Publisher = pPublisher;
+            }
 
             Available = true;
         }

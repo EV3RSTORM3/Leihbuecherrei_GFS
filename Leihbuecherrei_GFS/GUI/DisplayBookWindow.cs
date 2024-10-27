@@ -16,7 +16,7 @@ namespace Leihbuecherrei_GFS.GUI
         private Control control;
         private Book book;
 
-        public DisplayBookWindow( Control pControl, Book pBook )
+        public DisplayBookWindow(Control pControl, Book pBook)
         {
             control = pControl;
             book = pBook;
@@ -39,18 +39,18 @@ namespace Leihbuecherrei_GFS.GUI
         }
 
         //activates the save buttons whe the content of the window is changed
-        private void ContentChanged( object sender, EventArgs e )
+        private void ContentChanged(object sender, EventArgs e)
         {
             BtnSave.Enabled = true;
             BtnSaveAndClose.Enabled = true;
         }
 
-        private void BtnClose_Click( object sender, EventArgs e )
+        private void BtnClose_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void BtnSave_Click( object sender, EventArgs e )
+        private void BtnSave_Click(object sender, EventArgs e)
         {
             if (control.DisplayBookBtnSaveClick(book, TxtTitle.Text, TxtAuthor.Text, TxtPublisher.Text) == false)
             {
@@ -63,7 +63,7 @@ namespace Leihbuecherrei_GFS.GUI
             }
         }
 
-        private void BtnSaveAndClose_Click( object sender, EventArgs e )
+        private void BtnSaveAndClose_Click(object sender, EventArgs e)
         {
             if (control.DisplayBookBtnSaveClick(book, TxtTitle.Text, TxtAuthor.Text, TxtPublisher.Text) == false)
             {
@@ -75,7 +75,7 @@ namespace Leihbuecherrei_GFS.GUI
             }
         }
 
-        private void BtnDelete_Click( object sender, EventArgs e )
+        private void BtnDelete_Click(object sender, EventArgs e)
         {
             var confirmResult = MessageBox.Show("Are you sure to delete this item ??", "Confirm Delete!!", MessageBoxButtons.YesNo);
 

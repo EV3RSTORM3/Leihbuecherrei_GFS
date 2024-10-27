@@ -21,7 +21,7 @@ namespace Leihbuecherrei_GFS.GUI
             InitializeComponent();
         }
 
-        private void BtnSave_Click( object sender, EventArgs e )
+        private void BtnSave_Click(object sender, EventArgs e)
         {
             
             if (control.AddBookBtnSaveClick(TxtTitle.Text, TxtAuthor.Text, TxtPublisher.Text) == false)

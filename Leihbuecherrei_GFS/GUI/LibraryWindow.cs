@@ -7,13 +7,13 @@ namespace Leihbuecherrei_GFS
     {
         private Control control;
 
-        public LibraryWindow( Control pControl )
+        public LibraryWindow(Control pControl)
         {
             control = pControl;
             InitializeComponent();
         }
 
-        protected override void OnLoad( EventArgs e )
+        protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
 
@@ -22,7 +22,7 @@ namespace Leihbuecherrei_GFS
             LbBooks.DataSource = control.SearchBook("");
         }
 
-        private void BtnAddBook_Click( object sender, EventArgs e )
+        private void BtnAddBook_Click(object sender, EventArgs e)
         {
             AddBookWindow addBookWindow = new AddBookWindow(control);
 
@@ -30,7 +30,7 @@ namespace Leihbuecherrei_GFS
             addBookWindow.Show();
         }
 
-        private void BtnAddReader_Click( object sender, EventArgs e )
+        private void BtnAddReader_Click(object sender, EventArgs e)
         {
             AddReaderWindow addReaderWindow = new AddReaderWindow(control);
 
@@ -53,21 +53,21 @@ namespace Leihbuecherrei_GFS
             DgvBorrowEntries.DataSource = control.LibraryWindowBtnBorrowEntrySearchClick(TxtSearchBorrowEntryReader.Text, TxtSearchBorrowEntryBook.Text, CbClosed.CheckState, CbReturned.CheckState);
         }
 
-        private async void LbReaders_DoubleClick( object sender, EventArgs e )
+        private async void LbReaders_DoubleClick(object sender, EventArgs e)
         {
             Reader selectedReader = LbReaders.SelectedItem as Reader;
 
             control.LibraryWindowLbReaders_DoubleClick(selectedReader);
         }
 
-        private void LbBooks_DoubleClick( object sender, EventArgs e )
+        private void LbBooks_DoubleClick(object sender, EventArgs e)
         {
             Book selectedBook = LbBooks.SelectedItem as Book;
 
             control.LibraryWindowLbBooks_DoubleClick(selectedBook);
         }
 
-        private void BtnNewBorrowEntry_Click( object sender, EventArgs e )
+        private void BtnNewBorrowEntry_Click(object sender, EventArgs e)
         {
             AddBorrowEntryWindow addBorrowEntryWindow = new AddBorrowEntryWindow(control);
 
@@ -75,7 +75,7 @@ namespace Leihbuecherrei_GFS
             addBorrowEntryWindow.Show();
         }
 
-        private void TxtSearchReader_KeyPress( object sender, KeyPressEventArgs e )
+        private void TxtSearchReader_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
@@ -83,7 +83,7 @@ namespace Leihbuecherrei_GFS
             }
         }
 
-        private void TxtSearchBook_KeyPress( object sender, KeyPressEventArgs e )
+        private void TxtSearchBook_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
@@ -91,12 +91,12 @@ namespace Leihbuecherrei_GFS
             }
         }
 
-        private void BtnBorrowEntrySearch_Click( object sender, EventArgs e )
+        private void BtnBorrowEntrySearch_Click(object sender, EventArgs e)
         {
             DgvBorrowEntries.DataSource = control.LibraryWindowBtnBorrowEntrySearchClick(TxtSearchBorrowEntryReader.Text, TxtSearchBorrowEntryBook.Text, CbClosed.CheckState, CbReturned.CheckState);
         }
 
-        private void DgvBorrowEntries_DoubleClick( object sender, EventArgs e )
+        private void DgvBorrowEntries_DoubleClick(object sender, EventArgs e)
         {
             //Gets the selected BorrowEntry
             BorrowEntry selectedBorrowEntry = DgvBorrowEntries.SelectedRows[0].DataBoundItem as BorrowEntry;
@@ -104,7 +104,7 @@ namespace Leihbuecherrei_GFS
             control.LibraryWindowDgvBorrowEntries_DoubleClick(selectedBorrowEntry);
         }
 
-        private void BtnReset_Click( object sender, EventArgs e )
+        private void BtnReset_Click(object sender, EventArgs e)
         {
             TxtSearchBorrowEntryReader.Text = string.Empty;
             TxtSearchBorrowEntryBook.Text = string.Empty;

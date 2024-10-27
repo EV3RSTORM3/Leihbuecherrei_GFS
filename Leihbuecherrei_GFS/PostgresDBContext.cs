@@ -14,13 +14,13 @@ namespace Leihbuecherrei_GFS
         public DbSet<Book> Books { get; set; }
         public DbSet<BorrowEntry> BorrowEntries { get; set; }
 
-        protected override void OnConfiguring( DbContextOptionsBuilder optionsBuilder )
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseNpgsql(connectionString: "Host=localhost;Database=Leihbuecherei_GFS;Username=postgres;Password=Nilsi#2006;Timeout=10;SslMode=Prefer;Include Error Detail=True");
 
             optionsBuilder.LogTo(message => Debug.WriteLine(message)).EnableSensitiveDataLogging();
 
-            base.OnConfiguring( optionsBuilder );
+            base.OnConfiguring(optionsBuilder);
         }
     }
 }

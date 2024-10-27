@@ -13,7 +13,7 @@ namespace Leihbuecherrei_GFS.GUI
     public partial class AddBorrowEntryWindow : Form
     {
         private Control control;
-        public AddBorrowEntryWindow( Control pControl )
+        public AddBorrowEntryWindow(Control pControl)
         {
             control = pControl;
             InitializeComponent();
@@ -29,7 +29,7 @@ namespace Leihbuecherrei_GFS.GUI
             LbBooks.DisplayMember = "IdAndTitle";
         }
 
-        private void TxtSearchReader_KeyPress( object sender, KeyPressEventArgs e )
+        private void TxtSearchReader_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
@@ -37,7 +37,7 @@ namespace Leihbuecherrei_GFS.GUI
             }
         }
 
-        private void TxtSearchBook_KeyPress( object sender, KeyPressEventArgs e )
+        private void TxtSearchBook_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
@@ -45,7 +45,7 @@ namespace Leihbuecherrei_GFS.GUI
             }
         }
 
-        private void BtnAddEntry_Click( object sender, EventArgs e )
+        private void BtnAddEntry_Click(object sender, EventArgs e)
         {
             //check if the date is set to a date after today to ensure all information is given by the user
             //(checking if an item is selected is the LB is unnessecary as there is always one selected)
