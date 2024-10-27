@@ -28,7 +28,8 @@ namespace Leihbuecherrei_GFS
         {
             using (PostgresDBContext database = new PostgresDBContext()) {
                 //checks if the mandetory information is given if or returns false 
-                if (String.IsNullOrEmpty(pName) || String.IsNullOrEmpty(pAdress) || String.IsNullOrEmpty(pCity)) { return false; }
+                if (String.IsNullOrEmpty(pName) || String.IsNullOrEmpty(pAdress) || String.IsNullOrEmpty(pCity)) 
+                    return false;
                 else
                 {
                     //Compare methods returns an signed integer if the integer is less than 0 the first date is earlier than the second date
@@ -53,7 +54,8 @@ namespace Leihbuecherrei_GFS
             using (PostgresDBContext database = new PostgresDBContext())
             {
                 //checks if the mandetory information is given if not returns false 
-                if (String.IsNullOrEmpty(pTitle)) { return false; }
+                if (String.IsNullOrEmpty(pTitle)) 
+                    return false;
                 else
                 {
                     database.Books.Add(new Book(pTitle, pAuthor, pPublisher));
@@ -84,7 +86,8 @@ namespace Leihbuecherrei_GFS
                 pReader = database.Readers.Find(pReader.Id);
 
                 //checks if the mandetory information is given if not returns false 
-                if (String.IsNullOrEmpty(pName) || String.IsNullOrEmpty(pAdress) || String.IsNullOrEmpty(pCity)) { return false; }
+                if (String.IsNullOrEmpty(pName) || String.IsNullOrEmpty(pAdress) || String.IsNullOrEmpty(pCity))  
+                    return false; 
                 else
                 {
                     pReader.Name = pName;
@@ -139,7 +142,8 @@ namespace Leihbuecherrei_GFS
                 pBook = database.Books.Find(pBook.Id);
 
                 //checks if the mandetory information is given if not returns false 
-                if (String.IsNullOrEmpty(pTitle)) { return false; }
+                if (String.IsNullOrEmpty(pTitle)) 
+                    return false;
                 else
                 {
                     pBook.Title = pTitle;
@@ -172,11 +176,11 @@ namespace Leihbuecherrei_GFS
 
             using (PostgresDBContext database = new PostgresDBContext())
             {
-                try
+                if(int.TryParse(pSearchFor, out int searchForID))
                 {
-                    listReaders.Add(database.Readers.Find(Convert.ToInt32(pSearchFor)));
+                    listReaders.Add(database.Readers.Find(searchForID));
                 }
-                catch (FormatException)
+                else
                 {
                     listReaders = database.Readers.Where(r => r.Name.Contains(pSearchFor)).OrderByDescending(r => r.Id).ToList();
                 }
@@ -184,17 +188,18 @@ namespace Leihbuecherrei_GFS
             return listReaders;
         }
 
-        public List<Book> LibraryWindowSearchBook(string pSearchFor)
+        //Method to search for books without additional criteria
+        public List<Book> SearchBook(string pSearchFor)
         {
             List<Book> listBooks = new List<Book>();
 
             using (PostgresDBContext database = new PostgresDBContext())
             {
-                try
-                {
-                    listBooks.Add(database.Books.Find(Convert.ToInt32(pSearchFor)));
+                if (int.TryParse(pSearchFor, out int searchForId)) 
+                { 
+                    listBooks.Add(database.Books.Find(searchForId));
                 }
-                catch (FormatException)
+                else
                 {
                     listBooks = database.Books.Where(b => b.Title.Contains(pSearchFor)).OrderByDescending(b => b.Id).ToList();
                 }
@@ -202,21 +207,20 @@ namespace Leihbuecherrei_GFS
             return listBooks;
         }
 
-        //When searching for books to borow it only returns books that meet the search criteria and are available
-        public List<Book> AddBorrowEntrySearchBook(string pSearchFor)
+        //Extra method to search for books with the option to only show available books
+        public List<Book> SearchBook(string pSearchFor, bool pIsAvailable)
         {
             List<Book> listBooks = new List<Book>();
 
             using (PostgresDBContext database = new PostgresDBContext())
             {
-                try
+                if (int.TryParse(pSearchFor, out int searchForId))
                 {
-                    int searchForId = Convert.ToInt32(pSearchFor);
-                    listBooks = database.Books.Where(b => b.Id == searchForId && b.Available == true).ToList();
+                    listBooks = database.Books.Where(b => b.Id == searchForId && b.Available == pIsAvailable).ToList();
                 }
-                catch (FormatException)
+                else 
                 {
-                    listBooks = database.Books.Where(b => b.Title.Contains(pSearchFor) && b.Available == true).OrderByDescending(b => b.Id).ToList();
+                    listBooks = database.Books.Where(b => b.Title.Contains(pSearchFor) && b.Available == pIsAvailable).OrderByDescending(b => b.Id).ToList(); 
                 }
             }
             return listBooks;
@@ -247,21 +251,21 @@ namespace Leihbuecherrei_GFS
 
                 if(string.IsNullOrEmpty(pReader) == false)
                 {
-                    if(int.TryParse(pReader, out int pReaderId))
+                    if(int.TryParse(pReader, out int readerId))
                     {
-                        query = query.Where(be => be.Reader.Id == pReaderId);
+                        query = query.Where(be => be.Reader.Id == readerId);
                     }
                     else
                     {
-                        query = query.Where(be => be.Reader.Name.Contains(pReader));
+                        query = query.Where(be => be.Reader.Name.Contains(pReader));  
                     }
                 }
 
                 if (string.IsNullOrEmpty(pBook) == false)
                 {
-                    if (int.TryParse(pBook, out int pBookId))
+                    if (int.TryParse(pBook, out int bookId))
                     {
-                        query = query.Where(be => be.Book.Id == pBookId);
+                        query = query.Where(be => be.Book.Id == bookId);
                     }
                     else
                     {
@@ -295,6 +299,17 @@ namespace Leihbuecherrei_GFS
 
                 //executes the query and returns its results
                 return query.ToList();
+            }
+        }
+
+        public void LibraryWindowDgvBorrowEntries_DoubleClick(BorrowEntry selectedBorrowEntry)
+        {
+            using (PostgresDBContext database = new PostgresDBContext())
+            {
+                DisplayBorrowEntryWindow displayBorrowEntry = new DisplayBorrowEntryWindow(this, database.BorrowEntries.Include(be => be.Reader).Include(be => be.Book).First(be => be.Id == selectedBorrowEntry.Id));
+
+                displayBorrowEntry.Location = new Point(0, 0);
+                displayBorrowEntry.Show();
             }
         }
     }

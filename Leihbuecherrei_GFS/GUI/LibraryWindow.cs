@@ -19,9 +19,7 @@ namespace Leihbuecherrei_GFS
 
             //Search Method can also be used to get all entries from the data base when searching for ""
             LbReaders.DataSource = control.SearchReader("");
-
-            LbBooks.DataSource = control.LibraryWindowSearchBook("");
-
+            LbBooks.DataSource = control.SearchBook("");
         }
 
         private void BtnAddBook_Click( object sender, EventArgs e )
@@ -47,7 +45,7 @@ namespace Leihbuecherrei_GFS
 
         public void RefreshBookList()
         {
-            LbBooks.DataSource = control.LibraryWindowSearchBook(TxtSearchBook.Text);
+            LbBooks.DataSource = control.SearchBook(TxtSearchBook.Text);
         }
 
         public void RefreshBorrowEntryList()
@@ -89,7 +87,7 @@ namespace Leihbuecherrei_GFS
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
-                LbBooks.DataSource = control.LibraryWindowSearchBook(TxtSearchBook.Text);
+                LbBooks.DataSource = control.SearchBook(TxtSearchBook.Text);
             }
         }
 
@@ -100,15 +98,18 @@ namespace Leihbuecherrei_GFS
 
         private void DgvBorrowEntries_DoubleClick( object sender, EventArgs e )
         {
+            //Gets the selected BorrowEntry
+            BorrowEntry selectedBorrowEntry = DgvBorrowEntries.SelectedRows[0].DataBoundItem as BorrowEntry;
 
+            control.LibraryWindowDgvBorrowEntries_DoubleClick(selectedBorrowEntry);
         }
 
         private void BtnReset_Click( object sender, EventArgs e )
         {
             TxtSearchBorrowEntryReader.Text = string.Empty;
             TxtSearchBorrowEntryBook.Text = string.Empty;
-            
-            //intermediet is the default state in which the filter is ignored
+
+            //Indeterminate is the default state in which the filter is ignored
             CbClosed.CheckState = CheckState.Indeterminate;
             CbReturned.CheckState = CheckState.Indeterminate;
 

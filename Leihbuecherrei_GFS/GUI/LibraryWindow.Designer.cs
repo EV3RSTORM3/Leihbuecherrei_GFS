@@ -55,8 +55,8 @@
             readers = new TabPage();
             LbReaders = new ListBox();
             readerBindingSource = new BindingSource(components);
-            TxtSearchReader = new TextBox();
             BtnAddReader = new Button();
+            TxtSearchReader = new TextBox();
             books = new TabPage();
             LbBooks = new ListBox();
             bookBindingSource = new BindingSource(components);
@@ -94,7 +94,7 @@
             // 
             splitContainer1.Panel2.Controls.Add(tabControl1);
             splitContainer1.Size = new Size(1254, 749);
-            splitContainer1.SplitterDistance = 920;
+            splitContainer1.SplitterDistance = 923;
             splitContainer1.SplitterWidth = 20;
             splitContainer1.TabIndex = 0;
             // 
@@ -106,7 +106,7 @@
             tabControl2.Location = new Point(0, 0);
             tabControl2.Name = "tabControl2";
             tabControl2.SelectedIndex = 0;
-            tabControl2.Size = new Size(920, 749);
+            tabControl2.Size = new Size(923, 749);
             tabControl2.TabIndex = 2;
             // 
             // tabPage1
@@ -116,7 +116,7 @@
             tabPage1.Location = new Point(4, 34);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(912, 711);
+            tabPage1.Size = new Size(915, 711);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "tabPage1";
             tabPage1.UseVisualStyleBackColor = true;
@@ -131,12 +131,13 @@
             DgvBorrowEntries.DataSource = borrowEntryBindingSource;
             DgvBorrowEntries.Dock = DockStyle.Fill;
             DgvBorrowEntries.Location = new Point(3, 127);
+            DgvBorrowEntries.MultiSelect = false;
             DgvBorrowEntries.Name = "DgvBorrowEntries";
             DgvBorrowEntries.ReadOnly = true;
             DgvBorrowEntries.RowHeadersWidth = 62;
             DgvBorrowEntries.RowTemplate.Height = 33;
             DgvBorrowEntries.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            DgvBorrowEntries.Size = new Size(906, 581);
+            DgvBorrowEntries.Size = new Size(909, 581);
             DgvBorrowEntries.TabIndex = 4;
             DgvBorrowEntries.DoubleClick += DgvBorrowEntries_DoubleClick;
             // 
@@ -228,7 +229,7 @@
             GbFilters.Dock = DockStyle.Top;
             GbFilters.Location = new Point(3, 3);
             GbFilters.Name = "GbFilters";
-            GbFilters.Size = new Size(906, 124);
+            GbFilters.Size = new Size(909, 124);
             GbFilters.TabIndex = 3;
             GbFilters.TabStop = false;
             GbFilters.Text = "Filters";
@@ -236,7 +237,7 @@
             // BtnReset
             // 
             BtnReset.Anchor = AnchorStyles.Right;
-            BtnReset.Location = new Point(672, 84);
+            BtnReset.Location = new Point(675, 84);
             BtnReset.Name = "BtnReset";
             BtnReset.Size = new Size(111, 34);
             BtnReset.TabIndex = 10;
@@ -247,7 +248,7 @@
             // BtnBorrowEntrySearch
             // 
             BtnBorrowEntrySearch.Anchor = AnchorStyles.Right;
-            BtnBorrowEntrySearch.Location = new Point(789, 84);
+            BtnBorrowEntrySearch.Location = new Point(792, 84);
             BtnBorrowEntrySearch.Name = "BtnBorrowEntrySearch";
             BtnBorrowEntrySearch.Size = new Size(111, 34);
             BtnBorrowEntrySearch.TabIndex = 9;
@@ -307,7 +308,7 @@
             tabPage2.Location = new Point(4, 34);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(912, 711);
+            tabPage2.Size = new Size(915, 711);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "tabPage2";
             tabPage2.UseVisualStyleBackColor = true;
@@ -331,19 +332,19 @@
             tabControl1.Margin = new Padding(4, 5, 4, 5);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(314, 749);
+            tabControl1.Size = new Size(311, 749);
             tabControl1.TabIndex = 0;
             // 
             // readers
             // 
             readers.Controls.Add(LbReaders);
-            readers.Controls.Add(TxtSearchReader);
             readers.Controls.Add(BtnAddReader);
+            readers.Controls.Add(TxtSearchReader);
             readers.Location = new Point(4, 34);
             readers.Margin = new Padding(4, 5, 4, 5);
             readers.Name = "readers";
             readers.Padding = new Padding(4, 5, 4, 5);
-            readers.Size = new Size(306, 711);
+            readers.Size = new Size(303, 711);
             readers.TabIndex = 0;
             readers.Text = "Readers";
             readers.UseVisualStyleBackColor = true;
@@ -357,7 +358,7 @@
             LbReaders.ItemHeight = 25;
             LbReaders.Location = new Point(4, 74);
             LbReaders.Name = "LbReaders";
-            LbReaders.Size = new Size(298, 632);
+            LbReaders.Size = new Size(295, 632);
             LbReaders.TabIndex = 4;
             LbReaders.DoubleClick += LbReaders_DoubleClick;
             // 
@@ -365,29 +366,29 @@
             // 
             readerBindingSource.DataSource = typeof(Reader);
             // 
-            // TxtSearchReader
-            // 
-            TxtSearchReader.Dock = DockStyle.Top;
-            TxtSearchReader.Location = new Point(4, 43);
-            TxtSearchReader.Margin = new Padding(10);
-            TxtSearchReader.Name = "TxtSearchReader";
-            TxtSearchReader.PlaceholderText = "Search Reader";
-            TxtSearchReader.Size = new Size(298, 31);
-            TxtSearchReader.TabIndex = 1;
-            TxtSearchReader.TextAlign = HorizontalAlignment.Center;
-            TxtSearchReader.KeyPress += TxtSearchReader_KeyPress;
-            // 
             // BtnAddReader
             // 
             BtnAddReader.Dock = DockStyle.Top;
-            BtnAddReader.Location = new Point(4, 5);
+            BtnAddReader.Location = new Point(4, 36);
             BtnAddReader.Margin = new Padding(4, 5, 4, 5);
             BtnAddReader.Name = "BtnAddReader";
-            BtnAddReader.Size = new Size(298, 38);
+            BtnAddReader.Size = new Size(295, 38);
             BtnAddReader.TabIndex = 0;
             BtnAddReader.Text = "Add new reader";
             BtnAddReader.UseVisualStyleBackColor = true;
             BtnAddReader.Click += BtnAddReader_Click;
+            // 
+            // TxtSearchReader
+            // 
+            TxtSearchReader.Dock = DockStyle.Top;
+            TxtSearchReader.Location = new Point(4, 5);
+            TxtSearchReader.Margin = new Padding(10);
+            TxtSearchReader.Name = "TxtSearchReader";
+            TxtSearchReader.PlaceholderText = "Search Reader";
+            TxtSearchReader.Size = new Size(295, 31);
+            TxtSearchReader.TabIndex = 1;
+            TxtSearchReader.TextAlign = HorizontalAlignment.Center;
+            TxtSearchReader.KeyPress += TxtSearchReader_KeyPress;
             // 
             // books
             // 
@@ -398,7 +399,7 @@
             books.Margin = new Padding(4, 5, 4, 5);
             books.Name = "books";
             books.Padding = new Padding(4, 5, 4, 5);
-            books.Size = new Size(306, 711);
+            books.Size = new Size(303, 711);
             books.TabIndex = 1;
             books.Text = "Books";
             books.UseVisualStyleBackColor = true;
@@ -411,7 +412,7 @@
             LbBooks.ItemHeight = 25;
             LbBooks.Location = new Point(4, 74);
             LbBooks.Name = "LbBooks";
-            LbBooks.Size = new Size(298, 632);
+            LbBooks.Size = new Size(295, 632);
             LbBooks.TabIndex = 2;
             LbBooks.DoubleClick += LbBooks_DoubleClick;
             // 
@@ -425,7 +426,7 @@
             TxtSearchBook.Location = new Point(4, 43);
             TxtSearchBook.Name = "TxtSearchBook";
             TxtSearchBook.PlaceholderText = "Search Book";
-            TxtSearchBook.Size = new Size(298, 31);
+            TxtSearchBook.Size = new Size(295, 31);
             TxtSearchBook.TabIndex = 3;
             TxtSearchBook.TextAlign = HorizontalAlignment.Center;
             TxtSearchBook.KeyPress += TxtSearchBook_KeyPress;
@@ -436,7 +437,7 @@
             BtnAddBook.Location = new Point(4, 5);
             BtnAddBook.Margin = new Padding(4, 5, 4, 5);
             BtnAddBook.Name = "BtnAddBook";
-            BtnAddBook.Size = new Size(298, 38);
+            BtnAddBook.Size = new Size(295, 38);
             BtnAddBook.TabIndex = 0;
             BtnAddBook.Text = "Add new book";
             BtnAddBook.UseVisualStyleBackColor = true;
