@@ -45,25 +45,8 @@ namespace Leihbuecherrei_GFS.GUI
             BtnSaveAndClose.Enabled = false;
         }
 
-        private void TxtAdress_TextChanged( object sender, EventArgs e )
-        {
-            BtnSave.Enabled = true;
-            BtnSaveAndClose.Enabled = true;
-        }
-
-        private void TxtName_TextChanged( object sender, EventArgs e )
-        {
-            BtnSave.Enabled = true;
-            BtnSaveAndClose.Enabled = true;
-        }
-
-        private void DtpBirthday_ValueChanged( object sender, EventArgs e )
-        {
-            BtnSave.Enabled = true;
-            BtnSaveAndClose.Enabled = true;
-        }
-
-        private void TxtCity_TextChanged( object sender, EventArgs e )
+        //activates the save buttons whe the content of the window is changed
+        private void ContentChanged( object sender, EventArgs e )
         {
             BtnSave.Enabled = true;
             BtnSaveAndClose.Enabled = true;

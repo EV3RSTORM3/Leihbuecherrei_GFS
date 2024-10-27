@@ -83,6 +83,7 @@
             TxtSearchReader.Size = new Size(194, 31);
             TxtSearchReader.TabIndex = 0;
             TxtSearchReader.TextAlign = HorizontalAlignment.Center;
+            TxtSearchReader.TextChanged += ContentChanged;
             // 
             // GbBook
             // 
@@ -113,6 +114,7 @@
             TxtSearchBook.Size = new Size(194, 31);
             TxtSearchBook.TabIndex = 1;
             TxtSearchBook.TextAlign = HorizontalAlignment.Center;
+            TxtSearchBook.TextChanged += ContentChanged;
             // 
             // TxtId
             // 
@@ -150,6 +152,7 @@
             CbReturned.TabIndex = 27;
             CbReturned.Text = "Returned:";
             CbReturned.UseVisualStyleBackColor = true;
+            CbReturned.CheckedChanged += ContentChanged;
             // 
             // CbClosed
             // 
@@ -161,6 +164,7 @@
             CbClosed.TabIndex = 28;
             CbClosed.Text = "Closed:";
             CbClosed.UseVisualStyleBackColor = true;
+            CbClosed.CheckedChanged += ContentChanged;
             // 
             // LblBorrowedOn
             // 
@@ -178,6 +182,7 @@
             DtpBorrowedOn.Name = "DtpBorrowedOn";
             DtpBorrowedOn.Size = new Size(143, 31);
             DtpBorrowedOn.TabIndex = 30;
+            DtpBorrowedOn.ValueChanged += ContentChanged;
             // 
             // DtpDueTo
             // 
@@ -186,6 +191,7 @@
             DtpDueTo.Name = "DtpDueTo";
             DtpDueTo.Size = new Size(143, 31);
             DtpDueTo.TabIndex = 32;
+            DtpDueTo.ValueChanged += ContentChanged;
             // 
             // LblDueTo
             // 
@@ -215,6 +221,7 @@
             DtpReturnedOn.Name = "DtpReturnedOn";
             DtpReturnedOn.Size = new Size(143, 31);
             DtpReturnedOn.TabIndex = 34;
+            DtpReturnedOn.ValueChanged += ContentChanged;
             // 
             // LblReturnedOn
             // 

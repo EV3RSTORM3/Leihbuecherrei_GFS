@@ -90,7 +90,7 @@
             TxtAuthor.Name = "TxtAuthor";
             TxtAuthor.Size = new Size(150, 31);
             TxtAuthor.TabIndex = 24;
-            TxtAuthor.TextChanged += TxtAuthor_TextChanged;
+            TxtAuthor.TextChanged += ContentChanged;
             // 
             // TxtId
             // 
@@ -106,7 +106,7 @@
             TxtPublisher.Name = "TxtPublisher";
             TxtPublisher.Size = new Size(150, 31);
             TxtPublisher.TabIndex = 22;
-            TxtPublisher.TextChanged += TxtPublisher_TextChanged;
+            TxtPublisher.TextChanged += ContentChanged;
             // 
             // TxtTitle
             // 
@@ -114,7 +114,7 @@
             TxtTitle.Name = "TxtTitle";
             TxtTitle.Size = new Size(336, 31);
             TxtTitle.TabIndex = 21;
-            TxtTitle.TextChanged += TxtTitle_TextChanged;
+            TxtTitle.TextChanged += ContentChanged;
             // 
             // LblAuthor
             // 

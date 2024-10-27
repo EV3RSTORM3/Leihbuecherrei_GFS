@@ -95,7 +95,7 @@
             TxtName.Name = "TxtName";
             TxtName.Size = new Size(150, 31);
             TxtName.TabIndex = 5;
-            TxtName.TextChanged += TxtName_TextChanged;
+            TxtName.TextChanged += ContentChanged;
             // 
             // TxtCity
             // 
@@ -103,7 +103,7 @@
             TxtCity.Name = "TxtCity";
             TxtCity.Size = new Size(150, 31);
             TxtCity.TabIndex = 6;
-            TxtCity.TextChanged += TxtCity_TextChanged;
+            TxtCity.TextChanged += ContentChanged;
             // 
             // TxtId
             // 
@@ -119,7 +119,7 @@
             TxtAdress.Name = "TxtAdress";
             TxtAdress.Size = new Size(150, 31);
             TxtAdress.TabIndex = 8;
-            TxtAdress.TextChanged += TxtAdress_TextChanged;
+            TxtAdress.TextChanged += ContentChanged;
             // 
             // DtpBirthday
             // 
@@ -128,7 +128,7 @@
             DtpBirthday.Name = "DtpBirthday";
             DtpBirthday.Size = new Size(148, 31);
             DtpBirthday.TabIndex = 9;
-            DtpBirthday.ValueChanged += DtpBirthday_ValueChanged;
+            DtpBirthday.ValueChanged += ContentChanged;
             // 
             // BtnSave
             // 
