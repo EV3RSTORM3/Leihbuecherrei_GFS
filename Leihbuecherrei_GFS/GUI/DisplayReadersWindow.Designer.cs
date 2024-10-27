@@ -42,6 +42,7 @@
             BtnClose = new Button();
             BtnSaveAndClose = new Button();
             BtnDelete = new Button();
+            LblMandetoryInfos = new Label();
             SuspendLayout();
             // 
             // LblName
@@ -49,9 +50,9 @@
             LblName.AutoSize = true;
             LblName.Location = new Point(12, 15);
             LblName.Name = "LblName";
-            LblName.Size = new Size(63, 25);
+            LblName.Size = new Size(71, 25);
             LblName.TabIndex = 0;
-            LblName.Text = "Name:";
+            LblName.Text = "*Name:";
             // 
             // LblId
             // 
@@ -67,18 +68,18 @@
             LblCity.AutoSize = true;
             LblCity.Location = new Point(12, 60);
             LblCity.Name = "LblCity";
-            LblCity.Size = new Size(46, 25);
+            LblCity.Size = new Size(54, 25);
             LblCity.TabIndex = 2;
-            LblCity.Text = "City:";
+            LblCity.Text = "*City:";
             // 
             // LblAdress
             // 
             LblAdress.AutoSize = true;
             LblAdress.Location = new Point(230, 60);
             LblAdress.Name = "LblAdress";
-            LblAdress.Size = new Size(70, 25);
+            LblAdress.Size = new Size(78, 25);
             LblAdress.TabIndex = 3;
-            LblAdress.Text = "Adress:";
+            LblAdress.Text = "*Adress:";
             // 
             // LblBirthday
             // 
@@ -91,7 +92,7 @@
             // 
             // TxtName
             // 
-            TxtName.Location = new Point(81, 12);
+            TxtName.Location = new Point(89, 12);
             TxtName.Name = "TxtName";
             TxtName.Size = new Size(150, 31);
             TxtName.TabIndex = 5;
@@ -99,7 +100,7 @@
             // 
             // TxtCity
             // 
-            TxtCity.Location = new Point(64, 60);
+            TxtCity.Location = new Point(72, 57);
             TxtCity.Name = "TxtCity";
             TxtCity.Size = new Size(150, 31);
             TxtCity.TabIndex = 6;
@@ -115,7 +116,7 @@
             // 
             // TxtAdress
             // 
-            TxtAdress.Location = new Point(306, 60);
+            TxtAdress.Location = new Point(314, 57);
             TxtAdress.Name = "TxtAdress";
             TxtAdress.Size = new Size(150, 31);
             TxtAdress.TabIndex = 8;
@@ -172,11 +173,22 @@
             BtnDelete.UseVisualStyleBackColor = true;
             BtnDelete.Click += BtnDelete_Click;
             // 
+            // LblMandetoryInfos
+            // 
+            LblMandetoryInfos.Anchor = AnchorStyles.Top;
+            LblMandetoryInfos.AutoSize = true;
+            LblMandetoryInfos.Location = new Point(623, 367);
+            LblMandetoryInfos.Name = "LblMandetoryInfos";
+            LblMandetoryInfos.Size = new Size(165, 25);
+            LblMandetoryInfos.TabIndex = 15;
+            LblMandetoryInfos.Text = "* = mandetory info";
+            // 
             // DisplayReadersWindow
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(LblMandetoryInfos);
             Controls.Add(BtnDelete);
             Controls.Add(BtnSaveAndClose);
             Controls.Add(BtnClose);
@@ -213,5 +225,6 @@
         private Button BtnClose;
         private Button BtnSaveAndClose;
         private Button BtnDelete;
+        private Label LblMandetoryInfos;
     }
 }

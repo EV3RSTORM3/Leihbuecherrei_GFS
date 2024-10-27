@@ -27,7 +27,8 @@ namespace Leihbuecherrei_GFS.GUI
 
         private void Initialize()
         {
-            Text = reader.Name;
+            //sets the title of the window to the name of the reader
+            this.Text = reader.Name;
 
             TxtName.Text = reader.Name;
             TxtId.Text = Convert.ToString(reader.Id);
@@ -67,7 +68,12 @@ namespace Leihbuecherrei_GFS.GUI
 
         private void BtnClose_Click(object sender, EventArgs e)
         {
-            this.Close();
+            var confirmResult = MessageBox.Show("Changes will be discarded", "Close this Window?", MessageBoxButtons.YesNo);
+
+            if (confirmResult == DialogResult.Yes)
+            {
+                this.Close();
+            }
         }
 
         private void BtnSaveAndClose_Click(object sender, EventArgs e)

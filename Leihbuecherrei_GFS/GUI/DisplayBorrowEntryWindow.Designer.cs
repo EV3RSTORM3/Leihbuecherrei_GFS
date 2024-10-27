@@ -47,8 +47,9 @@
             DtpReturnedOn = new DateTimePicker();
             LblReturnedOn = new Label();
             BtnSaveAndClose = new Button();
-            BtnCancel = new Button();
+            BtnClose = new Button();
             BtnSave = new Button();
+            LblMandetoryInfos = new Label();
             GbReader.SuspendLayout();
             GbBook.SuspendLayout();
             GbReturned.SuspendLayout();
@@ -84,6 +85,7 @@
             TxtSearchReader.TabIndex = 0;
             TxtSearchReader.TextAlign = HorizontalAlignment.Center;
             TxtSearchReader.TextChanged += ContentChanged;
+            TxtSearchReader.KeyPress += TxtSearchReader_KeyPress;
             // 
             // GbBook
             // 
@@ -115,6 +117,7 @@
             TxtSearchBook.TabIndex = 1;
             TxtSearchBook.TextAlign = HorizontalAlignment.Center;
             TxtSearchBook.TextChanged += ContentChanged;
+            TxtSearchBook.KeyPress += TxtSearchBook_KeyPress;
             // 
             // TxtId
             // 
@@ -141,6 +144,7 @@
             BtnDelete.TabIndex = 26;
             BtnDelete.Text = "Delete";
             BtnDelete.UseVisualStyleBackColor = true;
+            BtnDelete.Click += BtnDelete_Click;
             // 
             // CbReturned
             // 
@@ -241,15 +245,17 @@
             BtnSaveAndClose.TabIndex = 36;
             BtnSaveAndClose.Text = "Save and Close";
             BtnSaveAndClose.UseVisualStyleBackColor = true;
+            BtnSaveAndClose.Click += BtnSaveAndClose_Click;
             // 
-            // BtnCancel
+            // BtnClose
             // 
-            BtnCancel.Location = new Point(399, 404);
-            BtnCancel.Name = "BtnCancel";
-            BtnCancel.Size = new Size(112, 34);
-            BtnCancel.TabIndex = 35;
-            BtnCancel.Text = "Cancel";
-            BtnCancel.UseVisualStyleBackColor = true;
+            BtnClose.Location = new Point(399, 404);
+            BtnClose.Name = "BtnClose";
+            BtnClose.Size = new Size(112, 34);
+            BtnClose.TabIndex = 35;
+            BtnClose.Text = "Close";
+            BtnClose.UseVisualStyleBackColor = true;
+            BtnClose.Click += BtnClose_Click;
             // 
             // BtnSave
             // 
@@ -260,14 +266,26 @@
             BtnSave.TabIndex = 34;
             BtnSave.Text = "Save";
             BtnSave.UseVisualStyleBackColor = true;
+            BtnSave.Click += BtnSave_Click;
+            // 
+            // LblMandetoryInfos
+            // 
+            LblMandetoryInfos.Anchor = AnchorStyles.Top;
+            LblMandetoryInfos.AutoSize = true;
+            LblMandetoryInfos.Location = new Point(494, 376);
+            LblMandetoryInfos.Name = "LblMandetoryInfos";
+            LblMandetoryInfos.Size = new Size(165, 25);
+            LblMandetoryInfos.TabIndex = 37;
+            LblMandetoryInfos.Text = "* = mandetory info";
             // 
             // DisplayBorrowEntryWindow
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(671, 450);
+            Controls.Add(LblMandetoryInfos);
             Controls.Add(BtnSaveAndClose);
-            Controls.Add(BtnCancel);
+            Controls.Add(BtnClose);
             Controls.Add(BtnSave);
             Controls.Add(GbReturned);
             Controls.Add(DtpDueTo);
@@ -313,7 +331,8 @@
         private DateTimePicker DtpReturnedOn;
         private Label LblReturnedOn;
         private Button BtnSaveAndClose;
-        private Button BtnCancel;
+        private Button BtnClose;
         private Button BtnSave;
+        private Label LblMandetoryInfos;
     }
 }

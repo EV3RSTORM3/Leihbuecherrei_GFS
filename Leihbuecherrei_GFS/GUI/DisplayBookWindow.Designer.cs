@@ -40,6 +40,7 @@
             LblPublisher = new Label();
             LblId = new Label();
             LblTitle = new Label();
+            LblMandetoryInfos = new Label();
             SuspendLayout();
             // 
             // BtnSaveAndClose
@@ -110,7 +111,7 @@
             // 
             // TxtTitle
             // 
-            TxtTitle.Location = new Point(69, 12);
+            TxtTitle.Location = new Point(77, 12);
             TxtTitle.Name = "TxtTitle";
             TxtTitle.Size = new Size(336, 31);
             TxtTitle.TabIndex = 21;
@@ -148,15 +149,26 @@
             LblTitle.AutoSize = true;
             LblTitle.Location = new Point(15, 15);
             LblTitle.Name = "LblTitle";
-            LblTitle.Size = new Size(48, 25);
+            LblTitle.Size = new Size(56, 25);
             LblTitle.TabIndex = 16;
-            LblTitle.Text = "Title:";
+            LblTitle.Text = "*Title:";
+            // 
+            // LblMandetoryInfos
+            // 
+            LblMandetoryInfos.Anchor = AnchorStyles.Top;
+            LblMandetoryInfos.AutoSize = true;
+            LblMandetoryInfos.Location = new Point(623, 376);
+            LblMandetoryInfos.Name = "LblMandetoryInfos";
+            LblMandetoryInfos.Size = new Size(165, 25);
+            LblMandetoryInfos.TabIndex = 27;
+            LblMandetoryInfos.Text = "* = mandetory info";
             // 
             // DisplayBookWindow
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(LblMandetoryInfos);
             Controls.Add(BtnDelete);
             Controls.Add(TxtAuthor);
             Controls.Add(TxtId);
@@ -189,5 +201,6 @@
         private Label LblPublisher;
         private Label LblId;
         private Label LblTitle;
+        private Label LblMandetoryInfos;
     }
 }
