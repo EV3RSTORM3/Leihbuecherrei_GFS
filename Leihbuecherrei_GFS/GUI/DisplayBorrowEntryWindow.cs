@@ -15,7 +15,7 @@ namespace Leihbuecherrei_GFS.GUI
         private Control control;
         private BorrowEntry borrowEntry;
 
-        public DisplayBorrowEntryWindow( Control pControl, BorrowEntry pBorrowEntry )
+        public DisplayBorrowEntryWindow(Control pControl, BorrowEntry pBorrowEntry)
         {
             control = pControl;
             borrowEntry = pBorrowEntry;
@@ -58,7 +58,7 @@ namespace Leihbuecherrei_GFS.GUI
         }
 
         //activates the save buttons whe the content of the window is changed
-        private void ContentChanged( object sender, EventArgs e )
+        private void ContentChanged(object sender, EventArgs e)
         {
             BtnSave.Enabled = true;
             BtnSaveAndClose.Enabled = true;
@@ -76,7 +76,7 @@ namespace Leihbuecherrei_GFS.GUI
             }
         }
 
-        private void TxtSearchReader_KeyPress( object sender, KeyPressEventArgs e )
+        private void TxtSearchReader_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
@@ -84,7 +84,7 @@ namespace Leihbuecherrei_GFS.GUI
             }
         }
 
-        private void TxtSearchBook_KeyPress( object sender, KeyPressEventArgs e )
+        private void TxtSearchBook_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
@@ -92,7 +92,7 @@ namespace Leihbuecherrei_GFS.GUI
             }
         }
 
-        private void BtnDelete_Click( object sender, EventArgs e )
+        private void BtnDelete_Click(object sender, EventArgs e)
         {
             var confirmResult = MessageBox.Show("Are you sure to delete this item ??", "Confirm Delete!!", MessageBoxButtons.YesNo);
 
@@ -103,7 +103,7 @@ namespace Leihbuecherrei_GFS.GUI
             }
         }
 
-        private void BtnSave_Click( object sender, EventArgs e )
+        private void BtnSave_Click(object sender, EventArgs e)
         {
             if (control.DisplayBorrowEntryBtnSaveClick(borrowEntry, LbReaders.SelectedItem as Reader, LbBooks.SelectedItem as Book, DateOnly.FromDateTime(DtpBorrowedOn.Value), DateOnly.FromDateTime(DtpDueTo.Value), CbReturned.Checked, DateOnly.FromDateTime(DtpReturnedOn.Value), CbClosed.Checked) == false)
             {
@@ -111,7 +111,7 @@ namespace Leihbuecherrei_GFS.GUI
             }
         }
 
-        private void BtnSaveAndClose_Click( object sender, EventArgs e )
+        private void BtnSaveAndClose_Click(object sender, EventArgs e)
         {
             if (control.DisplayBorrowEntryBtnSaveClick(borrowEntry, LbReaders.SelectedItem as Reader, LbBooks.SelectedItem as Book, DateOnly.FromDateTime(DtpBorrowedOn.Value), DateOnly.FromDateTime(DtpDueTo.Value), CbReturned.Checked, DateOnly.FromDateTime(DtpReturnedOn.Value), CbClosed.Checked) == false)
             {
@@ -123,7 +123,7 @@ namespace Leihbuecherrei_GFS.GUI
             }
         }
 
-        private void BtnClose_Click( object sender, EventArgs e )
+        private void BtnClose_Click(object sender, EventArgs e)
         {
             var confirmResult = MessageBox.Show("Changes will be discarded", "Close this Window?", MessageBoxButtons.YesNo);
 

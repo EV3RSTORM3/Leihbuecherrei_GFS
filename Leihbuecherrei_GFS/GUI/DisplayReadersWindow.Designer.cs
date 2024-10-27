@@ -130,6 +130,8 @@
             DtpBirthday.Size = new Size(148, 31);
             DtpBirthday.TabIndex = 9;
             DtpBirthday.ValueChanged += ContentChanged;
+            DtpBirthday.Enter += DtpBirthday_Enter;
+            DtpBirthday.Leave += DtpBirthday_Leave;
             // 
             // BtnSave
             // 
