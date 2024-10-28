@@ -156,7 +156,7 @@
             CbReturned.TabIndex = 27;
             CbReturned.Text = "Returned:";
             CbReturned.UseVisualStyleBackColor = true;
-            CbReturned.CheckedChanged += ContentChanged;
+            CbReturned.CheckedChanged += CbReturned_CheckedChanged;
             // 
             // CbClosed
             // 
@@ -225,7 +225,6 @@
             DtpReturnedOn.Name = "DtpReturnedOn";
             DtpReturnedOn.Size = new Size(143, 31);
             DtpReturnedOn.TabIndex = 34;
-            DtpReturnedOn.ValueChanged += ContentChanged;
             // 
             // LblReturnedOn
             // 
@@ -328,11 +327,11 @@
         private DateTimePicker DtpDueTo;
         private Label LblDueTo;
         private GroupBox GbReturned;
-        private DateTimePicker DtpReturnedOn;
         private Label LblReturnedOn;
         private Button BtnSaveAndClose;
         private Button BtnClose;
         private Button BtnSave;
         private Label LblMandetoryInfos;
+        private DateTimePicker DtpReturnedOn;
     }
 }

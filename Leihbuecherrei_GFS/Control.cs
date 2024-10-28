@@ -240,8 +240,9 @@ namespace Leihbuecherrei_GFS
 
                 databse.BorrowEntries.Add(new BorrowEntry(pBook, pReader, pDueTo));
                 databse.SaveChanges();
-                mainWindow.RefreshBorrowEntryList();
             }
+
+            mainWindow.RefreshBorrowEntryList();
         }
         
         public List<BorrowEntry> LibraryWindowBtnBorrowEntrySearchClick(string pReader, string pBook, CheckState pClosed, CheckState pReturned)

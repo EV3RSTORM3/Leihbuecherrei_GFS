@@ -36,16 +36,15 @@ namespace Leihbuecherrei_GFS.GUI
             TxtAdress.Text = reader.Address;
             
             //?? handles the possibility of Birthday being null
-            DateOnly temp = reader.Birthday ?? DateOnly.FromDateTime(DateTime.Now);
-
             //Have to Add a TimeOnly to the DateOnly to make a DateTime, because WinForms DateTimepicker only accepts DateTime variables
-            DtpBirthday.Value = temp.ToDateTime(new TimeOnly(0, 0));
+            DtpBirthday.Value = reader.Birthday?.ToDateTime(new TimeOnly(0, 0)) ?? DateTime.Today;
 
             if (reader.Birthday == null) 
             {
                 DtpBirthday.Format = DateTimePickerFormat.Custom;
                 DtpBirthday.CustomFormat = " ";
             }
+
             //Save button has to be disabled after initializing the data because TextChanged methods detect the initialization as changed
             BtnSave.Enabled = false;
             BtnSaveAndClose.Enabled = false;
