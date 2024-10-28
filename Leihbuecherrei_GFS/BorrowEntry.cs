@@ -10,8 +10,10 @@ namespace Leihbuecherrei_GFS
     public class BorrowEntry
     {
         public int Id { get; set; }
-        public Book Book { get; set; }
-        public Reader Reader { get; set; }
+
+        //When Virtual is used, the property is not loaded with the object but when it is accessed(Lazy Loading)
+        public virtual Book Book { get; set; }
+        public virtual Reader Reader { get; set; }
         public DateOnly BorrowedOn { get; set; }
         public DateOnly DueTo { get; set; }
         public bool Returned { get; set; }

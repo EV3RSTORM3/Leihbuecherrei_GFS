@@ -13,10 +13,14 @@ namespace Leihbuecherrei_GFS
         public DbSet<Reader> Readers { get; set; }
         public DbSet<Book> Books { get; set; }
         public DbSet<BorrowEntry> BorrowEntries { get; set; }
+        public DbSet<Reservation> Reservations { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseNpgsql(connectionString: "Host=localhost;Database=Leihbuecherei_GFS;Username=postgres;Password=Nilsi#2006;Timeout=10;SslMode=Prefer;Include Error Detail=True");
+            
+            //Activates Lazy Loading which will load realated entitys only when they are accessed
+            optionsBuilder.UseLazyLoadingProxies();
 
             optionsBuilder.LogTo(message => Debug.WriteLine(message)).EnableSensitiveDataLogging();
 

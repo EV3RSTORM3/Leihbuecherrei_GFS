@@ -230,26 +230,53 @@ namespace Leihbuecherrei_GFS
             return listBooks;
         }
 
-        public void AddBorrowEntryBtnSaveClick(Reader pReader, Book pBook, DateOnly pDueTo)
+        public bool AddBorrowEntryBtnSaveClick(Reader pReader, Book pBook, DateOnly pDueTo)
         {
-            using (PostgresDBContext databse = new PostgresDBContext())
+            bool returnValue = true;
+            using (PostgresDBContext database = new PostgresDBContext())
             {
                 //pbook and pReader have to be tracked trough EF so it knowes they exisit and doesn't try to add the to the database which returnes an error
-                pBook = databse.Books.Find(pBook.Id);
-                pReader = databse.Readers.Find(pReader.Id);
+                pBook = database.Books.Find(pBook.Id);
+                pReader = database.Readers.Find(pReader.Id);
 
-                databse.BorrowEntries.Add(new BorrowEntry(pBook, pReader, pDueTo));
-                databse.SaveChanges();
+                if (pBook.Available)
+                {
+                    database.BorrowEntries.Add(new BorrowEntry(pBook, pReader, pDueTo));
+
+                    pBook.Available = false;
+
+                    database.SaveChanges();
+                    returnValue = true;
+                }
+                else
+                {
+                    returnValue = false;
+                }
             }
 
             mainWindow.RefreshBorrowEntryList();
+            return returnValue;
         }
         
+        //public void AddBorrowEntryAddToWaitingList(Reader pReader, Book pBook)
+        //{
+        //    using (PostgresDBContext database = new PostgresDBContext())
+        //    {
+        //        pBook = database.Books.Find(pBook.Id);
+        //        pReader = database.Readers.Find(pReader.Id);
+        //
+        //        pBook.AddToWaitingList(pReader);
+        //
+        //        database.SaveChanges();
+        //    }
+        //}
+        //
         public List<BorrowEntry> LibraryWindowBtnBorrowEntrySearchClick(string pReader, string pBook, CheckState pClosed, CheckState pReturned)
         {
             using (PostgresDBContext database = new PostgresDBContext())
             {   
                 //.include() tells EF to use Eager Loading which also loads the related entities
+                //can't use Lazy Loading here as the DataGridView doesn't support it
                 //By using IQueriable I can build the query at runtime to take diffrent filter setting in to account
                 //defines the query with the part it always needs already in it
                 IQueryable<BorrowEntry> query = database.BorrowEntries.Include(be => be.Reader).Include(be => be.Book);
@@ -311,7 +338,7 @@ namespace Leihbuecherrei_GFS
         {
             using (PostgresDBContext database = new PostgresDBContext())
             {
-                DisplayBorrowEntryWindow displayBorrowEntry = new DisplayBorrowEntryWindow(this, database.BorrowEntries.Include(be => be.Reader).Include(be => be.Book).First(be => be.Id == selectedBorrowEntry.Id));
+                DisplayBorrowEntryWindow displayBorrowEntry = new DisplayBorrowEntryWindow(this, database.BorrowEntries.Find(selectedBorrowEntry.Id));
 
                 displayBorrowEntry.Location = new Point(0, 0);
                 displayBorrowEntry.Show();
@@ -322,6 +349,16 @@ namespace Leihbuecherrei_GFS
         {
             using (PostgresDBContext database = new PostgresDBContext())
             {
+                Book book = database.Books.Find(pBorrowEntry.Book.Id);
+                if (!book.Available) 
+                {
+                    book.Available = true;
+                    //if (book.WaitingList.Count > 0)
+                    //{
+                    //    Reader nextReader = book.GetNextFromWaitingList();
+                    //    MessageBox.Show($"{nextReader} is next on the waiting list. Please notify him/her that the book is now available");
+                    //}
+                }
                 database.BorrowEntries.Remove(pBorrowEntry);
                 database.SaveChanges();
             }
@@ -344,11 +381,7 @@ namespace Leihbuecherrei_GFS
             using (PostgresDBContext database = new PostgresDBContext())
             {
                 //finds the BorrowEntry in the database and tracks it to make the changes
-                pBorrowEntry = database.BorrowEntries.Include(be => be.Reader).Include(be => be.Book).First(be => be.Id == pBorrowEntry.Id);
-
-                //Tracks the reader and book so you can work with them
-                pReader = database.Readers.Find(pReader.Id);
-                pBook = database.Books.Find(pBook.Id);
+                pBorrowEntry = database.BorrowEntries.Find(pBorrowEntry.Id);
 
                 pBorrowEntry.Reader = pReader;
                 pBorrowEntry.Book = pBook;
@@ -357,6 +390,20 @@ namespace Leihbuecherrei_GFS
                 pBorrowEntry.Returned = pReturned;
                 pBorrowEntry.ReturnedOn = pReturnedOn;
                 pBorrowEntry.Closed = pClosed;
+
+                if (pReturned)
+                {
+                    pBook.Available = true;
+                    //if (pBook.WaitingList.Count > 0)
+                    //{
+                    //    Reader nextReader = pBook.GetNextFromWaitingList();
+                    //    MessageBox.Show($"{nextReader} is next on the waiting list. Please notify him/her that the book is now available");
+                    //}
+                }
+                else
+                {
+                    pBook.Available = false;
+                }
 
                 database.SaveChanges();
             }

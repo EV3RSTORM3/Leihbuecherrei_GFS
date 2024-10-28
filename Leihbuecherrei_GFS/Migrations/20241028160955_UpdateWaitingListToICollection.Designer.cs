@@ -3,6 +3,7 @@ using System;
 using Leihbuecherrei_GFS;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,16 +12,15 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Leihbuecherrei_GFS.Migrations
 {
     [DbContext(typeof(PostgresDBContext))]
-    partial class PostgresDBContextModelSnapshot : ModelSnapshot
+    [Migration("20241028160955_UpdateWaitingListToICollection")]
+    partial class UpdateWaitingListToICollection
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.18")
-                .HasAnnotation("Proxies:ChangeTracking", false)
-                .HasAnnotation("Proxies:CheckEquality", false)
-                .HasAnnotation("Proxies:LazyLoading", true)
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
@@ -104,6 +104,9 @@ namespace Leihbuecherrei_GFS.Migrations
                     b.Property<DateOnly?>("Birthday")
                         .HasColumnType("date");
 
+                    b.Property<int?>("BookId")
+                        .HasColumnType("integer");
+
                     b.Property<string>("City")
                         .IsRequired()
                         .HasColumnType("text");
@@ -114,30 +117,9 @@ namespace Leihbuecherrei_GFS.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("readers");
-                });
-
-            modelBuilder.Entity("Leihbuecherrei_GFS.Reservation", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("BookId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("ReaderId")
-                        .HasColumnType("integer");
-
-                    b.HasKey("Id");
-
                     b.HasIndex("BookId");
 
-                    b.HasIndex("ReaderId");
-
-                    b.ToTable("Reservations");
+                    b.ToTable("readers");
                 });
 
             modelBuilder.Entity("Leihbuecherrei_GFS.BorrowEntry", b =>
@@ -159,23 +141,16 @@ namespace Leihbuecherrei_GFS.Migrations
                     b.Navigation("Reader");
                 });
 
-            modelBuilder.Entity("Leihbuecherrei_GFS.Reservation", b =>
+            modelBuilder.Entity("Leihbuecherrei_GFS.Reader", b =>
                 {
-                    b.HasOne("Leihbuecherrei_GFS.Book", "Book")
-                        .WithMany()
-                        .HasForeignKey("BookId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.HasOne("Leihbuecherrei_GFS.Book", null)
+                        .WithMany("WaitingList")
+                        .HasForeignKey("BookId");
+                });
 
-                    b.HasOne("Leihbuecherrei_GFS.Reader", "Reader")
-                        .WithMany()
-                        .HasForeignKey("ReaderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Book");
-
-                    b.Navigation("Reader");
+            modelBuilder.Entity("Leihbuecherrei_GFS.Book", b =>
+                {
+                    b.Navigation("WaitingList");
                 });
 #pragma warning restore 612, 618
         }

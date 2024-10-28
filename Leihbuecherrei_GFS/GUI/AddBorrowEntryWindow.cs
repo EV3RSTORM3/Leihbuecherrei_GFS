@@ -25,7 +25,7 @@ namespace Leihbuecherrei_GFS.GUI
             LbReaders.DataSource = control.SearchReader("");
             LbReaders.DisplayMember = "IdAndName";
 
-            LbBooks.DataSource = control.SearchBook("", true);
+            LbBooks.DataSource = control.SearchBook("");
             LbBooks.DisplayMember = "IdAndTitle";
         }
 
@@ -41,23 +41,42 @@ namespace Leihbuecherrei_GFS.GUI
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
-                LbBooks.DataSource = control.SearchBook(TxtSearchBook.Text, true);
+                LbBooks.DataSource = control.SearchBook(TxtSearchBook.Text);
             }
         }
 
         private void BtnAddEntry_Click(object sender, EventArgs e)
         {
+
+            Reader selectedReader = LbReaders.SelectedItem as Reader;
+            Book selectedBook = LbBooks.SelectedItem as Book;
+
             //check if the date is set to a date after today to ensure all information is given by the user
             //(checking if an item is selected is the LB is unnessecary as there is always one selected)
-            int dateComparision = DateOnly.FromDateTime(DtpDueTo.Value).CompareTo(DateOnly.FromDateTime(DateTime.Today));
-            if (dateComparision <= 0) 
+            if (DateOnly.FromDateTime(DtpDueTo.Value).CompareTo(DateOnly.FromDateTime(DateTime.Today)) <= 0) 
             {
                 MessageBox.Show("Please fill out all of the mandetory information!");
             }
             else 
             {
-                control.AddBorrowEntryBtnSaveClick(LbReaders.SelectedItem as Reader, LbBooks.SelectedItem as Book, DateOnly.FromDateTime(DtpDueTo.Value));
-                Close();
+                if(control.AddBorrowEntryBtnSaveClick(selectedReader, selectedBook, DateOnly.FromDateTime(DtpDueTo.Value)))
+                {
+                    this.Close();
+                }
+                else
+                {
+                    //if the book is not available, the user will be asked if they want to add the reader to the waiting list of the book
+                    var confirmResult = MessageBox.Show($"{selectedBook.Title} is not available right now\nDo you wish to add {selectedReader.Name} to the waiting list for this book", $"Add {selectedReader.Name} to waiting list", MessageBoxButtons.YesNo);
+                    if (confirmResult == DialogResult.Yes)
+                    {
+                        //control.AddBorrowEntryAddToWaitingList(selectedReader, selectedBook);
+                        this.Close();
+                    }
+                    else 
+                    {
+                        this.Close();
+                    }
+                }
             }
         }
     }
