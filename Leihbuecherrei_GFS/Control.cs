@@ -93,6 +93,7 @@ namespace Leihbuecherrei_GFS
                 //finds the reader in the database and tracks it to make the changes
                 pReader = database.Readers.Find(pReader.Id);
 
+                //makes the changes to the Reader
                 pReader.Name = pName;
                 pReader.Address = pAdress;
                 pReader.City = pCity;
@@ -150,6 +151,7 @@ namespace Leihbuecherrei_GFS
                 //finds the reader in the database and tracks it to make the changes
                 pBook = database.Books.Find(pBook.Id);
 
+                //makes the Changes to the Book
                 pBook.Title = pTitle;
                 pBook.Author = pAuthor;
                 pBook.Publisher = pPublisher;
@@ -185,7 +187,7 @@ namespace Leihbuecherrei_GFS
                 }
                 else
                 {
-                    listReaders = database.Readers.Where(r => r.Name.Contains(pSearchFor)).OrderByDescending(r => r.Id).ToList();
+                    listReaders = database.Readers.Where(r => r.Name.Contains(pSearchFor)).OrderBy(r => r.Id).ToList();
                 }
             }
 
@@ -205,7 +207,7 @@ namespace Leihbuecherrei_GFS
                 }
                 else
                 {
-                    listBooks = database.Books.Where(b => b.Title.Contains(pSearchFor)).OrderByDescending(b => b.Id).ToList();
+                    listBooks = database.Books.Where(b => b.Title.Contains(pSearchFor)).OrderBy(b => b.Id).ToList();
                 }
             }
             return listBooks;
@@ -224,7 +226,7 @@ namespace Leihbuecherrei_GFS
                 }
                 else 
                 {
-                    listBooks = database.Books.Where(b => b.Title.Contains(pSearchFor) && b.Available == pIsAvailable).OrderByDescending(b => b.Id).ToList(); 
+                    listBooks = database.Books.Where(b => b.Title.Contains(pSearchFor) && b.Available == pIsAvailable).OrderBy(b => b.Id).ToList(); 
                 }
             }
             return listBooks;
@@ -257,20 +259,20 @@ namespace Leihbuecherrei_GFS
             mainWindow.RefreshBorrowEntryList();
             return returnValue;
         }
-        
-        //public void AddBorrowEntryAddToWaitingList(Reader pReader, Book pBook)
-        //{
-        //    using (PostgresDBContext database = new PostgresDBContext())
-        //    {
-        //        pBook = database.Books.Find(pBook.Id);
-        //        pReader = database.Readers.Find(pReader.Id);
-        //
-        //        pBook.AddToWaitingList(pReader);
-        //
-        //        database.SaveChanges();
-        //    }
-        //}
-        //
+
+        public void AddBorrowEntryAddToWaitingList( Reader pReader, Book pBook )
+        {
+            using (PostgresDBContext database = new PostgresDBContext())
+            {
+                pBook = database.Books.Find(pBook.Id);
+                pReader = database.Readers.Find(pReader.Id);
+
+                database.Reservations.Add(new Reservation(pReader, pBook));
+
+                database.SaveChanges();
+            }
+        }
+
         public List<BorrowEntry> LibraryWindowBtnBorrowEntrySearchClick(string pReader, string pBook, CheckState pClosed, CheckState pReturned)
         {
             using (PostgresDBContext database = new PostgresDBContext())
@@ -349,15 +351,19 @@ namespace Leihbuecherrei_GFS
         {
             using (PostgresDBContext database = new PostgresDBContext())
             {
+                //gets the book from the database and sets it to available if its unavailability was due to the deleted BorrowEntry
                 Book book = database.Books.Find(pBorrowEntry.Book.Id);
-                if (!book.Available) 
+                if (!book.Available && !pBorrowEntry.Returned) 
                 {
                     book.Available = true;
-                    //if (book.WaitingList.Count > 0)
-                    //{
-                    //    Reader nextReader = book.GetNextFromWaitingList();
-                    //    MessageBox.Show($"{nextReader} is next on the waiting list. Please notify him/her that the book is now available");
-                    //}
+
+                    //Checks for reservation and tells the user to inform the next person on the Reservation list
+                    List<Reservation> reservations = database.Reservations.Where(r => r.Book.Id == book.Id).OrderBy(r => r.Id).ToList();
+                    if (reservations.Count > 0)
+                    {
+                        MessageBox.Show($"{reservations[0]} is next on the waiting list. Please notify him/her that the book is now available");
+                        database.Reservations.Remove(reservations[0]);
+                    }
                 }
                 database.BorrowEntries.Remove(pBorrowEntry);
                 database.SaveChanges();
@@ -383,6 +389,7 @@ namespace Leihbuecherrei_GFS
                 //finds the BorrowEntry in the database and tracks it to make the changes
                 pBorrowEntry = database.BorrowEntries.Find(pBorrowEntry.Id);
 
+                //makes the changes to the BorrowEntry
                 pBorrowEntry.Reader = pReader;
                 pBorrowEntry.Book = pBook;
                 pBorrowEntry.BorrowedOn = pBorrowedOn;
@@ -391,14 +398,18 @@ namespace Leihbuecherrei_GFS
                 pBorrowEntry.ReturnedOn = pReturnedOn;
                 pBorrowEntry.Closed = pClosed;
 
+                //cheks if the book is returned and sets the availability of the book accordingly
                 if (pReturned)
                 {
                     pBook.Available = true;
-                    //if (pBook.WaitingList.Count > 0)
-                    //{
-                    //    Reader nextReader = pBook.GetNextFromWaitingList();
-                    //    MessageBox.Show($"{nextReader} is next on the waiting list. Please notify him/her that the book is now available");
-                    //}
+
+                    //Checks for reservation and tells the user to inform the next person on the Reservation list
+                    List<Reservation> reservations = database.Reservations.Where(r => r.Book.Id == pBook.Id).OrderBy(r => r.Id).ToList();
+                    if (reservations.Count > 0)
+                    {
+                        MessageBox.Show($"{reservations[0]} is next on the waiting list. Please notify him/her that the book is now available");
+                        database.Reservations.Remove(reservations[0]);
+                    }
                 }
                 else
                 {

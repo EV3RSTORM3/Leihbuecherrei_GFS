@@ -12,5 +12,12 @@ namespace Leihbuecherrei_GFS
         public virtual Reader Reader { get; set; }
         public virtual Book Book { get; set; }
 
+        public Reservation() { }
+
+        public Reservation(Reader pReader, Book pBook) 
+        {
+            Reader = pReader;
+            Book = pBook;
+        }
     }
 }
