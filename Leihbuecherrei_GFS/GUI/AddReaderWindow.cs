@@ -22,9 +22,9 @@ namespace Leihbuecherrei_GFS.GUI
             DtpBirthday.CustomFormat = " ";
         }
 
-        private void BtnSave_Click(object sender, EventArgs e)
+        private void BtnOk_Click(object sender, EventArgs e)
         {
-            if (control.AddReaderBtnSaveClick(TxtName.Text, TxtAdress.Text, TxtCity.Text, DateOnly.FromDateTime(DtpBirthday.Value)) == false)
+            if (control.AddReader(TxtName.Text, TxtAdress.Text, TxtCity.Text, DateOnly.FromDateTime(DtpBirthday.Value)) == false)
             {
                 MessageBox.Show("Please fill out all of the mandetory information!");
             }

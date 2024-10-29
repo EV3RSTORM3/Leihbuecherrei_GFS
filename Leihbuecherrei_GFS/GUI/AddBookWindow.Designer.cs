@@ -35,7 +35,7 @@
             LblPublisher = new Label();
             LblTitle = new Label();
             LblMandetoryInfos = new Label();
-            BtnSave = new Button();
+            BtnOk = new Button();
             SuspendLayout();
             // 
             // TxtTitle
@@ -102,23 +102,23 @@
             LblMandetoryInfos.TabIndex = 14;
             LblMandetoryInfos.Text = "* = mandetory info";
             // 
-            // BtnSave
+            // BtnOk
             // 
-            BtnSave.Anchor = AnchorStyles.Bottom;
-            BtnSave.Location = new Point(76, 188);
-            BtnSave.Name = "BtnSave";
-            BtnSave.Size = new Size(112, 34);
-            BtnSave.TabIndex = 4;
-            BtnSave.Text = "Save";
-            BtnSave.UseVisualStyleBackColor = true;
-            BtnSave.Click += BtnSave_Click;
+            BtnOk.Anchor = AnchorStyles.Bottom;
+            BtnOk.Location = new Point(76, 188);
+            BtnOk.Name = "BtnOk";
+            BtnOk.Size = new Size(112, 34);
+            BtnOk.TabIndex = 4;
+            BtnOk.Text = "Ok";
+            BtnOk.UseVisualStyleBackColor = true;
+            BtnOk.Click += BtnOk_Click;
             // 
             // AddBookWindow
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(271, 234);
-            Controls.Add(BtnSave);
+            Controls.Add(BtnOk);
             Controls.Add(LblMandetoryInfos);
             Controls.Add(TxtTitle);
             Controls.Add(TxtAuthor);
@@ -141,6 +141,6 @@
         private Label LblPublisher;
         private Label LblTitle;
         private Label LblMandetoryInfos;
-        private Button BtnSave;
+        private Button BtnOk;
     }
 }

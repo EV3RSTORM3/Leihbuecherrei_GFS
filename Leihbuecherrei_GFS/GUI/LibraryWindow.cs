@@ -50,21 +50,21 @@ namespace Leihbuecherrei_GFS
 
         public void RefreshBorrowEntryList()
         {
-            DgvBorrowEntries.DataSource = control.LibraryWindowBtnBorrowEntrySearchClick(TxtSearchBorrowEntryReader.Text, TxtSearchBorrowEntryBook.Text, CbClosed.CheckState, CbReturned.CheckState);
+            DgvBorrowEntries.DataSource = control.LibraryWindowSearchBorrowEntry(TxtSearchBorrowEntryReader.Text, TxtSearchBorrowEntryBook.Text, CbClosed.CheckState, CbReturned.CheckState);
         }
 
         private async void LbReaders_DoubleClick(object sender, EventArgs e)
         {
             Reader selectedReader = LbReaders.SelectedItem as Reader;
 
-            control.LibraryWindowLbReaders_DoubleClick(selectedReader);
+            control.LibraryWindowDisplayReader(selectedReader);
         }
 
         private void LbBooks_DoubleClick(object sender, EventArgs e)
         {
             Book selectedBook = LbBooks.SelectedItem as Book;
 
-            control.LibraryWindowLbBooks_DoubleClick(selectedBook);
+            control.LibraryWindowDisplayBook(selectedBook);
         }
 
         private void BtnNewBorrowEntry_Click(object sender, EventArgs e)
@@ -93,7 +93,7 @@ namespace Leihbuecherrei_GFS
 
         private void BtnBorrowEntrySearch_Click(object sender, EventArgs e)
         {
-            DgvBorrowEntries.DataSource = control.LibraryWindowBtnBorrowEntrySearchClick(TxtSearchBorrowEntryReader.Text, TxtSearchBorrowEntryBook.Text, CbClosed.CheckState, CbReturned.CheckState);
+            DgvBorrowEntries.DataSource = control.LibraryWindowSearchBorrowEntry(TxtSearchBorrowEntryReader.Text, TxtSearchBorrowEntryBook.Text, CbClosed.CheckState, CbReturned.CheckState);
         }
 
         private void DgvBorrowEntries_DoubleClick(object sender, EventArgs e)
@@ -101,7 +101,7 @@ namespace Leihbuecherrei_GFS
             //Gets the selected BorrowEntry
             BorrowEntry selectedBorrowEntry = DgvBorrowEntries.SelectedRows[0].DataBoundItem as BorrowEntry;
 
-            control.LibraryWindowDgvBorrowEntries_DoubleClick(selectedBorrowEntry);
+            control.LibraryWindowDisplayBorrowEntry(selectedBorrowEntry);
         }
 
         private void BtnReset_Click(object sender, EventArgs e)
@@ -113,7 +113,7 @@ namespace Leihbuecherrei_GFS
             CbClosed.CheckState = CheckState.Indeterminate;
             CbReturned.CheckState = CheckState.Indeterminate;
 
-            DgvBorrowEntries.DataSource = control.LibraryWindowBtnBorrowEntrySearchClick(TxtSearchBorrowEntryReader.Text, TxtSearchBorrowEntryBook.Text, CbClosed.CheckState, CbReturned.CheckState);
+            DgvBorrowEntries.DataSource = control.LibraryWindowSearchBorrowEntry(TxtSearchBorrowEntryReader.Text, TxtSearchBorrowEntryBook.Text, CbClosed.CheckState, CbReturned.CheckState);
         }
     }
 }

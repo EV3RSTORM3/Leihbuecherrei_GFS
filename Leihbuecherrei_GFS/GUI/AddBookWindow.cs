@@ -21,10 +21,10 @@ namespace Leihbuecherrei_GFS.GUI
             InitializeComponent();
         }
 
-        private void BtnSave_Click(object sender, EventArgs e)
+        private void BtnOk_Click(object sender, EventArgs e)
         {
             
-            if (control.AddBookBtnSaveClick(TxtTitle.Text, TxtAuthor.Text, TxtPublisher.Text) == false)
+            if (control.AddBook(TxtTitle.Text, TxtAuthor.Text, TxtPublisher.Text) == false)
             {
                 MessageBox.Show("Please fill out all of the mandetory information!");
             }

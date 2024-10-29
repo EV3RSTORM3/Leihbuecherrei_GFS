@@ -53,22 +53,22 @@ namespace Leihbuecherrei_GFS.GUI
 
             CbClosed.Checked = borrowEntry.Closed;
 
-            BtnSave.Enabled = false;
-            BtnSaveAndClose.Enabled = false;
+            BtnApply.Enabled = false;
+            BtnOk.Enabled = false;
         }
 
         //activates the save buttons whe the content of the window is changed
         private void ContentChanged( object sender, EventArgs e )
         {
-            BtnSave.Enabled = true;
-            BtnSaveAndClose.Enabled = true;
+            BtnApply.Enabled = true;
+            BtnOk.Enabled = true;
         }
         
         
         private void CbReturned_CheckedChanged( object sender, EventArgs e )
         {
-            BtnSave.Enabled = true;
-            BtnSaveAndClose.Enabled = true;
+            BtnApply.Enabled = true;
+            BtnOk.Enabled = true;
 
             if (CbReturned.Checked)
             {
@@ -105,22 +105,22 @@ namespace Leihbuecherrei_GFS.GUI
 
             if (confirmResult == DialogResult.Yes)
             {
-                control.DisplayBorrowEntryBtnDeleteClick(borrowEntry);
+                control.DisplayBorrowEntryDelete(borrowEntry);
                 this.Close();
             }
         }
 
-        private void BtnSave_Click( object sender, EventArgs e )
+        private void BtnApply_Click( object sender, EventArgs e )
         {
-            if (control.DisplayBorrowEntryBtnSaveClick(borrowEntry, LbReaders.SelectedItem as Reader, LbBooks.SelectedItem as Book, DateOnly.FromDateTime(DtpBorrowedOn.Value), DateOnly.FromDateTime(DtpDueTo.Value), CbReturned.Checked, DateOnly.FromDateTime(DtpReturnedOn.Value), CbClosed.Checked) == false)
+            if (control.DisplayBorrowEntrySave(borrowEntry, LbReaders.SelectedItem as Reader, LbBooks.SelectedItem as Book, DateOnly.FromDateTime(DtpBorrowedOn.Value), DateOnly.FromDateTime(DtpDueTo.Value), CbReturned.Checked, DateOnly.FromDateTime(DtpReturnedOn.Value), CbClosed.Checked) == false)
             {
                 MessageBox.Show("Borrowed On can not be set to the future");
             }
         }
 
-        private void BtnSaveAndClose_Click( object sender, EventArgs e )
+        private void BtnOk_Click( object sender, EventArgs e )
         {
-            if (control.DisplayBorrowEntryBtnSaveClick(borrowEntry, LbReaders.SelectedItem as Reader, LbBooks.SelectedItem as Book, DateOnly.FromDateTime(DtpBorrowedOn.Value), DateOnly.FromDateTime(DtpDueTo.Value), CbReturned.Checked, DateOnly.FromDateTime(DtpReturnedOn.Value), CbClosed.Checked) == false)
+            if (control.DisplayBorrowEntrySave(borrowEntry, LbReaders.SelectedItem as Reader, LbBooks.SelectedItem as Book, DateOnly.FromDateTime(DtpBorrowedOn.Value), DateOnly.FromDateTime(DtpDueTo.Value), CbReturned.Checked, DateOnly.FromDateTime(DtpReturnedOn.Value), CbClosed.Checked) == false)
             {
                 MessageBox.Show("Borrowed On can not be set to the future");
             }
@@ -130,7 +130,7 @@ namespace Leihbuecherrei_GFS.GUI
             }
         }
 
-        private void BtnClose_Click( object sender, EventArgs e )
+        private void BtnCancel_Click( object sender, EventArgs e )
         {
             var confirmResult = MessageBox.Show("Changes will be discarded", "Close this Window?", MessageBoxButtons.YesNo);
 

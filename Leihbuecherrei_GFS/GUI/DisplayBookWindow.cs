@@ -35,18 +35,18 @@ namespace Leihbuecherrei_GFS.GUI
             TxtAuthor.Text = book.Author;
 
             //Save button has to be disabled after initializing the data because TextChanged methods detect the initialization as changed
-            BtnSave.Enabled = false;
-            BtnSaveAndClose.Enabled = false;
+            BtnApply.Enabled = false;
+            BtnOk.Enabled = false;
         }
 
         //activates the save buttons whe the content of the window is changed
         private void ContentChanged(object sender, EventArgs e)
         {
-            BtnSave.Enabled = true;
-            BtnSaveAndClose.Enabled = true;
+            BtnApply.Enabled = true;
+            BtnOk.Enabled = true;
         }
 
-        private void BtnClose_Click(object sender, EventArgs e)
+        private void BtnCancel_Click(object sender, EventArgs e)
         {
             var confirmResult = MessageBox.Show("Changes will be discarded", "Close this Window?", MessageBoxButtons.YesNo);
 
@@ -56,9 +56,9 @@ namespace Leihbuecherrei_GFS.GUI
             }
         }
 
-        private void BtnSave_Click(object sender, EventArgs e)
+        private void BtnApply_Click(object sender, EventArgs e)
         {
-            if (control.DisplayBookBtnSaveClick(book, TxtTitle.Text, TxtAuthor.Text, TxtPublisher.Text) == false)
+            if (control.DisplayBookSave(book, TxtTitle.Text, TxtAuthor.Text, TxtPublisher.Text) == false)
             {
                 MessageBox.Show("Please fill out all of the mandetory information!");
             }
@@ -69,9 +69,9 @@ namespace Leihbuecherrei_GFS.GUI
             }
         }
 
-        private void BtnSaveAndClose_Click(object sender, EventArgs e)
+        private void BtnOk_Click(object sender, EventArgs e)
         {
-            if (control.DisplayBookBtnSaveClick(book, TxtTitle.Text, TxtAuthor.Text, TxtPublisher.Text) == false)
+            if (control.DisplayBookSave(book, TxtTitle.Text, TxtAuthor.Text, TxtPublisher.Text) == false)
             {
                 MessageBox.Show("Please fill out all of the mandetory information!");
             }
@@ -87,7 +87,7 @@ namespace Leihbuecherrei_GFS.GUI
 
             if (confirmResult == DialogResult.Yes)
             {
-                control.DisplayBookBtnDeleteClick(book);
+                control.DisplayBookDelete(book);
                 this.Close();
             }
         }

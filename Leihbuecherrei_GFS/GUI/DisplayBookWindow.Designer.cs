@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            BtnSaveAndClose = new Button();
-            BtnClose = new Button();
-            BtnSave = new Button();
+            BtnOk = new Button();
+            BtnCancel = new Button();
+            BtnApply = new Button();
             BtnDelete = new Button();
             TxtAuthor = new TextBox();
             TxtId = new TextBox();
@@ -41,39 +41,45 @@
             LblId = new Label();
             LblTitle = new Label();
             LblMandetoryInfos = new Label();
+            CbAvailable = new CheckBox();
+            GbReservationList = new GroupBox();
+            BtnDeleteFromReservationList = new Button();
+            LbReservations = new ListBox();
+            BtnAddToReservationList = new Button();
+            GbReservationList.SuspendLayout();
             SuspendLayout();
             // 
-            // BtnSaveAndClose
+            // BtnOk
             // 
-            BtnSaveAndClose.Enabled = false;
-            BtnSaveAndClose.Location = new Point(646, 404);
-            BtnSaveAndClose.Name = "BtnSaveAndClose";
-            BtnSaveAndClose.Size = new Size(142, 34);
-            BtnSaveAndClose.TabIndex = 15;
-            BtnSaveAndClose.Text = "Save and Close";
-            BtnSaveAndClose.UseVisualStyleBackColor = true;
-            BtnSaveAndClose.Click += BtnSaveAndClose_Click;
+            BtnOk.Enabled = false;
+            BtnOk.Location = new Point(440, 404);
+            BtnOk.Name = "BtnOk";
+            BtnOk.Size = new Size(112, 34);
+            BtnOk.TabIndex = 15;
+            BtnOk.Text = "Ok";
+            BtnOk.UseVisualStyleBackColor = true;
+            BtnOk.Click += BtnOk_Click;
             // 
-            // BtnClose
+            // BtnCancel
             // 
-            BtnClose.Location = new Point(528, 404);
-            BtnClose.Name = "BtnClose";
-            BtnClose.Size = new Size(112, 34);
-            BtnClose.TabIndex = 14;
-            BtnClose.Text = "Close";
-            BtnClose.UseVisualStyleBackColor = true;
-            BtnClose.Click += BtnClose_Click;
+            BtnCancel.Location = new Point(558, 404);
+            BtnCancel.Name = "BtnCancel";
+            BtnCancel.Size = new Size(112, 34);
+            BtnCancel.TabIndex = 14;
+            BtnCancel.Text = "Cancel";
+            BtnCancel.UseVisualStyleBackColor = true;
+            BtnCancel.Click += BtnCancel_Click;
             // 
-            // BtnSave
+            // BtnApply
             // 
-            BtnSave.Enabled = false;
-            BtnSave.Location = new Point(410, 404);
-            BtnSave.Name = "BtnSave";
-            BtnSave.Size = new Size(112, 34);
-            BtnSave.TabIndex = 13;
-            BtnSave.Text = "Save";
-            BtnSave.UseVisualStyleBackColor = true;
-            BtnSave.Click += BtnSave_Click;
+            BtnApply.Enabled = false;
+            BtnApply.Location = new Point(676, 404);
+            BtnApply.Name = "BtnApply";
+            BtnApply.Size = new Size(112, 34);
+            BtnApply.TabIndex = 13;
+            BtnApply.Text = "Apply";
+            BtnApply.UseVisualStyleBackColor = true;
+            BtnApply.Click += BtnApply_Click;
             // 
             // BtnDelete
             // 
@@ -87,7 +93,7 @@
             // 
             // TxtAuthor
             // 
-            TxtAuthor.Location = new Point(385, 60);
+            TxtAuthor.Location = new Point(385, 57);
             TxtAuthor.Name = "TxtAuthor";
             TxtAuthor.Size = new Size(150, 31);
             TxtAuthor.TabIndex = 24;
@@ -163,11 +169,66 @@
             LblMandetoryInfos.TabIndex = 27;
             LblMandetoryInfos.Text = "* = mandetory info";
             // 
+            // CbAvailable
+            // 
+            CbAvailable.AutoSize = true;
+            CbAvailable.CheckAlign = ContentAlignment.MiddleRight;
+            CbAvailable.Location = new Point(592, 59);
+            CbAvailable.Name = "CbAvailable";
+            CbAvailable.Size = new Size(113, 29);
+            CbAvailable.TabIndex = 28;
+            CbAvailable.Text = "Available:";
+            CbAvailable.UseVisualStyleBackColor = true;
+            // 
+            // GbReservationList
+            // 
+            GbReservationList.Controls.Add(BtnDeleteFromReservationList);
+            GbReservationList.Controls.Add(LbReservations);
+            GbReservationList.Controls.Add(BtnAddToReservationList);
+            GbReservationList.Location = new Point(15, 109);
+            GbReservationList.Name = "GbReservationList";
+            GbReservationList.Size = new Size(209, 329);
+            GbReservationList.TabIndex = 29;
+            GbReservationList.TabStop = false;
+            GbReservationList.Text = "Waiting List";
+            // 
+            // BtnDeleteFromReservationList
+            // 
+            BtnDeleteFromReservationList.Dock = DockStyle.Top;
+            BtnDeleteFromReservationList.Location = new Point(3, 290);
+            BtnDeleteFromReservationList.Name = "BtnDeleteFromReservationList";
+            BtnDeleteFromReservationList.Size = new Size(203, 34);
+            BtnDeleteFromReservationList.TabIndex = 1;
+            BtnDeleteFromReservationList.Text = "Remove from waiting list";
+            BtnDeleteFromReservationList.UseVisualStyleBackColor = true;
+            // 
+            // LbReservations
+            // 
+            LbReservations.Dock = DockStyle.Top;
+            LbReservations.FormattingEnabled = true;
+            LbReservations.ItemHeight = 25;
+            LbReservations.Location = new Point(3, 61);
+            LbReservations.Name = "LbReservations";
+            LbReservations.Size = new Size(203, 229);
+            LbReservations.TabIndex = 2;
+            // 
+            // BtnAddToReservationList
+            // 
+            BtnAddToReservationList.Dock = DockStyle.Top;
+            BtnAddToReservationList.Location = new Point(3, 27);
+            BtnAddToReservationList.Name = "BtnAddToReservationList";
+            BtnAddToReservationList.Size = new Size(203, 34);
+            BtnAddToReservationList.TabIndex = 0;
+            BtnAddToReservationList.Text = "Add to waiting list";
+            BtnAddToReservationList.UseVisualStyleBackColor = true;
+            // 
             // DisplayBookWindow
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(GbReservationList);
+            Controls.Add(CbAvailable);
             Controls.Add(LblMandetoryInfos);
             Controls.Add(BtnDelete);
             Controls.Add(TxtAuthor);
@@ -178,20 +239,25 @@
             Controls.Add(LblPublisher);
             Controls.Add(LblId);
             Controls.Add(LblTitle);
-            Controls.Add(BtnSaveAndClose);
-            Controls.Add(BtnClose);
-            Controls.Add(BtnSave);
+            Controls.Add(BtnOk);
+            Controls.Add(BtnCancel);
+            Controls.Add(BtnApply);
+            MaximizeBox = false;
+            MaximumSize = new Size(822, 506);
+            MinimizeBox = false;
+            MinimumSize = new Size(822, 506);
             Name = "DisplayBookWindow";
             Text = "DisplayBooks";
+            GbReservationList.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private Button BtnSaveAndClose;
-        private Button BtnClose;
-        private Button BtnSave;
+        private Button BtnOk;
+        private Button BtnCancel;
+        private Button BtnApply;
         private Button BtnDelete;
         private TextBox TxtAuthor;
         private TextBox TxtId;
@@ -202,5 +268,10 @@
         private Label LblId;
         private Label LblTitle;
         private Label LblMandetoryInfos;
+        private CheckBox CbAvailable;
+        private GroupBox GbReservationList;
+        private Button BtnDeleteFromReservationList;
+        private ListBox LbReservations;
+        private Button BtnAddToReservationList;
     }
 }

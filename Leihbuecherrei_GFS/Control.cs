@@ -24,7 +24,7 @@ namespace Leihbuecherrei_GFS
             Application.Run(mainWindow);
         }
 
-        public bool AddReaderBtnSaveClick(string pName, string pAdress, string pCity, DateOnly pBirthday)
+        public bool AddReader(string pName, string pAdress, string pCity, DateOnly pBirthday)
         {
             //checks if the mandetory information is given if or returns false 
             if (String.IsNullOrEmpty(pName) || String.IsNullOrEmpty(pAdress) || String.IsNullOrEmpty(pCity))
@@ -51,7 +51,7 @@ namespace Leihbuecherrei_GFS
             return true;
         }
 
-        public bool AddBookBtnSaveClick(string pTitle, string pAuthor, string pPublisher)
+        public bool AddBook(string pTitle, string pAuthor, string pPublisher)
         {
             //checks if the mandetory information is given if not returns false 
             if (String.IsNullOrEmpty(pTitle))
@@ -69,18 +69,18 @@ namespace Leihbuecherrei_GFS
             return true;
         }
 
-        public void LibraryWindowLbReaders_DoubleClick(Reader selectedReader) 
+        public void LibraryWindowDisplayReader(Reader selectedReader) 
         {
             using (PostgresDBContext database = new PostgresDBContext())
             {
-                DisplayReadersWindow displayReaders = new DisplayReadersWindow(this, database.Readers.Find(selectedReader.Id));
+                DisplayReaderWindow displayReaders = new DisplayReaderWindow(this, database.Readers.Find(selectedReader.Id));
 
                 displayReaders.Location = new Point(0, 0);
                 displayReaders.Show();
             }
         }
 
-        public bool DisplayReaderBtnSaveClick(Reader pReader, string pName, string pAdress, string pCity, DateOnly pBirthday)
+        public bool DisplayReaderSave(Reader pReader, string pName, string pAdress, string pCity, DateOnly pBirthday)
         {
             //checks if the mandetory information is given if not returns false 
             if (String.IsNullOrEmpty(pName) || String.IsNullOrEmpty(pAdress) || String.IsNullOrEmpty(pCity))
@@ -116,7 +116,7 @@ namespace Leihbuecherrei_GFS
             return true;
         }
 
-        public void DisplayReadersBtnDeleteClick(Reader pReader)
+        public void DisplayReaderDelete(Reader pReader)
         {
             using (PostgresDBContext database = new PostgresDBContext())
             {
@@ -127,7 +127,7 @@ namespace Leihbuecherrei_GFS
             mainWindow.RefreshReadersList();            
         }
 
-        public void LibraryWindowLbBooks_DoubleClick(Book selectedBook)
+        public void LibraryWindowDisplayBook(Book selectedBook)
         {
             using (PostgresDBContext database = new PostgresDBContext())
             {
@@ -138,7 +138,7 @@ namespace Leihbuecherrei_GFS
             }
         }
 
-        public bool DisplayBookBtnSaveClick(Book pBook, string pTitle, string pAuthor, string pPublisher)
+        public bool DisplayBookSave(Book pBook, string pTitle, string pAuthor, string pPublisher)
         {
             //checks if the mandetory information is given if not returns false 
             if (String.IsNullOrEmpty(pTitle))
@@ -163,7 +163,7 @@ namespace Leihbuecherrei_GFS
             return true;
         }
 
-        public void DisplayBookBtnDeleteClick(Book pBook)
+        public void DisplayBookDelete(Book pBook)
         {
             using (PostgresDBContext database = new PostgresDBContext())
             {
@@ -232,7 +232,7 @@ namespace Leihbuecherrei_GFS
             return listBooks;
         }
 
-        public bool AddBorrowEntryBtnSaveClick(Reader pReader, Book pBook, DateOnly pDueTo)
+        public bool AddBorrowEntry(Reader pReader, Book pBook, DateOnly pDueTo)
         {
             bool returnValue = true;
             using (PostgresDBContext database = new PostgresDBContext())
@@ -260,20 +260,7 @@ namespace Leihbuecherrei_GFS
             return returnValue;
         }
 
-        public void AddBorrowEntryAddToWaitingList( Reader pReader, Book pBook )
-        {
-            using (PostgresDBContext database = new PostgresDBContext())
-            {
-                pBook = database.Books.Find(pBook.Id);
-                pReader = database.Readers.Find(pReader.Id);
-
-                database.Reservations.Add(new Reservation(pReader, pBook));
-
-                database.SaveChanges();
-            }
-        }
-
-        public List<BorrowEntry> LibraryWindowBtnBorrowEntrySearchClick(string pReader, string pBook, CheckState pClosed, CheckState pReturned)
+        public List<BorrowEntry> LibraryWindowSearchBorrowEntry(string pReader, string pBook, CheckState pClosed, CheckState pReturned)
         {
             using (PostgresDBContext database = new PostgresDBContext())
             {   
@@ -336,7 +323,7 @@ namespace Leihbuecherrei_GFS
             }
         }
 
-        public void LibraryWindowDgvBorrowEntries_DoubleClick(BorrowEntry selectedBorrowEntry)
+        public void LibraryWindowDisplayBorrowEntry(BorrowEntry selectedBorrowEntry)
         {
             using (PostgresDBContext database = new PostgresDBContext())
             {
@@ -347,7 +334,7 @@ namespace Leihbuecherrei_GFS
             }
         }
 
-        public void DisplayBorrowEntryBtnDeleteClick(BorrowEntry pBorrowEntry)
+        public void DisplayBorrowEntryDelete(BorrowEntry pBorrowEntry)
         {
             using (PostgresDBContext database = new PostgresDBContext())
             {
@@ -372,7 +359,7 @@ namespace Leihbuecherrei_GFS
             mainWindow.RefreshBorrowEntryList();
         }
 
-        public bool DisplayBorrowEntryBtnSaveClick(BorrowEntry pBorrowEntry, Reader pReader, Book pBook, DateOnly pBorrowedOn, DateOnly pDueTo, bool pReturned, DateOnly? pReturnedOn, bool pClosed) 
+        public bool DisplayBorrowEntrySave(BorrowEntry pBorrowEntry, Reader pReader, Book pBook, DateOnly pBorrowedOn, DateOnly pDueTo, bool pReturned, DateOnly? pReturnedOn, bool pClosed) 
         {
             if (pBorrowedOn.CompareTo(DateOnly.FromDateTime(DateTime.Today)) > 0)
             {
@@ -421,6 +408,44 @@ namespace Leihbuecherrei_GFS
 
             mainWindow.RefreshBorrowEntryList();
             return true;
+        }
+
+        public void AddToWaitingList( Reader pReader, Book pBook )
+        {
+            using (PostgresDBContext database = new PostgresDBContext())
+            {
+                pBook = database.Books.Find(pBook.Id);
+                pReader = database.Readers.Find(pReader.Id);
+
+                database.Reservations.Add(new Reservation(pReader, pBook));
+
+                database.SaveChanges();
+            }
+        }
+
+        public void RemoveFromWaitinglist(Reservation pReservation) 
+        {
+            using (PostgresDBContext database = new PostgresDBContext())
+            {
+                database.Reservations.Remove(pReservation);
+                database.SaveChanges();
+            }
+        }
+
+        public List<Reservation> GetWaitinglist(Book pBook)
+        {
+            using (PostgresDBContext database = new PostgresDBContext())
+            {
+                return database.Reservations.Where(r => r.Book.Id == pBook.Id).OrderBy(r => r.Id).ToList();
+            }
+        }
+
+        public List<Reservation> GetWaitinglist(Reader pReader)
+        {
+            using (PostgresDBContext database = new PostgresDBContext())
+            {
+                return database.Reservations.Where(r => r.Reader.Id == pReader.Id).OrderBy(r => r.Id).ToList();
+            }
         }
     }
 }

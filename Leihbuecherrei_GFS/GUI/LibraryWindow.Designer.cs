@@ -338,8 +338,8 @@
             // readers
             // 
             readers.Controls.Add(LbReaders);
-            readers.Controls.Add(BtnAddReader);
             readers.Controls.Add(TxtSearchReader);
+            readers.Controls.Add(BtnAddReader);
             readers.Location = new Point(4, 34);
             readers.Margin = new Padding(4, 5, 4, 5);
             readers.Name = "readers";
@@ -369,7 +369,7 @@
             // BtnAddReader
             // 
             BtnAddReader.Dock = DockStyle.Top;
-            BtnAddReader.Location = new Point(4, 36);
+            BtnAddReader.Location = new Point(4, 5);
             BtnAddReader.Margin = new Padding(4, 5, 4, 5);
             BtnAddReader.Name = "BtnAddReader";
             BtnAddReader.Size = new Size(295, 38);
@@ -381,7 +381,7 @@
             // TxtSearchReader
             // 
             TxtSearchReader.Dock = DockStyle.Top;
-            TxtSearchReader.Location = new Point(4, 5);
+            TxtSearchReader.Location = new Point(4, 43);
             TxtSearchReader.Margin = new Padding(10);
             TxtSearchReader.Name = "TxtSearchReader";
             TxtSearchReader.PlaceholderText = "Search Reader";

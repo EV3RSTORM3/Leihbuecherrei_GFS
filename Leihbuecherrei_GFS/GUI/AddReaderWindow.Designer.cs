@@ -36,7 +36,7 @@
             TxtCity = new TextBox();
             TxtAdress = new TextBox();
             TxtName = new TextBox();
-            BtnSave = new Button();
+            BtnOk = new Button();
             LblMandetoryInfos = new Label();
             SuspendLayout();
             // 
@@ -115,16 +115,16 @@
             TxtName.Size = new Size(148, 31);
             TxtName.TabIndex = 1;
             // 
-            // BtnSave
+            // BtnOk
             // 
-            BtnSave.Anchor = AnchorStyles.Top;
-            BtnSave.Location = new Point(76, 226);
-            BtnSave.Name = "BtnSave";
-            BtnSave.Size = new Size(112, 34);
-            BtnSave.TabIndex = 5;
-            BtnSave.Text = "Save";
-            BtnSave.UseVisualStyleBackColor = true;
-            BtnSave.Click += BtnSave_Click;
+            BtnOk.Anchor = AnchorStyles.Top;
+            BtnOk.Location = new Point(76, 226);
+            BtnOk.Name = "BtnOk";
+            BtnOk.Size = new Size(112, 34);
+            BtnOk.TabIndex = 5;
+            BtnOk.Text = "Ok";
+            BtnOk.UseVisualStyleBackColor = true;
+            BtnOk.Click += BtnOk_Click;
             // 
             // LblMandetoryInfos
             // 
@@ -142,7 +142,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(266, 272);
             Controls.Add(LblMandetoryInfos);
-            Controls.Add(BtnSave);
+            Controls.Add(BtnOk);
             Controls.Add(TxtName);
             Controls.Add(TxtAdress);
             Controls.Add(TxtCity);
@@ -167,7 +167,7 @@
         private TextBox TxtCity;
         private TextBox TxtAdress;
         private TextBox TxtName;
-        private Button BtnSave;
+        private Button BtnOk;
         private Label LblMandetoryInfos;
     }
 }

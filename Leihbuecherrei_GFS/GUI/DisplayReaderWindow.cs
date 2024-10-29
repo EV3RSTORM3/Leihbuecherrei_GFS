@@ -12,12 +12,12 @@ using System.Windows.Forms;
 
 namespace Leihbuecherrei_GFS.GUI
 {
-    public partial class DisplayReadersWindow : Form
+    public partial class DisplayReaderWindow : Form
     {
         private Control control;
         private Reader reader;
 
-        public DisplayReadersWindow(Control pControl, Reader pReader)
+        public DisplayReaderWindow(Control pControl, Reader pReader)
         {
             control = pControl;
             reader = pReader;
@@ -46,8 +46,8 @@ namespace Leihbuecherrei_GFS.GUI
             }
 
             //Save button has to be disabled after initializing the data because TextChanged methods detect the initialization as changed
-            BtnSave.Enabled = false;
-            BtnSaveAndClose.Enabled = false;
+            BtnApply.Enabled = false;
+            BtnOk.Enabled = false;
         }
 
         //if the user enters the DateTimePicker, the DateTimePicker will show the date
@@ -69,13 +69,13 @@ namespace Leihbuecherrei_GFS.GUI
         //activates the save buttons whe the content of the window is changed
         private void ContentChanged(object sender, EventArgs e)
         {
-            BtnSave.Enabled = true;
-            BtnSaveAndClose.Enabled = true;
+            BtnApply.Enabled = true;
+            BtnOk.Enabled = true;
         }
 
-        private void BtnSave_Click(object sender, EventArgs e)
+        private void BtnApply_Click(object sender, EventArgs e)
         {
-            if (control.DisplayReaderBtnSaveClick(reader, TxtName.Text, TxtAdress.Text, TxtCity.Text, DateOnly.FromDateTime(DtpBirthday.Value)) == false)
+            if (control.DisplayReaderSave(reader, TxtName.Text, TxtAdress.Text, TxtCity.Text, DateOnly.FromDateTime(DtpBirthday.Value)) == false)
             {
                 MessageBox.Show("Please fill out all of the mandetory information!");
             }
@@ -86,7 +86,7 @@ namespace Leihbuecherrei_GFS.GUI
             }
         }
 
-        private void BtnClose_Click(object sender, EventArgs e)
+        private void BtnCancel_Click(object sender, EventArgs e)
         {
             var confirmResult = MessageBox.Show("Changes will be discarded", "Close this Window?", MessageBoxButtons.YesNo);
 
@@ -96,9 +96,9 @@ namespace Leihbuecherrei_GFS.GUI
             }
         }
 
-        private void BtnSaveAndClose_Click(object sender, EventArgs e)
+        private void BtnOk_Click(object sender, EventArgs e)
         {
-            if (control.DisplayReaderBtnSaveClick(reader, TxtName.Text, TxtAdress.Text, TxtCity.Text, DateOnly.FromDateTime(DtpBirthday.Value)) == false)
+            if (control.DisplayReaderSave(reader, TxtName.Text, TxtAdress.Text, TxtCity.Text, DateOnly.FromDateTime(DtpBirthday.Value)) == false)
             {
                 MessageBox.Show("Please fill out all of the mandetory information!");
             }
@@ -114,7 +114,7 @@ namespace Leihbuecherrei_GFS.GUI
 
             if (confirmResult == DialogResult.Yes)
             {
-                control.DisplayReadersBtnDeleteClick(reader);
+                control.DisplayReaderDelete(reader);
                 this.Close();
             }
         }

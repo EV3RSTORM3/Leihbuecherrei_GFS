@@ -1,6 +1,6 @@
 ﻿namespace Leihbuecherrei_GFS.GUI
 {
-    partial class DisplayReadersWindow
+    partial class DisplayReaderWindow
     {
         /// <summary>
         /// Required designer variable.
@@ -38,11 +38,16 @@
             TxtId = new TextBox();
             TxtAdress = new TextBox();
             DtpBirthday = new DateTimePicker();
-            BtnSave = new Button();
-            BtnClose = new Button();
-            BtnSaveAndClose = new Button();
+            BtnApply = new Button();
+            BtnCancel = new Button();
+            BtnOk = new Button();
             BtnDelete = new Button();
             LblMandetoryInfos = new Label();
+            GbReservationList = new GroupBox();
+            BtnDeleteFromReservationList = new Button();
+            LbReservations = new ListBox();
+            BtnAddToReservationList = new Button();
+            GbReservationList.SuspendLayout();
             SuspendLayout();
             // 
             // LblName
@@ -133,37 +138,37 @@
             DtpBirthday.Enter += DtpBirthday_Enter;
             DtpBirthday.Leave += DtpBirthday_Leave;
             // 
-            // BtnSave
+            // BtnApply
             // 
-            BtnSave.Enabled = false;
-            BtnSave.Location = new Point(410, 404);
-            BtnSave.Name = "BtnSave";
-            BtnSave.Size = new Size(112, 34);
-            BtnSave.TabIndex = 10;
-            BtnSave.Text = "Save";
-            BtnSave.UseVisualStyleBackColor = true;
-            BtnSave.Click += BtnSave_Click;
+            BtnApply.Enabled = false;
+            BtnApply.Location = new Point(676, 404);
+            BtnApply.Name = "BtnApply";
+            BtnApply.Size = new Size(112, 34);
+            BtnApply.TabIndex = 10;
+            BtnApply.Text = "Apply";
+            BtnApply.UseVisualStyleBackColor = true;
+            BtnApply.Click += BtnApply_Click;
             // 
-            // BtnClose
+            // BtnCancel
             // 
-            BtnClose.Location = new Point(528, 404);
-            BtnClose.Name = "BtnClose";
-            BtnClose.Size = new Size(112, 34);
-            BtnClose.TabIndex = 11;
-            BtnClose.Text = "Close";
-            BtnClose.UseVisualStyleBackColor = true;
-            BtnClose.Click += BtnClose_Click;
+            BtnCancel.Location = new Point(558, 404);
+            BtnCancel.Name = "BtnCancel";
+            BtnCancel.Size = new Size(112, 34);
+            BtnCancel.TabIndex = 11;
+            BtnCancel.Text = "Cancel";
+            BtnCancel.UseVisualStyleBackColor = true;
+            BtnCancel.Click += BtnCancel_Click;
             // 
-            // BtnSaveAndClose
+            // BtnOk
             // 
-            BtnSaveAndClose.Enabled = false;
-            BtnSaveAndClose.Location = new Point(646, 404);
-            BtnSaveAndClose.Name = "BtnSaveAndClose";
-            BtnSaveAndClose.Size = new Size(142, 34);
-            BtnSaveAndClose.TabIndex = 12;
-            BtnSaveAndClose.Text = "Save and Close";
-            BtnSaveAndClose.UseVisualStyleBackColor = true;
-            BtnSaveAndClose.Click += BtnSaveAndClose_Click;
+            BtnOk.Enabled = false;
+            BtnOk.Location = new Point(440, 404);
+            BtnOk.Name = "BtnOk";
+            BtnOk.Size = new Size(112, 34);
+            BtnOk.TabIndex = 12;
+            BtnOk.Text = "Ok";
+            BtnOk.UseVisualStyleBackColor = true;
+            BtnOk.Click += BtnOk_Click;
             // 
             // BtnDelete
             // 
@@ -185,16 +190,59 @@
             LblMandetoryInfos.TabIndex = 15;
             LblMandetoryInfos.Text = "* = mandetory info";
             // 
+            // GbReservationList
+            // 
+            GbReservationList.Controls.Add(BtnDeleteFromReservationList);
+            GbReservationList.Controls.Add(LbReservations);
+            GbReservationList.Controls.Add(BtnAddToReservationList);
+            GbReservationList.Location = new Point(12, 109);
+            GbReservationList.Name = "GbReservationList";
+            GbReservationList.Size = new Size(209, 329);
+            GbReservationList.TabIndex = 30;
+            GbReservationList.TabStop = false;
+            GbReservationList.Text = "Waiting List";
+            // 
+            // BtnDeleteFromReservationList
+            // 
+            BtnDeleteFromReservationList.Dock = DockStyle.Top;
+            BtnDeleteFromReservationList.Location = new Point(3, 290);
+            BtnDeleteFromReservationList.Name = "BtnDeleteFromReservationList";
+            BtnDeleteFromReservationList.Size = new Size(203, 34);
+            BtnDeleteFromReservationList.TabIndex = 1;
+            BtnDeleteFromReservationList.Text = "Remove from waiting list";
+            BtnDeleteFromReservationList.UseVisualStyleBackColor = true;
+            // 
+            // LbReservations
+            // 
+            LbReservations.Dock = DockStyle.Top;
+            LbReservations.FormattingEnabled = true;
+            LbReservations.ItemHeight = 25;
+            LbReservations.Location = new Point(3, 61);
+            LbReservations.Name = "LbReservations";
+            LbReservations.Size = new Size(203, 229);
+            LbReservations.TabIndex = 2;
+            // 
+            // BtnAddToReservationList
+            // 
+            BtnAddToReservationList.Dock = DockStyle.Top;
+            BtnAddToReservationList.Location = new Point(3, 27);
+            BtnAddToReservationList.Name = "BtnAddToReservationList";
+            BtnAddToReservationList.Size = new Size(203, 34);
+            BtnAddToReservationList.TabIndex = 0;
+            BtnAddToReservationList.Text = "Add to waiting list";
+            BtnAddToReservationList.UseVisualStyleBackColor = true;
+            // 
             // DisplayReadersWindow
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(GbReservationList);
             Controls.Add(LblMandetoryInfos);
             Controls.Add(BtnDelete);
-            Controls.Add(BtnSaveAndClose);
-            Controls.Add(BtnClose);
-            Controls.Add(BtnSave);
+            Controls.Add(BtnOk);
+            Controls.Add(BtnCancel);
+            Controls.Add(BtnApply);
             Controls.Add(DtpBirthday);
             Controls.Add(TxtAdress);
             Controls.Add(TxtId);
@@ -207,6 +255,7 @@
             Controls.Add(LblName);
             Name = "DisplayReadersWindow";
             Text = "DisplayReaders";
+            GbReservationList.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -223,10 +272,14 @@
         private TextBox TxtId;
         private TextBox TxtAdress;
         private DateTimePicker DtpBirthday;
-        private Button BtnSave;
-        private Button BtnClose;
-        private Button BtnSaveAndClose;
+        private Button BtnApply;
+        private Button BtnCancel;
+        private Button BtnOk;
         private Button BtnDelete;
         private Label LblMandetoryInfos;
+        private GroupBox GbReservationList;
+        private Button BtnDeleteFromReservationList;
+        private ListBox LbReservations;
+        private Button BtnAddToReservationList;
     }
 }

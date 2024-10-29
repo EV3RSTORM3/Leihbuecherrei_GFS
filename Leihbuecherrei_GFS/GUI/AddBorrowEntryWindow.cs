@@ -45,7 +45,7 @@ namespace Leihbuecherrei_GFS.GUI
             }
         }
 
-        private void BtnAddEntry_Click(object sender, EventArgs e)
+        private void BtnOk_Click(object sender, EventArgs e)
         {
 
             Reader selectedReader = LbReaders.SelectedItem as Reader;
@@ -59,7 +59,7 @@ namespace Leihbuecherrei_GFS.GUI
             }
             else 
             {
-                if(control.AddBorrowEntryBtnSaveClick(selectedReader, selectedBook, DateOnly.FromDateTime(DtpDueTo.Value)))
+                if(control.AddBorrowEntry(selectedReader, selectedBook, DateOnly.FromDateTime(DtpDueTo.Value)))
                 {
                     this.Close();
                 }
@@ -69,7 +69,7 @@ namespace Leihbuecherrei_GFS.GUI
                     var confirmResult = MessageBox.Show($"{selectedBook.Title} is not available right now\nDo you wish to add {selectedReader.Name} to the waiting list for this book", $"Add {selectedReader.Name} to waiting list", MessageBoxButtons.YesNo);
                     if (confirmResult == DialogResult.Yes)
                     {
-                        control.AddBorrowEntryAddToWaitingList(selectedReader, selectedBook);
+                        control.AddToWaitingList(selectedReader, selectedBook);
                         this.Close();
                     }
                     else 

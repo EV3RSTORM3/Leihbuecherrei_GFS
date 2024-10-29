@@ -34,7 +34,7 @@
             GbReader = new GroupBox();
             LbReaders = new ListBox();
             TxtSearchReader = new TextBox();
-            BtnAddEntry = new Button();
+            BtnOk = new Button();
             LblDueTo = new Label();
             DtpDueTo = new DateTimePicker();
             LblMandetoryInfos = new Label();
@@ -104,15 +104,15 @@
             TxtSearchReader.TextAlign = HorizontalAlignment.Center;
             TxtSearchReader.KeyPress += TxtSearchReader_KeyPress;
             // 
-            // BtnAddEntry
+            // BtnOk
             // 
-            BtnAddEntry.Location = new Point(349, 288);
-            BtnAddEntry.Name = "BtnAddEntry";
-            BtnAddEntry.Size = new Size(112, 34);
-            BtnAddEntry.TabIndex = 3;
-            BtnAddEntry.Text = "Add entry";
-            BtnAddEntry.UseVisualStyleBackColor = true;
-            BtnAddEntry.Click += BtnAddEntry_Click;
+            BtnOk.Location = new Point(349, 288);
+            BtnOk.Name = "BtnOk";
+            BtnOk.Size = new Size(112, 34);
+            BtnOk.TabIndex = 3;
+            BtnOk.Text = "Ok";
+            BtnOk.UseVisualStyleBackColor = true;
+            BtnOk.Click += BtnOk_Click;
             // 
             // LblDueTo
             // 
@@ -149,7 +149,7 @@
             Controls.Add(LblMandetoryInfos);
             Controls.Add(DtpDueTo);
             Controls.Add(LblDueTo);
-            Controls.Add(BtnAddEntry);
+            Controls.Add(BtnOk);
             Controls.Add(GbReader);
             Controls.Add(GbBook);
             Name = "AddBorrowEntryWindow";
@@ -169,7 +169,7 @@
         private GroupBox GbReader;
         private ListBox LbReaders;
         private TextBox TxtSearchReader;
-        private Button BtnAddEntry;
+        private Button BtnOk;
         private Label LblDueTo;
         private DateTimePicker DtpDueTo;
         private Label LblMandetoryInfos;

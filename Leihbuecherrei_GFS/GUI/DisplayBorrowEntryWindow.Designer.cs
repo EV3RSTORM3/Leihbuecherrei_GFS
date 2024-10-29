@@ -46,9 +46,9 @@
             GbReturned = new GroupBox();
             DtpReturnedOn = new DateTimePicker();
             LblReturnedOn = new Label();
-            BtnSaveAndClose = new Button();
-            BtnClose = new Button();
-            BtnSave = new Button();
+            BtnOk = new Button();
+            BtnCancel = new Button();
+            BtnApply = new Button();
             LblMandetoryInfos = new Label();
             GbReader.SuspendLayout();
             GbBook.SuspendLayout();
@@ -235,37 +235,37 @@
             LblReturnedOn.TabIndex = 33;
             LblReturnedOn.Text = "Returned on:";
             // 
-            // BtnSaveAndClose
+            // BtnOk
             // 
-            BtnSaveAndClose.Enabled = false;
-            BtnSaveAndClose.Location = new Point(517, 404);
-            BtnSaveAndClose.Name = "BtnSaveAndClose";
-            BtnSaveAndClose.Size = new Size(142, 34);
-            BtnSaveAndClose.TabIndex = 36;
-            BtnSaveAndClose.Text = "Save and Close";
-            BtnSaveAndClose.UseVisualStyleBackColor = true;
-            BtnSaveAndClose.Click += BtnSaveAndClose_Click;
+            BtnOk.Enabled = false;
+            BtnOk.Location = new Point(311, 404);
+            BtnOk.Name = "BtnOk";
+            BtnOk.Size = new Size(112, 34);
+            BtnOk.TabIndex = 36;
+            BtnOk.Text = "Ok";
+            BtnOk.UseVisualStyleBackColor = true;
+            BtnOk.Click += BtnOk_Click;
             // 
-            // BtnClose
+            // BtnCancel
             // 
-            BtnClose.Location = new Point(399, 404);
-            BtnClose.Name = "BtnClose";
-            BtnClose.Size = new Size(112, 34);
-            BtnClose.TabIndex = 35;
-            BtnClose.Text = "Close";
-            BtnClose.UseVisualStyleBackColor = true;
-            BtnClose.Click += BtnClose_Click;
+            BtnCancel.Location = new Point(429, 404);
+            BtnCancel.Name = "BtnCancel";
+            BtnCancel.Size = new Size(112, 34);
+            BtnCancel.TabIndex = 35;
+            BtnCancel.Text = "Cancel";
+            BtnCancel.UseVisualStyleBackColor = true;
+            BtnCancel.Click += BtnCancel_Click;
             // 
-            // BtnSave
+            // BtnApply
             // 
-            BtnSave.Enabled = false;
-            BtnSave.Location = new Point(281, 404);
-            BtnSave.Name = "BtnSave";
-            BtnSave.Size = new Size(112, 34);
-            BtnSave.TabIndex = 34;
-            BtnSave.Text = "Save";
-            BtnSave.UseVisualStyleBackColor = true;
-            BtnSave.Click += BtnSave_Click;
+            BtnApply.Enabled = false;
+            BtnApply.Location = new Point(547, 404);
+            BtnApply.Name = "BtnApply";
+            BtnApply.Size = new Size(112, 34);
+            BtnApply.TabIndex = 34;
+            BtnApply.Text = "Apply";
+            BtnApply.UseVisualStyleBackColor = true;
+            BtnApply.Click += BtnApply_Click;
             // 
             // LblMandetoryInfos
             // 
@@ -283,9 +283,9 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(671, 450);
             Controls.Add(LblMandetoryInfos);
-            Controls.Add(BtnSaveAndClose);
-            Controls.Add(BtnClose);
-            Controls.Add(BtnSave);
+            Controls.Add(BtnOk);
+            Controls.Add(BtnCancel);
+            Controls.Add(BtnApply);
             Controls.Add(GbReturned);
             Controls.Add(DtpDueTo);
             Controls.Add(LblDueTo);
@@ -328,9 +328,9 @@
         private Label LblDueTo;
         private GroupBox GbReturned;
         private Label LblReturnedOn;
-        private Button BtnSaveAndClose;
-        private Button BtnClose;
-        private Button BtnSave;
+        private Button BtnOk;
+        private Button BtnCancel;
+        private Button BtnApply;
         private Label LblMandetoryInfos;
         private DateTimePicker DtpReturnedOn;
     }
