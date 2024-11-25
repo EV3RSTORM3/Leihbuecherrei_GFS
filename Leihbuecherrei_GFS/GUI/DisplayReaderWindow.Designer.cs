@@ -100,7 +100,7 @@
             TxtName.Location = new Point(89, 12);
             TxtName.Name = "TxtName";
             TxtName.Size = new Size(150, 31);
-            TxtName.TabIndex = 5;
+            TxtName.TabIndex = 0;
             TxtName.TextChanged += ContentChanged;
             // 
             // TxtCity
@@ -108,7 +108,7 @@
             TxtCity.Location = new Point(72, 57);
             TxtCity.Name = "TxtCity";
             TxtCity.Size = new Size(150, 31);
-            TxtCity.TabIndex = 6;
+            TxtCity.TabIndex = 1;
             TxtCity.TextChanged += ContentChanged;
             // 
             // TxtId
@@ -124,7 +124,7 @@
             TxtAdress.Location = new Point(314, 57);
             TxtAdress.Name = "TxtAdress";
             TxtAdress.Size = new Size(150, 31);
-            TxtAdress.TabIndex = 8;
+            TxtAdress.TabIndex = 2;
             TxtAdress.TextChanged += ContentChanged;
             // 
             // DtpBirthday
@@ -133,7 +133,7 @@
             DtpBirthday.Location = new Point(559, 60);
             DtpBirthday.Name = "DtpBirthday";
             DtpBirthday.Size = new Size(148, 31);
-            DtpBirthday.TabIndex = 9;
+            DtpBirthday.TabIndex = 3;
             DtpBirthday.ValueChanged += ContentChanged;
             DtpBirthday.Enter += DtpBirthday_Enter;
             DtpBirthday.Leave += DtpBirthday_Leave;
@@ -144,7 +144,7 @@
             BtnApply.Location = new Point(676, 404);
             BtnApply.Name = "BtnApply";
             BtnApply.Size = new Size(112, 34);
-            BtnApply.TabIndex = 10;
+            BtnApply.TabIndex = 14;
             BtnApply.Text = "Apply";
             BtnApply.UseVisualStyleBackColor = true;
             BtnApply.Click += BtnApply_Click;
@@ -154,7 +154,7 @@
             BtnCancel.Location = new Point(558, 404);
             BtnCancel.Name = "BtnCancel";
             BtnCancel.Size = new Size(112, 34);
-            BtnCancel.TabIndex = 11;
+            BtnCancel.TabIndex = 13;
             BtnCancel.Text = "Cancel";
             BtnCancel.UseVisualStyleBackColor = true;
             BtnCancel.Click += BtnCancel_Click;
@@ -176,6 +176,7 @@
             BtnDelete.Name = "BtnDelete";
             BtnDelete.Size = new Size(142, 34);
             BtnDelete.TabIndex = 13;
+            BtnDelete.TabStop = false;
             BtnDelete.Text = "Delete Reader";
             BtnDelete.UseVisualStyleBackColor = true;
             BtnDelete.Click += BtnDelete_Click;
@@ -198,7 +199,7 @@
             GbReservationList.Location = new Point(12, 109);
             GbReservationList.Name = "GbReservationList";
             GbReservationList.Size = new Size(209, 329);
-            GbReservationList.TabIndex = 30;
+            GbReservationList.TabIndex = 4;
             GbReservationList.TabStop = false;
             GbReservationList.Text = "Waiting List";
             // 
@@ -208,9 +209,10 @@
             BtnDeleteFromReservationList.Location = new Point(3, 290);
             BtnDeleteFromReservationList.Name = "BtnDeleteFromReservationList";
             BtnDeleteFromReservationList.Size = new Size(203, 34);
-            BtnDeleteFromReservationList.TabIndex = 1;
+            BtnDeleteFromReservationList.TabIndex = 2;
             BtnDeleteFromReservationList.Text = "Remove from waiting list";
             BtnDeleteFromReservationList.UseVisualStyleBackColor = true;
+            BtnDeleteFromReservationList.Click += BtnDeleteFromReservationList_Click;
             // 
             // LbReservations
             // 
@@ -220,7 +222,7 @@
             LbReservations.Location = new Point(3, 61);
             LbReservations.Name = "LbReservations";
             LbReservations.Size = new Size(203, 229);
-            LbReservations.TabIndex = 2;
+            LbReservations.TabIndex = 1;
             // 
             // BtnAddToReservationList
             // 
@@ -231,8 +233,9 @@
             BtnAddToReservationList.TabIndex = 0;
             BtnAddToReservationList.Text = "Add to waiting list";
             BtnAddToReservationList.UseVisualStyleBackColor = true;
+            BtnAddToReservationList.Click += BtnAddToReservationList_Click;
             // 
-            // DisplayReadersWindow
+            // DisplayReaderWindow
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -253,7 +256,7 @@
             Controls.Add(LblCity);
             Controls.Add(LblId);
             Controls.Add(LblName);
-            Name = "DisplayReadersWindow";
+            Name = "DisplayReaderWindow";
             Text = "DisplayReaders";
             GbReservationList.ResumeLayout(false);
             ResumeLayout(false);

@@ -47,7 +47,7 @@
             DtpBirthday.Location = new Point(96, 145);
             DtpBirthday.Name = "DtpBirthday";
             DtpBirthday.Size = new Size(148, 31);
-            DtpBirthday.TabIndex = 4;
+            DtpBirthday.TabIndex = 3;
             DtpBirthday.Enter += DtpBirthday_Enter;
             DtpBirthday.Leave += DtpBirthday_Leave;
             // 
@@ -97,7 +97,7 @@
             TxtCity.Location = new Point(96, 107);
             TxtCity.Name = "TxtCity";
             TxtCity.Size = new Size(148, 31);
-            TxtCity.TabIndex = 3;
+            TxtCity.TabIndex = 2;
             // 
             // TxtAdress
             // 
@@ -105,7 +105,7 @@
             TxtAdress.Location = new Point(96, 64);
             TxtAdress.Name = "TxtAdress";
             TxtAdress.Size = new Size(148, 31);
-            TxtAdress.TabIndex = 2;
+            TxtAdress.TabIndex = 1;
             // 
             // TxtName
             // 
@@ -113,7 +113,7 @@
             TxtName.Location = new Point(96, 20);
             TxtName.Name = "TxtName";
             TxtName.Size = new Size(148, 31);
-            TxtName.TabIndex = 1;
+            TxtName.TabIndex = 0;
             // 
             // BtnOk
             // 
@@ -121,7 +121,7 @@
             BtnOk.Location = new Point(76, 226);
             BtnOk.Name = "BtnOk";
             BtnOk.Size = new Size(112, 34);
-            BtnOk.TabIndex = 5;
+            BtnOk.TabIndex = 4;
             BtnOk.Text = "Ok";
             BtnOk.UseVisualStyleBackColor = true;
             BtnOk.Click += BtnOk_Click;
@@ -151,6 +151,8 @@
             Controls.Add(LblAdress);
             Controls.Add(LblName);
             Controls.Add(DtpBirthday);
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "AddReaderWindow";
             Text = "Add reader";
             ResumeLayout(false);

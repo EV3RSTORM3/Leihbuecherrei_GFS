@@ -16,7 +16,7 @@ namespace Leihbuecherrei_GFS.GUI
         private Control control;
         private Book book;
 
-        public DisplayBookWindow(Control pControl, Book pBook)
+        public DisplayBookWindow( Control pControl, Book pBook )
         {
             control = pControl;
             book = pBook;
@@ -40,13 +40,13 @@ namespace Leihbuecherrei_GFS.GUI
         }
 
         //activates the save buttons whe the content of the window is changed
-        private void ContentChanged(object sender, EventArgs e)
+        private void ContentChanged( object sender, EventArgs e )
         {
             BtnApply.Enabled = true;
             BtnOk.Enabled = true;
         }
 
-        private void BtnCancel_Click(object sender, EventArgs e)
+        private void BtnCancel_Click( object sender, EventArgs e )
         {
             var confirmResult = MessageBox.Show("Changes will be discarded", "Close this Window?", MessageBoxButtons.YesNo);
 
@@ -56,7 +56,7 @@ namespace Leihbuecherrei_GFS.GUI
             }
         }
 
-        private void BtnApply_Click(object sender, EventArgs e)
+        private void BtnApply_Click( object sender, EventArgs e )
         {
             if (control.DisplayBookSave(book, TxtTitle.Text, TxtAuthor.Text, TxtPublisher.Text) == false)
             {
@@ -69,7 +69,7 @@ namespace Leihbuecherrei_GFS.GUI
             }
         }
 
-        private void BtnOk_Click(object sender, EventArgs e)
+        private void BtnOk_Click( object sender, EventArgs e )
         {
             if (control.DisplayBookSave(book, TxtTitle.Text, TxtAuthor.Text, TxtPublisher.Text) == false)
             {
@@ -81,7 +81,7 @@ namespace Leihbuecherrei_GFS.GUI
             }
         }
 
-        private void BtnDelete_Click(object sender, EventArgs e)
+        private void BtnDelete_Click( object sender, EventArgs e )
         {
             var confirmResult = MessageBox.Show("Are you sure to delete this item ??", "Confirm Delete!!", MessageBoxButtons.YesNo);
 
@@ -90,6 +90,28 @@ namespace Leihbuecherrei_GFS.GUI
                 control.DisplayBookDelete(book);
                 this.Close();
             }
+        }
+
+        private void BtnAddToReservationList_Click( object sender, EventArgs e )
+        {
+            AddToWaitingListWindow addToWaitingListWindow = new AddToWaitingListWindow(book, control);
+            addToWaitingListWindow.ShowDialog();
+            RefreshReservationsList();
+        }
+
+        private void BtnDeleteFromReservationList_Click( object sender, EventArgs e )
+        {
+            var confirmResult = MessageBox.Show("Are you sure you want to remove the selected reader from the books waitinglist?", "Delete Reservation", MessageBoxButtons.YesNo);
+
+            if (confirmResult == DialogResult.Yes)
+            {
+                control.RemoveFromWaitinglist(LbReservations.SelectedItem as Reservation);
+            }
+        }
+
+        private void RefreshReservationsList()
+        {
+            LbReservations.DataSource = control.GetWaitinglist(book);
         }
     }
 }

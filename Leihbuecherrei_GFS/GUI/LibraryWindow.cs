@@ -27,7 +27,7 @@ namespace Leihbuecherrei_GFS
             AddBookWindow addBookWindow = new AddBookWindow(control);
 
             addBookWindow.Location = new Point(0, 0);
-            addBookWindow.Show();
+            addBookWindow.ShowDialog();
         }
 
         private void BtnAddReader_Click(object sender, EventArgs e)
@@ -35,7 +35,7 @@ namespace Leihbuecherrei_GFS
             AddReaderWindow addReaderWindow = new AddReaderWindow(control);
 
             addReaderWindow.Location = new Point(0, 0);
-            addReaderWindow.Show();
+            addReaderWindow.ShowDialog();
         }
 
         public void RefreshReadersList()
@@ -80,6 +80,9 @@ namespace Leihbuecherrei_GFS
             if (e.KeyChar == (char)Keys.Enter)
             {
                 LbReaders.DataSource = control.SearchReader(TxtSearchReader.Text);
+                
+                //focuses LbReaders after the user hits enter to search
+                this.LbReaders.Focus();
             }
         }
 
@@ -88,6 +91,9 @@ namespace Leihbuecherrei_GFS
             if (e.KeyChar == (char)Keys.Enter)
             {
                 LbBooks.DataSource = control.SearchBook(TxtSearchBook.Text);
+
+                //focuses LbBooks after the user hits enter to search
+                this.LbBooks.Focus();
             }
         }
 

@@ -126,8 +126,10 @@
             Controls.Add(LblAuthor);
             Controls.Add(LblPublisher);
             Controls.Add(LblTitle);
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "AddBookWindow";
-            Text = "AddBook";
+            Text = "Add book";
             ResumeLayout(false);
             PerformLayout();
         }

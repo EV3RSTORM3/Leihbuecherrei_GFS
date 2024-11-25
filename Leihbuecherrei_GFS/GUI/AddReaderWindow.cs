@@ -48,6 +48,9 @@ namespace Leihbuecherrei_GFS.GUI
                 DtpBirthday.Format = DateTimePickerFormat.Custom;
                 DtpBirthday.CustomFormat = " ";
             }
+
+            //focuses the OK button when the user leaves the control using tab as the focus would not be transfered if using the tab button normally probably due to the cahnging of the format
+            this.BtnOk.Focus();
         }
     }
 }

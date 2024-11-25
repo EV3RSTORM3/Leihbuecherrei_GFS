@@ -17,7 +17,7 @@ namespace Leihbuecherrei_GFS.GUI
         private Control control;
         private Reader reader;
 
-        public DisplayReaderWindow(Control pControl, Reader pReader)
+        public DisplayReaderWindow( Control pControl, Reader pReader )
         {
             control = pControl;
             reader = pReader;
@@ -34,16 +34,18 @@ namespace Leihbuecherrei_GFS.GUI
             TxtId.Text = Convert.ToString(reader.Id);
             TxtCity.Text = reader.City;
             TxtAdress.Text = reader.Address;
-            
+
             //?? handles the possibility of Birthday being null
             //Have to Add a TimeOnly to the DateOnly to make a DateTime, because WinForms DateTimepicker only accepts DateTime variables
             DtpBirthday.Value = reader.Birthday?.ToDateTime(new TimeOnly(0, 0)) ?? DateTime.Today;
 
-            if (reader.Birthday == null) 
+            if (reader.Birthday == null)
             {
                 DtpBirthday.Format = DateTimePickerFormat.Custom;
                 DtpBirthday.CustomFormat = " ";
             }
+
+            LbReservations.DataSource = control.GetWaitinglist(reader);
 
             //Save button has to be disabled after initializing the data because TextChanged methods detect the initialization as changed
             BtnApply.Enabled = false;
@@ -51,13 +53,13 @@ namespace Leihbuecherrei_GFS.GUI
         }
 
         //if the user enters the DateTimePicker, the DateTimePicker will show the date
-        private void DtpBirthday_Enter(object sender, EventArgs e)
+        private void DtpBirthday_Enter( object sender, EventArgs e )
         {
             DtpBirthday.Format = DateTimePickerFormat.Short;
         }
 
         //if the user leaves the DateTimePicker without selecting a date, the DateTimePicker will show nothing
-        private void DtpBirthday_Leave(object sender, EventArgs e)
+        private void DtpBirthday_Leave( object sender, EventArgs e )
         {
             if (DateOnly.FromDateTime(DtpBirthday.Value).CompareTo(DateOnly.FromDateTime(DateTime.Today)) >= 0)
             {
@@ -67,13 +69,13 @@ namespace Leihbuecherrei_GFS.GUI
         }
 
         //activates the save buttons whe the content of the window is changed
-        private void ContentChanged(object sender, EventArgs e)
+        private void ContentChanged( object sender, EventArgs e )
         {
             BtnApply.Enabled = true;
             BtnOk.Enabled = true;
         }
 
-        private void BtnApply_Click(object sender, EventArgs e)
+        private void BtnApply_Click( object sender, EventArgs e )
         {
             if (control.DisplayReaderSave(reader, TxtName.Text, TxtAdress.Text, TxtCity.Text, DateOnly.FromDateTime(DtpBirthday.Value)) == false)
             {
@@ -86,7 +88,7 @@ namespace Leihbuecherrei_GFS.GUI
             }
         }
 
-        private void BtnCancel_Click(object sender, EventArgs e)
+        private void BtnCancel_Click( object sender, EventArgs e )
         {
             var confirmResult = MessageBox.Show("Changes will be discarded", "Close this Window?", MessageBoxButtons.YesNo);
 
@@ -96,7 +98,7 @@ namespace Leihbuecherrei_GFS.GUI
             }
         }
 
-        private void BtnOk_Click(object sender, EventArgs e)
+        private void BtnOk_Click( object sender, EventArgs e )
         {
             if (control.DisplayReaderSave(reader, TxtName.Text, TxtAdress.Text, TxtCity.Text, DateOnly.FromDateTime(DtpBirthday.Value)) == false)
             {
@@ -108,7 +110,7 @@ namespace Leihbuecherrei_GFS.GUI
             }
         }
 
-        private void BtnDelete_Click(object sender, EventArgs e)
+        private void BtnDelete_Click( object sender, EventArgs e )
         {
             var confirmResult = MessageBox.Show("Are you sure to delete this item ??", "Confirm Delete!!", MessageBoxButtons.YesNo);
 
@@ -117,6 +119,31 @@ namespace Leihbuecherrei_GFS.GUI
                 control.DisplayReaderDelete(reader);
                 this.Close();
             }
+        }
+
+        private void BtnAddToReservationList_Click( object sender, EventArgs e )
+        {
+            AddToWaitingListWindow addToWaitingListWindow = new AddToWaitingListWindow(reader, control);
+            addToWaitingListWindow.ShowDialog();
+            RefreshReservationsList();
+        }
+
+        private void BtnDeleteFromReservationList_Click( object sender, EventArgs e )
+        {
+            var confirmResult = MessageBox.Show("Are you sure you want to remonve the selected book from the users waitinglist?", "Delete Reservation", MessageBoxButtons.YesNo);
+
+            if (confirmResult == DialogResult.Yes)
+            {
+                control.RemoveFromWaitinglist(LbReservations.SelectedItem as Reservation);
+            }
+
+            //focuses the OK button when the user leaves the control using tab as the focus would not be transfered if using the tab button normally probably due to the cahnging of the format
+            this.BtnOk.Focus();
+        }
+
+        private void RefreshReservationsList()
+        {
+            LbReservations.DataSource = control.GetWaitinglist(reader);
         }
     }
 }

@@ -63,7 +63,7 @@
             GbReader.Location = new Point(12, 12);
             GbReader.Name = "GbReader";
             GbReader.Size = new Size(206, 207);
-            GbReader.TabIndex = 7;
+            GbReader.TabIndex = 0;
             GbReader.TabStop = false;
             GbReader.Text = "*Reader";
             // 
@@ -95,7 +95,7 @@
             GbBook.Location = new Point(12, 231);
             GbBook.Name = "GbBook";
             GbBook.Size = new Size(206, 207);
-            GbBook.TabIndex = 6;
+            GbBook.TabIndex = 1;
             GbBook.TabStop = false;
             GbBook.Text = "*Book";
             // 
@@ -114,7 +114,7 @@
             TxtSearchBook.Name = "TxtSearchBook";
             TxtSearchBook.PlaceholderText = "Search Book";
             TxtSearchBook.Size = new Size(194, 31);
-            TxtSearchBook.TabIndex = 1;
+            TxtSearchBook.TabIndex = 0;
             TxtSearchBook.TextAlign = HorizontalAlignment.Center;
             TxtSearchBook.TextChanged += ContentChanged;
             TxtSearchBook.KeyPress += TxtSearchBook_KeyPress;
@@ -142,6 +142,7 @@
             BtnDelete.Name = "BtnDelete";
             BtnDelete.Size = new Size(112, 34);
             BtnDelete.TabIndex = 26;
+            BtnDelete.TabStop = false;
             BtnDelete.Text = "Delete";
             BtnDelete.UseVisualStyleBackColor = true;
             BtnDelete.Click += BtnDelete_Click;
@@ -153,7 +154,7 @@
             CbReturned.Location = new Point(6, 0);
             CbReturned.Name = "CbReturned";
             CbReturned.Size = new Size(113, 29);
-            CbReturned.TabIndex = 27;
+            CbReturned.TabIndex = 0;
             CbReturned.Text = "Returned:";
             CbReturned.UseVisualStyleBackColor = true;
             CbReturned.CheckedChanged += CbReturned_CheckedChanged;
@@ -165,7 +166,7 @@
             CbClosed.Location = new Point(240, 298);
             CbClosed.Name = "CbClosed";
             CbClosed.Size = new Size(96, 29);
-            CbClosed.TabIndex = 28;
+            CbClosed.TabIndex = 5;
             CbClosed.Text = "Closed:";
             CbClosed.UseVisualStyleBackColor = true;
             CbClosed.CheckedChanged += ContentChanged;
@@ -185,7 +186,7 @@
             DtpBorrowedOn.Location = new Point(373, 74);
             DtpBorrowedOn.Name = "DtpBorrowedOn";
             DtpBorrowedOn.Size = new Size(143, 31);
-            DtpBorrowedOn.TabIndex = 30;
+            DtpBorrowedOn.TabIndex = 2;
             DtpBorrowedOn.ValueChanged += ContentChanged;
             // 
             // DtpDueTo
@@ -194,7 +195,7 @@
             DtpDueTo.Location = new Point(324, 117);
             DtpDueTo.Name = "DtpDueTo";
             DtpDueTo.Size = new Size(143, 31);
-            DtpDueTo.TabIndex = 32;
+            DtpDueTo.TabIndex = 3;
             DtpDueTo.ValueChanged += ContentChanged;
             // 
             // LblDueTo
@@ -215,7 +216,7 @@
             GbReturned.Location = new Point(240, 177);
             GbReturned.Name = "GbReturned";
             GbReturned.Size = new Size(300, 87);
-            GbReturned.TabIndex = 33;
+            GbReturned.TabIndex = 4;
             GbReturned.TabStop = false;
             // 
             // DtpReturnedOn
@@ -224,7 +225,7 @@
             DtpReturnedOn.Location = new Point(128, 36);
             DtpReturnedOn.Name = "DtpReturnedOn";
             DtpReturnedOn.Size = new Size(143, 31);
-            DtpReturnedOn.TabIndex = 34;
+            DtpReturnedOn.TabIndex = 1;
             // 
             // LblReturnedOn
             // 
@@ -241,7 +242,7 @@
             BtnOk.Location = new Point(311, 404);
             BtnOk.Name = "BtnOk";
             BtnOk.Size = new Size(112, 34);
-            BtnOk.TabIndex = 36;
+            BtnOk.TabIndex = 6;
             BtnOk.Text = "Ok";
             BtnOk.UseVisualStyleBackColor = true;
             BtnOk.Click += BtnOk_Click;
@@ -251,7 +252,7 @@
             BtnCancel.Location = new Point(429, 404);
             BtnCancel.Name = "BtnCancel";
             BtnCancel.Size = new Size(112, 34);
-            BtnCancel.TabIndex = 35;
+            BtnCancel.TabIndex = 7;
             BtnCancel.Text = "Cancel";
             BtnCancel.UseVisualStyleBackColor = true;
             BtnCancel.Click += BtnCancel_Click;
@@ -262,7 +263,7 @@
             BtnApply.Location = new Point(547, 404);
             BtnApply.Name = "BtnApply";
             BtnApply.Size = new Size(112, 34);
-            BtnApply.TabIndex = 34;
+            BtnApply.TabIndex = 8;
             BtnApply.Text = "Apply";
             BtnApply.UseVisualStyleBackColor = true;
             BtnApply.Click += BtnApply_Click;
@@ -297,6 +298,8 @@
             Controls.Add(LblId);
             Controls.Add(GbReader);
             Controls.Add(GbBook);
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "DisplayBorrowEntryWindow";
             Text = "DisplayBorrowEntryWindow";
             GbReader.ResumeLayout(false);

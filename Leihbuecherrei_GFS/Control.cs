@@ -76,7 +76,7 @@ namespace Leihbuecherrei_GFS
                 DisplayReaderWindow displayReaders = new DisplayReaderWindow(this, database.Readers.Find(selectedReader.Id));
 
                 displayReaders.Location = new Point(0, 0);
-                displayReaders.Show();
+                displayReaders.ShowDialog();
             }
         }
 
@@ -134,7 +134,7 @@ namespace Leihbuecherrei_GFS
                 DisplayBookWindow displayBook = new DisplayBookWindow(this, database.Books.Find(selectedBook.Id));
 
                 displayBook.Location = new Point(0, 0);
-                displayBook.Show();
+                displayBook.ShowDialog();
             }
         }
 
@@ -330,7 +330,7 @@ namespace Leihbuecherrei_GFS
                 DisplayBorrowEntryWindow displayBorrowEntry = new DisplayBorrowEntryWindow(this, database.BorrowEntries.Find(selectedBorrowEntry.Id));
 
                 displayBorrowEntry.Location = new Point(0, 0);
-                displayBorrowEntry.Show();
+                displayBorrowEntry.ShowDialog();
             }
         }
 
@@ -340,7 +340,7 @@ namespace Leihbuecherrei_GFS
             {
                 //gets the book from the database and sets it to available if its unavailability was due to the deleted BorrowEntry
                 Book book = database.Books.Find(pBorrowEntry.Book.Id);
-                if (!book.Available && !pBorrowEntry.Returned) 
+                if (!book.Available && !pBorrowEntry.Returned && !pBorrowEntry.Closed) 
                 {
                     book.Available = true;
 

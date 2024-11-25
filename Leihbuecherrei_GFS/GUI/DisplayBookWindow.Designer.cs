@@ -65,7 +65,7 @@
             BtnCancel.Location = new Point(558, 404);
             BtnCancel.Name = "BtnCancel";
             BtnCancel.Size = new Size(112, 34);
-            BtnCancel.TabIndex = 14;
+            BtnCancel.TabIndex = 16;
             BtnCancel.Text = "Cancel";
             BtnCancel.UseVisualStyleBackColor = true;
             BtnCancel.Click += BtnCancel_Click;
@@ -76,7 +76,7 @@
             BtnApply.Location = new Point(676, 404);
             BtnApply.Name = "BtnApply";
             BtnApply.Size = new Size(112, 34);
-            BtnApply.TabIndex = 13;
+            BtnApply.TabIndex = 17;
             BtnApply.Text = "Apply";
             BtnApply.UseVisualStyleBackColor = true;
             BtnApply.Click += BtnApply_Click;
@@ -86,7 +86,8 @@
             BtnDelete.Location = new Point(649, 10);
             BtnDelete.Name = "BtnDelete";
             BtnDelete.Size = new Size(142, 34);
-            BtnDelete.TabIndex = 26;
+            BtnDelete.TabIndex = 3;
+            BtnDelete.TabStop = false;
             BtnDelete.Text = "Delete Book";
             BtnDelete.UseVisualStyleBackColor = true;
             BtnDelete.Click += BtnDelete_Click;
@@ -96,7 +97,7 @@
             TxtAuthor.Location = new Point(385, 57);
             TxtAuthor.Name = "TxtAuthor";
             TxtAuthor.Size = new Size(150, 31);
-            TxtAuthor.TabIndex = 24;
+            TxtAuthor.TabIndex = 3;
             TxtAuthor.TextChanged += ContentChanged;
             // 
             // TxtId
@@ -112,7 +113,7 @@
             TxtPublisher.Location = new Point(109, 57);
             TxtPublisher.Name = "TxtPublisher";
             TxtPublisher.Size = new Size(150, 31);
-            TxtPublisher.TabIndex = 22;
+            TxtPublisher.TabIndex = 2;
             TxtPublisher.TextChanged += ContentChanged;
             // 
             // TxtTitle
@@ -120,7 +121,7 @@
             TxtTitle.Location = new Point(77, 12);
             TxtTitle.Name = "TxtTitle";
             TxtTitle.Size = new Size(336, 31);
-            TxtTitle.TabIndex = 21;
+            TxtTitle.TabIndex = 1;
             TxtTitle.TextChanged += ContentChanged;
             // 
             // LblAuthor
@@ -176,7 +177,7 @@
             CbAvailable.Location = new Point(592, 59);
             CbAvailable.Name = "CbAvailable";
             CbAvailable.Size = new Size(113, 29);
-            CbAvailable.TabIndex = 28;
+            CbAvailable.TabIndex = 4;
             CbAvailable.Text = "Available:";
             CbAvailable.UseVisualStyleBackColor = true;
             // 
@@ -188,7 +189,7 @@
             GbReservationList.Location = new Point(15, 109);
             GbReservationList.Name = "GbReservationList";
             GbReservationList.Size = new Size(209, 329);
-            GbReservationList.TabIndex = 29;
+            GbReservationList.TabIndex = 5;
             GbReservationList.TabStop = false;
             GbReservationList.Text = "Waiting List";
             // 
@@ -198,9 +199,10 @@
             BtnDeleteFromReservationList.Location = new Point(3, 290);
             BtnDeleteFromReservationList.Name = "BtnDeleteFromReservationList";
             BtnDeleteFromReservationList.Size = new Size(203, 34);
-            BtnDeleteFromReservationList.TabIndex = 1;
+            BtnDeleteFromReservationList.TabIndex = 2;
             BtnDeleteFromReservationList.Text = "Remove from waiting list";
             BtnDeleteFromReservationList.UseVisualStyleBackColor = true;
+            BtnDeleteFromReservationList.Click += BtnDeleteFromReservationList_Click;
             // 
             // LbReservations
             // 
@@ -210,7 +212,7 @@
             LbReservations.Location = new Point(3, 61);
             LbReservations.Name = "LbReservations";
             LbReservations.Size = new Size(203, 229);
-            LbReservations.TabIndex = 2;
+            LbReservations.TabIndex = 1;
             // 
             // BtnAddToReservationList
             // 
@@ -221,6 +223,7 @@
             BtnAddToReservationList.TabIndex = 0;
             BtnAddToReservationList.Text = "Add to waiting list";
             BtnAddToReservationList.UseVisualStyleBackColor = true;
+            BtnAddToReservationList.Click += BtnAddToReservationList_Click;
             // 
             // DisplayBookWindow
             // 
