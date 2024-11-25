@@ -110,6 +110,7 @@
             DgvBorrowEntries.MultiSelect = false;
             DgvBorrowEntries.Name = "DgvBorrowEntries";
             DgvBorrowEntries.ReadOnly = true;
+            DgvBorrowEntries.RowHeadersVisible = false;
             DgvBorrowEntries.RowHeadersWidth = 62;
             DgvBorrowEntries.RowTemplate.Height = 33;
             DgvBorrowEntries.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
