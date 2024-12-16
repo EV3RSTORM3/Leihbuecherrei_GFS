@@ -24,6 +24,7 @@ namespace Leihbuecherrei_GFS
             Application.Run(mainWindow);
         }
 
+        //this method is used to add a new reader to the database
         public bool AddReader(string pName, string pAdress, string pCity, DateOnly pBirthday)
         {
             //checks if the mandetory information is given if or returns false 
@@ -51,6 +52,7 @@ namespace Leihbuecherrei_GFS
             return true;
         }
 
+        //this method is used to add a new book to the database
         public bool AddBook(string pTitle, string pAuthor, string pPublisher)
         {
             //checks if the mandetory information is given if not returns false 
@@ -69,6 +71,7 @@ namespace Leihbuecherrei_GFS
             return true;
         }
 
+        //will find the reader in the database and display it in DisplayReaderWindow
         public void LibraryWindowDisplayReader(Reader selectedReader) 
         {
             using (PostgresDBContext database = new PostgresDBContext())
@@ -80,6 +83,7 @@ namespace Leihbuecherrei_GFS
             }
         }
 
+        //this method is used to save the changes made to a reader in the database
         public bool DisplayReaderSave(Reader pReader, string pName, string pAdress, string pCity, DateOnly pBirthday)
         {
             //checks if the mandetory information is given if not returns false 
@@ -116,6 +120,7 @@ namespace Leihbuecherrei_GFS
             return true;
         }
 
+        //this method is used to delete a reader from the database
         public void DisplayReaderDelete(Reader pReader)
         {
             using (PostgresDBContext database = new PostgresDBContext())
@@ -127,6 +132,7 @@ namespace Leihbuecherrei_GFS
             mainWindow.RefreshReadersList();            
         }
 
+        //will find the book in the database and display it in DisplayBookWindow
         public void LibraryWindowDisplayBook(Book selectedBook)
         {
             using (PostgresDBContext database = new PostgresDBContext())
@@ -138,6 +144,7 @@ namespace Leihbuecherrei_GFS
             }
         }
 
+        //this method is used to save the changes made to a book in the database
         public bool DisplayBookSave(Book pBook, string pTitle, string pAuthor, string pPublisher)
         {
             //checks if the mandetory information is given if not returns false 
@@ -163,6 +170,7 @@ namespace Leihbuecherrei_GFS
             return true;
         }
 
+        //this method is used to delete a book from the database
         public void DisplayBookDelete(Book pBook)
         {
             using (PostgresDBContext database = new PostgresDBContext())
@@ -174,6 +182,7 @@ namespace Leihbuecherrei_GFS
             mainWindow.RefreshBookList();
         }
 
+        //searches for readers with the name or ID given in the searchFor parameter
         //can be used for all searches for readers as there are no usecases where more criteria are set
         public List<Reader> SearchReader(string pSearchFor) 
         {
@@ -194,6 +203,7 @@ namespace Leihbuecherrei_GFS
             return listReaders;
         }
 
+        //searches for books with the title or ID given in the searchFor parameter
         //Method to search for books without additional criteria
         public List<Book> SearchBook(string pSearchFor)
         {
@@ -213,6 +223,7 @@ namespace Leihbuecherrei_GFS
             return listBooks;
         }
 
+        //searches for books with the title or ID given in the searchFor parameter
         //Extra method to search for books with the option to only show available books
         public List<Book> SearchBook(string pSearchFor, bool pIsAvailable)
         {
@@ -232,6 +243,7 @@ namespace Leihbuecherrei_GFS
             return listBooks;
         }
 
+        //this method is used to add a new BorrowEntry to the database
         public bool AddBorrowEntry(Reader pReader, Book pBook, DateOnly pDueTo)
         {
             bool returnValue = true;
@@ -260,7 +272,8 @@ namespace Leihbuecherrei_GFS
             return returnValue;
         }
 
-        public List<BorrowEntry> LibraryWindowSearchBorrowEntry(string pReader, string pBook, CheckState pClosed, CheckState pReturned)
+        //builds the query for the search using the secified parameters and returns the results
+        public List<BorrowEntry> SearchBorrowEntry(string pReader, string pBook, CheckState pClosed, CheckState pReturned)
         {
             using (PostgresDBContext database = new PostgresDBContext())
             {   
@@ -323,7 +336,7 @@ namespace Leihbuecherrei_GFS
             }
         }
 
-        public void LibraryWindowDisplayBorrowEntry(BorrowEntry selectedBorrowEntry)
+        public void DisplayBorrowEntry(BorrowEntry selectedBorrowEntry)
         {
             using (PostgresDBContext database = new PostgresDBContext())
             {
@@ -432,6 +445,7 @@ namespace Leihbuecherrei_GFS
             }
         }
 
+        //returns the waiting list for a book
         public List<Reservation> GetWaitinglist(Book pBook)
         {
             using (PostgresDBContext database = new PostgresDBContext())
@@ -440,6 +454,7 @@ namespace Leihbuecherrei_GFS
             }
         }
 
+        //returns the waiting list for a reader
         public List<Reservation> GetWaitinglist(Reader pReader)
         {
             using (PostgresDBContext database = new PostgresDBContext())

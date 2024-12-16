@@ -21,12 +21,13 @@ namespace Leihbuecherrei_GFS.GUI
             InitializeComponent();
         }
 
+        //adds the new book after checking if all mandatory fields are filled out
         private void BtnOk_Click(object sender, EventArgs e)
         {
-            
+            //AddBook Method returns false if not all mandatory fields are filled out
             if (control.AddBook(TxtTitle.Text, TxtAuthor.Text, TxtPublisher.Text) == false)
             {
-                MessageBox.Show("Please fill out all of the mandetory information!");
+                MessageBox.Show("Please fill out all of the mandatory information!");
             }
             else
             {

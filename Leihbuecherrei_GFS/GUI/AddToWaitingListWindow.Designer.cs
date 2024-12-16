@@ -132,7 +132,9 @@
             Controls.Add(GbReader);
             Controls.Add(GbBook);
             MaximizeBox = false;
+            MaximumSize = new Size(499, 348);
             MinimizeBox = false;
+            MinimumSize = new Size(499, 348);
             Name = "AddToWaitingListWindow";
             Text = "AddToWaitingListWindow";
             GbReader.ResumeLayout(false);

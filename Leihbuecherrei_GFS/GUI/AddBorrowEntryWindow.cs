@@ -20,15 +20,39 @@ namespace Leihbuecherrei_GFS.GUI
             Initialize();
         }
 
+        //initializes the listboxes with all readers and books
         private void Initialize()
         {
-            LbReaders.DataSource = control.SearchReader("");
-            LbReaders.DisplayMember = "IdAndName";
+            LbReaders.DataSource = control.SearchReader(string.Empty);
 
-            LbBooks.DataSource = control.SearchBook("");
-            LbBooks.DisplayMember = "IdAndTitle";
+            LbBooks.DataSource = control.SearchBook(string.Empty);
         }
 
+        //will be used if the user adds a BorrowEntry from the DisplayReaderWindow
+        public AddBorrowEntryWindow(Reader pReader, Control pControl)
+        {
+            control = pControl;
+            InitializeComponent();
+
+            LbReaders.Items.Add(pReader);
+            LbReaders.SelectedIndex = 0;
+
+            LbBooks.DataSource = control.SearchBook(string.Empty);
+        }
+
+        //will be used if the user adds a BorrowEntry from the DisplayBookWindow
+        public AddBorrowEntryWindow( Book pBook, Control pControl )
+        {
+            control = pControl;
+            InitializeComponent();
+
+            LbBooks.Items.Add(pBook);
+            LbBooks.SelectedIndex = 0;
+
+            LbReaders.DataSource = control.SearchReader(string.Empty);
+        }
+
+        //starts the search if the user hits enter
         private void TxtSearchReader_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter)
@@ -40,6 +64,7 @@ namespace Leihbuecherrei_GFS.GUI
             }
         }
 
+        //starts the search if the user hits enter
         private void TxtSearchBook_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter)
@@ -51,6 +76,7 @@ namespace Leihbuecherrei_GFS.GUI
             }
         }
 
+        //adds the BorrowEntry or asks the user to add the reader to the waiting list if the book is not available
         private void BtnOk_Click(object sender, EventArgs e)
         {
 
@@ -58,10 +84,10 @@ namespace Leihbuecherrei_GFS.GUI
             Book selectedBook = LbBooks.SelectedItem as Book;
 
             //check if the date is set to a date after today to ensure all information is given by the user
-            //(checking if an item is selected is the LB is unnessecary as there is always one selected)
+            //(checking if an item is selected is the LB is unnecessary as there is always one selected)
             if (DateOnly.FromDateTime(DtpDueTo.Value).CompareTo(DateOnly.FromDateTime(DateTime.Today)) <= 0) 
             {
-                MessageBox.Show("Please fill out all of the mandetory information!");
+                MessageBox.Show("Please fill out all of the mandatory information!");
             }
             else 
             {

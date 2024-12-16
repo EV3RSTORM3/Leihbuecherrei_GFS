@@ -299,7 +299,9 @@
             Controls.Add(GbReader);
             Controls.Add(GbBook);
             MaximizeBox = false;
+            MaximumSize = new Size(693, 506);
             MinimizeBox = false;
+            MinimumSize = new Size(693, 506);
             Name = "DisplayBorrowEntryWindow";
             Text = "DisplayBorrowEntryWindow";
             GbReader.ResumeLayout(false);

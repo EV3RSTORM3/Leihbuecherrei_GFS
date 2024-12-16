@@ -18,15 +18,16 @@ namespace Leihbuecherrei_GFS
         public string Name { get; set; }
         public string Address { get; set; }
         public string City { get; set; }
-        public Nullable<DateOnly> Birthday { get; set; }
+        public DateOnly? Birthday { get; set; } //? means that the value can be null
 
-        public Reader() { }
+        public Reader() { } //empty constructor for Entity Framework
 
         public Reader(string pName, string pAddress, string pCity)
         {
             Name = pName;
             Address = pAddress;
             City = pCity;
+            //if the birthday is not set, it will be null
             Birthday = null;
         }
 

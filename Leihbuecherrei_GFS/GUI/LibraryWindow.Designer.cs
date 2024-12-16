@@ -263,7 +263,7 @@
             CbReturned.Name = "CbReturned";
             CbReturned.Size = new Size(109, 29);
             CbReturned.TabIndex = 2;
-            CbReturned.Text = "Retruned";
+            CbReturned.Text = "Returned";
             CbReturned.ThreeState = true;
             CbReturned.UseVisualStyleBackColor = true;
             // 

@@ -34,12 +34,18 @@ namespace Leihbuecherrei_GFS.GUI
             TxtPublisher.Text = book.Publisher;
             TxtAuthor.Text = book.Author;
 
+            //Initializes the list of reservations
+            LbReservations.DataSource = control.GetWaitinglist(book);
+
+            //Initializes the list of borrow entries
+            DgvBorrowEntries.DataSource = control.SearchBorrowEntry(string.Empty, Convert.ToString(book.Id), CheckState.Indeterminate, CheckState.Indeterminate);
+
             //Save button has to be disabled after initializing the data because TextChanged methods detect the initialization as changed
             BtnApply.Enabled = false;
             BtnOk.Enabled = false;
         }
 
-        //activates the save buttons whe the content of the window is changed
+        //activates the save buttons when the content of the window is changed
         private void ContentChanged( object sender, EventArgs e )
         {
             BtnApply.Enabled = true;
@@ -56,6 +62,7 @@ namespace Leihbuecherrei_GFS.GUI
             }
         }
 
+        //saves the changes to the database without closing the window
         private void BtnApply_Click( object sender, EventArgs e )
         {
             if (control.DisplayBookSave(book, TxtTitle.Text, TxtAuthor.Text, TxtPublisher.Text) == false)
@@ -69,6 +76,7 @@ namespace Leihbuecherrei_GFS.GUI
             }
         }
 
+        //saves the changes to the database and closes the window
         private void BtnOk_Click( object sender, EventArgs e )
         {
             if (control.DisplayBookSave(book, TxtTitle.Text, TxtAuthor.Text, TxtPublisher.Text) == false)
@@ -81,6 +89,7 @@ namespace Leihbuecherrei_GFS.GUI
             }
         }
 
+        //deletes the book from the database
         private void BtnDelete_Click( object sender, EventArgs e )
         {
             var confirmResult = MessageBox.Show("Are you sure to delete this item ??", "Confirm Delete!!", MessageBoxButtons.YesNo);
@@ -92,6 +101,7 @@ namespace Leihbuecherrei_GFS.GUI
             }
         }
 
+        //opens the AddToWaitingListWindow to add a reader to the waiting list of the displayed book
         private void BtnAddToReservationList_Click( object sender, EventArgs e )
         {
             AddToWaitingListWindow addToWaitingListWindow = new AddToWaitingListWindow(book, control);
@@ -99,6 +109,7 @@ namespace Leihbuecherrei_GFS.GUI
             RefreshReservationsList();
         }
 
+        //removes the selected reader from the waiting list of the displayed book
         private void BtnDeleteFromReservationList_Click( object sender, EventArgs e )
         {
             var confirmResult = MessageBox.Show("Are you sure you want to remove the selected reader from the books waitinglist?", "Delete Reservation", MessageBoxButtons.YesNo);
@@ -112,6 +123,42 @@ namespace Leihbuecherrei_GFS.GUI
         private void RefreshReservationsList()
         {
             LbReservations.DataSource = control.GetWaitinglist(book);
+        }
+
+        //opens AddBorrowEntryWindow to add a new borrow entry for the displayed book
+        private void BtnNewBorrowEntry_Click( object sender, EventArgs e )
+        {
+            AddBorrowEntryWindow addBorrowEntryWindow = new AddBorrowEntryWindow(book, control);
+
+            addBorrowEntryWindow.Location = new Point(0, 0);
+            addBorrowEntryWindow.ShowDialog();
+        }
+
+        //starts the search if the user hits the search button
+        private void BtnBorrowEntrySearch_Click( object sender, EventArgs e )
+        {
+            DgvBorrowEntries.DataSource = control.SearchBorrowEntry(TxtSearchBorrowEntryReader.Text, Convert.ToString(book.Id), CbClosed.CheckState, CbReturned.CheckState);
+        }
+
+        //resets the filters for the BorrowEntry search and shows all entries
+        private void BtnReset_Click( object sender, EventArgs e )
+        {
+            TxtSearchBorrowEntryReader.Text = string.Empty;
+
+            //Indeterminate is the default state in which the filter is ignored
+            CbClosed.CheckState = CheckState.Indeterminate;
+            CbReturned.CheckState = CheckState.Indeterminate;
+
+            DgvBorrowEntries.DataSource = control.SearchBorrowEntry(TxtSearchBorrowEntryReader.Text, Convert.ToString(book.Id), CbClosed.CheckState, CbReturned.CheckState);
+        }
+
+        //opens the selected BorrowEntry in a new window
+        private void DgvBorrowEntries_DoubleClick( object sender, EventArgs e )
+        {
+            //Gets the selected BorrowEntry
+            BorrowEntry selectedBorrowEntry = DgvBorrowEntries.SelectedRows[0].DataBoundItem as BorrowEntry;
+
+            control.DisplayBorrowEntry(selectedBorrowEntry);
         }
     }
 }

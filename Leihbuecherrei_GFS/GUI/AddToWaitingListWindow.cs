@@ -19,6 +19,7 @@ namespace Leihbuecherrei_GFS.GUI
             InitializeComponent();
         }
 
+        //will be used if the user adds a reservation from the DisplayBookWindow
         public AddToWaitingListWindow( Book pBook, Control pControl ) : this(pControl)
         {
             //Sets the book for which a reservation is going to be made
@@ -28,6 +29,7 @@ namespace Leihbuecherrei_GFS.GUI
             LbReaders.DataSource = control.SearchReader("");
         }
 
+        //will be used if the user adds a reservation from the DisplayReaderWindow
         public AddToWaitingListWindow( Reader pReader, Control pControl ) : this(pControl)
         {
             //Sets the reader for which a reservation is going to be made
@@ -37,6 +39,7 @@ namespace Leihbuecherrei_GFS.GUI
             LbBooks.DataSource = control.SearchBook("");
         }
 
+        //starts the search if the user hits enter
         private void TxtSearchReader_KeyPress( object sender, KeyPressEventArgs e )
         {
             if (e.KeyChar == (char)Keys.Enter)
@@ -48,6 +51,7 @@ namespace Leihbuecherrei_GFS.GUI
             }
         }
 
+        //starts the search if the user hits enter
         private void TxtSearchBook_KeyPress( object sender, KeyPressEventArgs e )
         {
             if (e.KeyChar == (char)Keys.Enter)
@@ -58,6 +62,7 @@ namespace Leihbuecherrei_GFS.GUI
             }
         }
 
+        //adds the reservation
         private void BtnOk_Click( object sender, EventArgs e )
         {
             control.AddToWaitingList(LbReaders.SelectedItem as Reader, LbBooks.SelectedItem as Book);

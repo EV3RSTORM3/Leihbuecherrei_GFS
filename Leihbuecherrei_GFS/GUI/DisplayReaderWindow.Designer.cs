@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             LblName = new Label();
             LblId = new Label();
             LblCity = new Label();
@@ -44,10 +45,31 @@
             BtnDelete = new Button();
             LblMandetoryInfos = new Label();
             GbReservationList = new GroupBox();
-            BtnDeleteFromReservationList = new Button();
             LbReservations = new ListBox();
+            BtnDeleteFromReservationList = new Button();
             BtnAddToReservationList = new Button();
+            GbBorrowEntries = new GroupBox();
+            BtnNewBorrowEntry = new Button();
+            DgvBorrowEntries = new DataGridView();
+            idDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            bookDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            borrowedOnDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            dueToDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            returnedDataGridViewCheckBoxColumn = new DataGridViewCheckBoxColumn();
+            returnedOnDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            closedDataGridViewCheckBoxColumn = new DataGridViewCheckBoxColumn();
+            borrowEntryBindingSource = new BindingSource(components);
+            GbFilters = new GroupBox();
+            BtnReset = new Button();
+            BtnBorrowEntrySearch = new Button();
+            CbClosed = new CheckBox();
+            CbReturned = new CheckBox();
+            TxtSearchBorrowEntryBook = new TextBox();
             GbReservationList.SuspendLayout();
+            GbBorrowEntries.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)DgvBorrowEntries).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)borrowEntryBindingSource).BeginInit();
+            GbFilters.SuspendLayout();
             SuspendLayout();
             // 
             // LblName
@@ -99,7 +121,7 @@
             // 
             TxtName.Location = new Point(89, 12);
             TxtName.Name = "TxtName";
-            TxtName.Size = new Size(150, 31);
+            TxtName.Size = new Size(259, 31);
             TxtName.TabIndex = 0;
             TxtName.TextChanged += ContentChanged;
             // 
@@ -141,7 +163,7 @@
             // BtnApply
             // 
             BtnApply.Enabled = false;
-            BtnApply.Location = new Point(676, 404);
+            BtnApply.Location = new Point(676, 591);
             BtnApply.Name = "BtnApply";
             BtnApply.Size = new Size(112, 34);
             BtnApply.TabIndex = 14;
@@ -151,7 +173,7 @@
             // 
             // BtnCancel
             // 
-            BtnCancel.Location = new Point(558, 404);
+            BtnCancel.Location = new Point(558, 591);
             BtnCancel.Name = "BtnCancel";
             BtnCancel.Size = new Size(112, 34);
             BtnCancel.TabIndex = 13;
@@ -162,7 +184,7 @@
             // BtnOk
             // 
             BtnOk.Enabled = false;
-            BtnOk.Location = new Point(440, 404);
+            BtnOk.Location = new Point(440, 591);
             BtnOk.Name = "BtnOk";
             BtnOk.Size = new Size(112, 34);
             BtnOk.TabIndex = 12;
@@ -185,7 +207,7 @@
             // 
             LblMandetoryInfos.Anchor = AnchorStyles.Top;
             LblMandetoryInfos.AutoSize = true;
-            LblMandetoryInfos.Location = new Point(623, 367);
+            LblMandetoryInfos.Location = new Point(623, 554);
             LblMandetoryInfos.Name = "LblMandetoryInfos";
             LblMandetoryInfos.Size = new Size(165, 25);
             LblMandetoryInfos.TabIndex = 15;
@@ -193,36 +215,36 @@
             // 
             // GbReservationList
             // 
-            GbReservationList.Controls.Add(BtnDeleteFromReservationList);
             GbReservationList.Controls.Add(LbReservations);
+            GbReservationList.Controls.Add(BtnDeleteFromReservationList);
             GbReservationList.Controls.Add(BtnAddToReservationList);
-            GbReservationList.Location = new Point(12, 109);
+            GbReservationList.Location = new Point(12, 100);
             GbReservationList.Name = "GbReservationList";
-            GbReservationList.Size = new Size(209, 329);
+            GbReservationList.Size = new Size(209, 448);
             GbReservationList.TabIndex = 4;
             GbReservationList.TabStop = false;
             GbReservationList.Text = "Waiting List";
             // 
+            // LbReservations
+            // 
+            LbReservations.Dock = DockStyle.Fill;
+            LbReservations.FormattingEnabled = true;
+            LbReservations.ItemHeight = 25;
+            LbReservations.Location = new Point(3, 61);
+            LbReservations.Name = "LbReservations";
+            LbReservations.Size = new Size(203, 350);
+            LbReservations.TabIndex = 1;
+            // 
             // BtnDeleteFromReservationList
             // 
-            BtnDeleteFromReservationList.Dock = DockStyle.Top;
-            BtnDeleteFromReservationList.Location = new Point(3, 290);
+            BtnDeleteFromReservationList.Dock = DockStyle.Bottom;
+            BtnDeleteFromReservationList.Location = new Point(3, 411);
             BtnDeleteFromReservationList.Name = "BtnDeleteFromReservationList";
             BtnDeleteFromReservationList.Size = new Size(203, 34);
             BtnDeleteFromReservationList.TabIndex = 2;
             BtnDeleteFromReservationList.Text = "Remove from waiting list";
             BtnDeleteFromReservationList.UseVisualStyleBackColor = true;
             BtnDeleteFromReservationList.Click += BtnDeleteFromReservationList_Click;
-            // 
-            // LbReservations
-            // 
-            LbReservations.Dock = DockStyle.Top;
-            LbReservations.FormattingEnabled = true;
-            LbReservations.ItemHeight = 25;
-            LbReservations.Location = new Point(3, 61);
-            LbReservations.Name = "LbReservations";
-            LbReservations.Size = new Size(203, 229);
-            LbReservations.TabIndex = 1;
             // 
             // BtnAddToReservationList
             // 
@@ -235,11 +257,204 @@
             BtnAddToReservationList.UseVisualStyleBackColor = true;
             BtnAddToReservationList.Click += BtnAddToReservationList_Click;
             // 
+            // GbBorrowEntries
+            // 
+            GbBorrowEntries.Controls.Add(BtnNewBorrowEntry);
+            GbBorrowEntries.Controls.Add(DgvBorrowEntries);
+            GbBorrowEntries.Controls.Add(GbFilters);
+            GbBorrowEntries.Location = new Point(230, 100);
+            GbBorrowEntries.Name = "GbBorrowEntries";
+            GbBorrowEntries.Size = new Size(561, 451);
+            GbBorrowEntries.TabIndex = 29;
+            GbBorrowEntries.TabStop = false;
+            GbBorrowEntries.Text = "Borrow entries";
+            // 
+            // BtnNewBorrowEntry
+            // 
+            BtnNewBorrowEntry.Location = new Point(3, 414);
+            BtnNewBorrowEntry.Name = "BtnNewBorrowEntry";
+            BtnNewBorrowEntry.Size = new Size(165, 34);
+            BtnNewBorrowEntry.TabIndex = 29;
+            BtnNewBorrowEntry.Text = "New borrow entry";
+            BtnNewBorrowEntry.UseVisualStyleBackColor = true;
+            BtnNewBorrowEntry.Click += BtnNewBorrowEntry_Click;
+            // 
+            // DgvBorrowEntries
+            // 
+            DgvBorrowEntries.AllowUserToAddRows = false;
+            DgvBorrowEntries.AllowUserToDeleteRows = false;
+            DgvBorrowEntries.AllowUserToOrderColumns = true;
+            DgvBorrowEntries.AutoGenerateColumns = false;
+            DgvBorrowEntries.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.ColumnHeader;
+            DgvBorrowEntries.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            DgvBorrowEntries.Columns.AddRange(new DataGridViewColumn[] { idDataGridViewTextBoxColumn, bookDataGridViewTextBoxColumn, borrowedOnDataGridViewTextBoxColumn, dueToDataGridViewTextBoxColumn, returnedDataGridViewCheckBoxColumn, returnedOnDataGridViewTextBoxColumn, closedDataGridViewCheckBoxColumn });
+            DgvBorrowEntries.DataSource = borrowEntryBindingSource;
+            DgvBorrowEntries.Location = new Point(3, 132);
+            DgvBorrowEntries.MultiSelect = false;
+            DgvBorrowEntries.Name = "DgvBorrowEntries";
+            DgvBorrowEntries.ReadOnly = true;
+            DgvBorrowEntries.RowHeadersVisible = false;
+            DgvBorrowEntries.RowHeadersWidth = 62;
+            DgvBorrowEntries.RowTemplate.Height = 33;
+            DgvBorrowEntries.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            DgvBorrowEntries.Size = new Size(555, 282);
+            DgvBorrowEntries.TabIndex = 5;
+            DgvBorrowEntries.DoubleClick += DgvBorrowEntries_DoubleClick;
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            idDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            idDataGridViewTextBoxColumn.HeaderText = "Id";
+            idDataGridViewTextBoxColumn.MinimumWidth = 8;
+            idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            idDataGridViewTextBoxColumn.ReadOnly = true;
+            idDataGridViewTextBoxColumn.Width = 64;
+            // 
+            // bookDataGridViewTextBoxColumn
+            // 
+            bookDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            bookDataGridViewTextBoxColumn.DataPropertyName = "Book";
+            bookDataGridViewTextBoxColumn.HeaderText = "Book";
+            bookDataGridViewTextBoxColumn.MinimumWidth = 8;
+            bookDataGridViewTextBoxColumn.Name = "bookDataGridViewTextBoxColumn";
+            bookDataGridViewTextBoxColumn.ReadOnly = true;
+            bookDataGridViewTextBoxColumn.Width = 200;
+            // 
+            // borrowedOnDataGridViewTextBoxColumn
+            // 
+            borrowedOnDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            borrowedOnDataGridViewTextBoxColumn.DataPropertyName = "BorrowedOn";
+            borrowedOnDataGridViewTextBoxColumn.HeaderText = "BorrowedOn";
+            borrowedOnDataGridViewTextBoxColumn.MinimumWidth = 8;
+            borrowedOnDataGridViewTextBoxColumn.Name = "borrowedOnDataGridViewTextBoxColumn";
+            borrowedOnDataGridViewTextBoxColumn.ReadOnly = true;
+            borrowedOnDataGridViewTextBoxColumn.Width = 149;
+            // 
+            // dueToDataGridViewTextBoxColumn
+            // 
+            dueToDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dueToDataGridViewTextBoxColumn.DataPropertyName = "DueTo";
+            dueToDataGridViewTextBoxColumn.HeaderText = "DueTo";
+            dueToDataGridViewTextBoxColumn.MinimumWidth = 8;
+            dueToDataGridViewTextBoxColumn.Name = "dueToDataGridViewTextBoxColumn";
+            dueToDataGridViewTextBoxColumn.ReadOnly = true;
+            dueToDataGridViewTextBoxColumn.Width = 98;
+            // 
+            // returnedDataGridViewCheckBoxColumn
+            // 
+            returnedDataGridViewCheckBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            returnedDataGridViewCheckBoxColumn.DataPropertyName = "Returned";
+            returnedDataGridViewCheckBoxColumn.HeaderText = "Returned";
+            returnedDataGridViewCheckBoxColumn.MinimumWidth = 8;
+            returnedDataGridViewCheckBoxColumn.Name = "returnedDataGridViewCheckBoxColumn";
+            returnedDataGridViewCheckBoxColumn.ReadOnly = true;
+            returnedDataGridViewCheckBoxColumn.Width = 89;
+            // 
+            // returnedOnDataGridViewTextBoxColumn
+            // 
+            returnedOnDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            returnedOnDataGridViewTextBoxColumn.DataPropertyName = "ReturnedOn";
+            returnedOnDataGridViewTextBoxColumn.HeaderText = "ReturnedOn";
+            returnedOnDataGridViewTextBoxColumn.MinimumWidth = 8;
+            returnedOnDataGridViewTextBoxColumn.Name = "returnedOnDataGridViewTextBoxColumn";
+            returnedOnDataGridViewTextBoxColumn.ReadOnly = true;
+            returnedOnDataGridViewTextBoxColumn.Width = 143;
+            // 
+            // closedDataGridViewCheckBoxColumn
+            // 
+            closedDataGridViewCheckBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            closedDataGridViewCheckBoxColumn.DataPropertyName = "Closed";
+            closedDataGridViewCheckBoxColumn.HeaderText = "Closed";
+            closedDataGridViewCheckBoxColumn.MinimumWidth = 8;
+            closedDataGridViewCheckBoxColumn.Name = "closedDataGridViewCheckBoxColumn";
+            closedDataGridViewCheckBoxColumn.ReadOnly = true;
+            closedDataGridViewCheckBoxColumn.Width = 72;
+            // 
+            // borrowEntryBindingSource
+            // 
+            borrowEntryBindingSource.DataSource = typeof(BorrowEntry);
+            // 
+            // GbFilters
+            // 
+            GbFilters.BackColor = Color.Silver;
+            GbFilters.Controls.Add(BtnReset);
+            GbFilters.Controls.Add(BtnBorrowEntrySearch);
+            GbFilters.Controls.Add(CbClosed);
+            GbFilters.Controls.Add(CbReturned);
+            GbFilters.Controls.Add(TxtSearchBorrowEntryBook);
+            GbFilters.Dock = DockStyle.Top;
+            GbFilters.Location = new Point(3, 27);
+            GbFilters.Name = "GbFilters";
+            GbFilters.Size = new Size(555, 105);
+            GbFilters.TabIndex = 4;
+            GbFilters.TabStop = false;
+            GbFilters.Text = "Filters";
+            // 
+            // BtnReset
+            // 
+            BtnReset.Anchor = AnchorStyles.Right;
+            BtnReset.Location = new Point(320, 65);
+            BtnReset.Name = "BtnReset";
+            BtnReset.Size = new Size(111, 34);
+            BtnReset.TabIndex = 6;
+            BtnReset.Text = "Reset";
+            BtnReset.UseVisualStyleBackColor = true;
+            BtnReset.Click += BtnReset_Click;
+            // 
+            // BtnBorrowEntrySearch
+            // 
+            BtnBorrowEntrySearch.Anchor = AnchorStyles.Right;
+            BtnBorrowEntrySearch.Location = new Point(438, 65);
+            BtnBorrowEntrySearch.Name = "BtnBorrowEntrySearch";
+            BtnBorrowEntrySearch.Size = new Size(111, 34);
+            BtnBorrowEntrySearch.TabIndex = 7;
+            BtnBorrowEntrySearch.Text = "Search";
+            BtnBorrowEntrySearch.UseVisualStyleBackColor = true;
+            BtnBorrowEntrySearch.Click += BtnBorrowEntrySearch_Click;
+            // 
+            // CbClosed
+            // 
+            CbClosed.AutoSize = true;
+            CbClosed.Checked = true;
+            CbClosed.CheckState = CheckState.Indeterminate;
+            CbClosed.Location = new Point(320, 36);
+            CbClosed.Name = "CbClosed";
+            CbClosed.Size = new Size(92, 29);
+            CbClosed.TabIndex = 3;
+            CbClosed.Text = "Closed";
+            CbClosed.ThreeState = true;
+            CbClosed.UseVisualStyleBackColor = true;
+            // 
+            // CbReturned
+            // 
+            CbReturned.AutoSize = true;
+            CbReturned.Checked = true;
+            CbReturned.CheckState = CheckState.Indeterminate;
+            CbReturned.Location = new Point(205, 36);
+            CbReturned.Name = "CbReturned";
+            CbReturned.Size = new Size(109, 29);
+            CbReturned.TabIndex = 2;
+            CbReturned.Text = "Retruned";
+            CbReturned.ThreeState = true;
+            CbReturned.UseVisualStyleBackColor = true;
+            // 
+            // TxtSearchBorrowEntryBook
+            // 
+            TxtSearchBorrowEntryBook.Location = new Point(10, 34);
+            TxtSearchBorrowEntryBook.Margin = new Padding(10);
+            TxtSearchBorrowEntryBook.Name = "TxtSearchBorrowEntryBook";
+            TxtSearchBorrowEntryBook.PlaceholderText = "Book";
+            TxtSearchBorrowEntryBook.Size = new Size(182, 31);
+            TxtSearchBorrowEntryBook.TabIndex = 0;
+            TxtSearchBorrowEntryBook.TextAlign = HorizontalAlignment.Center;
+            // 
             // DisplayReaderWindow
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(800, 637);
+            Controls.Add(GbBorrowEntries);
             Controls.Add(GbReservationList);
             Controls.Add(LblMandetoryInfos);
             Controls.Add(BtnDelete);
@@ -256,9 +471,16 @@
             Controls.Add(LblCity);
             Controls.Add(LblId);
             Controls.Add(LblName);
+            MaximumSize = new Size(822, 693);
+            MinimumSize = new Size(822, 693);
             Name = "DisplayReaderWindow";
             Text = "DisplayReaders";
             GbReservationList.ResumeLayout(false);
+            GbBorrowEntries.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)DgvBorrowEntries).EndInit();
+            ((System.ComponentModel.ISupportInitialize)borrowEntryBindingSource).EndInit();
+            GbFilters.ResumeLayout(false);
+            GbFilters.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -284,5 +506,23 @@
         private Button BtnDeleteFromReservationList;
         private ListBox LbReservations;
         private Button BtnAddToReservationList;
+        private GroupBox GbBorrowEntries;
+        private Button BtnNewBorrowEntry;
+        private DataGridView DgvBorrowEntries;
+        private GroupBox GbFilters;
+        private Button BtnReset;
+        private Button BtnBorrowEntrySearch;
+        private CheckBox CbClosed;
+        private CheckBox CbReturned;
+        private TextBox TxtSearchBorrowEntryBook;
+        private Button BtnResetFilters;
+        private BindingSource borrowEntryBindingSource;
+        private DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn bookDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn borrowedOnDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn dueToDataGridViewTextBoxColumn;
+        private DataGridViewCheckBoxColumn returnedDataGridViewCheckBoxColumn;
+        private DataGridViewTextBoxColumn returnedOnDataGridViewTextBoxColumn;
+        private DataGridViewCheckBoxColumn closedDataGridViewCheckBoxColumn;
     }
 }

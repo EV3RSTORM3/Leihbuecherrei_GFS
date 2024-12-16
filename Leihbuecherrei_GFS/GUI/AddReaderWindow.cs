@@ -18,15 +18,17 @@ namespace Leihbuecherrei_GFS.GUI
             control = pControl;
             InitializeComponent();
 
+            //sets the DateTimePicker to show nothing
             DtpBirthday.Format = DateTimePickerFormat.Custom;
             DtpBirthday.CustomFormat = " ";
         }
 
+        //adds the new reader after checking if all mandatory fields are filled out
         private void BtnOk_Click(object sender, EventArgs e)
         {
             if (control.AddReader(TxtName.Text, TxtAdress.Text, TxtCity.Text, DateOnly.FromDateTime(DtpBirthday.Value)) == false)
             {
-                MessageBox.Show("Please fill out all of the mandetory information!");
+                MessageBox.Show("Please fill out all of the mandatory information!");
             }
             else
             {
@@ -49,7 +51,7 @@ namespace Leihbuecherrei_GFS.GUI
                 DtpBirthday.CustomFormat = " ";
             }
 
-            //focuses the OK button when the user leaves the control using tab as the focus would not be transfered if using the tab button normally probably due to the cahnging of the format
+            //focuses the OK button when the user leaves the control using tab as the focus would not be transfered if using the tab button normally probably due to the changing of the format
             this.BtnOk.Focus();
         }
     }

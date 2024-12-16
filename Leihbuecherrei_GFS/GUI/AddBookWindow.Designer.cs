@@ -34,7 +34,7 @@
             LblAuthor = new Label();
             LblPublisher = new Label();
             LblTitle = new Label();
-            LblMandetoryInfos = new Label();
+            LblMandatoryInfos = new Label();
             BtnOk = new Button();
             SuspendLayout();
             // 
@@ -92,15 +92,15 @@
             LblTitle.TabIndex = 8;
             LblTitle.Text = "*Title:";
             // 
-            // LblMandetoryInfos
+            // LblMandatoryInfos
             // 
-            LblMandetoryInfos.Anchor = AnchorStyles.Top;
-            LblMandetoryInfos.AutoSize = true;
-            LblMandetoryInfos.Location = new Point(48, 141);
-            LblMandetoryInfos.Name = "LblMandetoryInfos";
-            LblMandetoryInfos.Size = new Size(165, 25);
-            LblMandetoryInfos.TabIndex = 14;
-            LblMandetoryInfos.Text = "* = mandetory info";
+            LblMandatoryInfos.Anchor = AnchorStyles.Top;
+            LblMandatoryInfos.AutoSize = true;
+            LblMandatoryInfos.Location = new Point(48, 141);
+            LblMandatoryInfos.Name = "LblMandatoryInfos";
+            LblMandatoryInfos.Size = new Size(165, 25);
+            LblMandatoryInfos.TabIndex = 14;
+            LblMandatoryInfos.Text = "* = mandatory info";
             // 
             // BtnOk
             // 
@@ -119,7 +119,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(271, 234);
             Controls.Add(BtnOk);
-            Controls.Add(LblMandetoryInfos);
+            Controls.Add(LblMandatoryInfos);
             Controls.Add(TxtTitle);
             Controls.Add(TxtAuthor);
             Controls.Add(TxtPublisher);
@@ -127,7 +127,9 @@
             Controls.Add(LblPublisher);
             Controls.Add(LblTitle);
             MaximizeBox = false;
+            MaximumSize = new Size(293, 290);
             MinimizeBox = false;
+            MinimumSize = new Size(293, 290);
             Name = "AddBookWindow";
             Text = "Add book";
             ResumeLayout(false);
@@ -142,7 +144,7 @@
         private Label LblAuthor;
         private Label LblPublisher;
         private Label LblTitle;
-        private Label LblMandetoryInfos;
+        private Label LblMandatoryInfos;
         private Button BtnOk;
     }
 }

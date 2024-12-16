@@ -153,7 +153,9 @@
             Controls.Add(GbReader);
             Controls.Add(GbBook);
             MaximizeBox = false;
+            MaximumSize = new Size(495, 390);
             MinimizeBox = false;
+            MinimumSize = new Size(495, 390);
             Name = "AddBorrowEntryWindow";
             Text = "New borrow entry";
             GbBook.ResumeLayout(false);

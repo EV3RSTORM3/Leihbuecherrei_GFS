@@ -17,9 +17,12 @@ namespace Leihbuecherrei_GFS
         {
             base.OnLoad(e);
 
-            //Search Method can also be used to get all entries from the data base when searching for ""
-            LbReaders.DataSource = control.SearchReader("");
-            LbBooks.DataSource = control.SearchBook("");
+            //Search Method can also be used to get all entries from the data base when searching for an Empty string
+            LbReaders.DataSource = control.SearchReader(string.Empty);
+            LbBooks.DataSource = control.SearchBook(string.Empty);
+
+            //Initializes the BorrowEntry DataGridView
+            DgvBorrowEntries.DataSource = control.SearchBorrowEntry(string.Empty, string.Empty, CheckState.Indeterminate, CheckState.Indeterminate);
         }
 
         private void BtnAddBook_Click(object sender, EventArgs e)
@@ -50,16 +53,18 @@ namespace Leihbuecherrei_GFS
 
         public void RefreshBorrowEntryList()
         {
-            DgvBorrowEntries.DataSource = control.LibraryWindowSearchBorrowEntry(TxtSearchBorrowEntryReader.Text, TxtSearchBorrowEntryBook.Text, CbClosed.CheckState, CbReturned.CheckState);
+            DgvBorrowEntries.DataSource = control.SearchBorrowEntry(TxtSearchBorrowEntryReader.Text, TxtSearchBorrowEntryBook.Text, CbClosed.CheckState, CbReturned.CheckState);
         }
 
-        private async void LbReaders_DoubleClick(object sender, EventArgs e)
+        //opens the selected reader in a new window
+        private void LbReaders_DoubleClick(object sender, EventArgs e)
         {
             Reader selectedReader = LbReaders.SelectedItem as Reader;
 
             control.LibraryWindowDisplayReader(selectedReader);
         }
 
+        //opens the selected book in a new window
         private void LbBooks_DoubleClick(object sender, EventArgs e)
         {
             Book selectedBook = LbBooks.SelectedItem as Book;
@@ -72,9 +77,10 @@ namespace Leihbuecherrei_GFS
             AddBorrowEntryWindow addBorrowEntryWindow = new AddBorrowEntryWindow(control);
 
             addBorrowEntryWindow.Location = new Point(0, 0);
-            addBorrowEntryWindow.Show();
+            addBorrowEntryWindow.ShowDialog();
         }
 
+        //starts the search if the user hits enter
         private void TxtSearchReader_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter)
@@ -86,6 +92,7 @@ namespace Leihbuecherrei_GFS
             }
         }
 
+        //starts the search if the user hits enter
         private void TxtSearchBook_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter)
@@ -97,19 +104,22 @@ namespace Leihbuecherrei_GFS
             }
         }
 
+        //starst the search if the user hits search button
         private void BtnBorrowEntrySearch_Click(object sender, EventArgs e)
         {
-            DgvBorrowEntries.DataSource = control.LibraryWindowSearchBorrowEntry(TxtSearchBorrowEntryReader.Text, TxtSearchBorrowEntryBook.Text, CbClosed.CheckState, CbReturned.CheckState);
+            DgvBorrowEntries.DataSource = control.SearchBorrowEntry(TxtSearchBorrowEntryReader.Text, TxtSearchBorrowEntryBook.Text, CbClosed.CheckState, CbReturned.CheckState);
         }
 
+        //opens the selected BorrowEntry in a new window
         private void DgvBorrowEntries_DoubleClick(object sender, EventArgs e)
         {
             //Gets the selected BorrowEntry
             BorrowEntry selectedBorrowEntry = DgvBorrowEntries.SelectedRows[0].DataBoundItem as BorrowEntry;
 
-            control.LibraryWindowDisplayBorrowEntry(selectedBorrowEntry);
+            control.DisplayBorrowEntry(selectedBorrowEntry);
         }
 
+        //resets the filters for the BorrowEntry search and shows all entries
         private void BtnReset_Click(object sender, EventArgs e)
         {
             TxtSearchBorrowEntryReader.Text = string.Empty;
@@ -119,7 +129,7 @@ namespace Leihbuecherrei_GFS
             CbClosed.CheckState = CheckState.Indeterminate;
             CbReturned.CheckState = CheckState.Indeterminate;
 
-            DgvBorrowEntries.DataSource = control.LibraryWindowSearchBorrowEntry(TxtSearchBorrowEntryReader.Text, TxtSearchBorrowEntryBook.Text, CbClosed.CheckState, CbReturned.CheckState);
+            DgvBorrowEntries.DataSource = control.SearchBorrowEntry(TxtSearchBorrowEntryReader.Text, TxtSearchBorrowEntryBook.Text, CbClosed.CheckState, CbReturned.CheckState);
         }
     }
 }

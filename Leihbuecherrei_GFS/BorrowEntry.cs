@@ -17,16 +17,18 @@ namespace Leihbuecherrei_GFS
         public DateOnly BorrowedOn { get; set; }
         public DateOnly DueTo { get; set; }
         public bool Returned { get; set; }
-        public DateOnly? ReturnedOn { get; set; }
+        public DateOnly? ReturnedOn { get; set; } //? means that the value can be null
         public bool Closed { get; set; }
 
-        public BorrowEntry() { }
+        public BorrowEntry() { } //empty constructor for Entity Framework
 
         public BorrowEntry(Book pBook, Reader pReader, DateOnly pDueTo)
         {
             Book = pBook;
             Reader = pReader;
             DueTo = pDueTo;
+
+            //sets the deafult values for the other properties
             BorrowedOn = DateOnly.FromDateTime(DateTime.Today);
             Returned = false;
             ReturnedOn = null;

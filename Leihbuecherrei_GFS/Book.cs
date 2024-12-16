@@ -11,16 +11,17 @@ namespace Leihbuecherrei_GFS
     {
         public int Id { get; set; }
         public string Title { get; set; }
-        public string? Author { get; set; }
-        public string? Publisher { get; set; }
+        public string? Author { get; set; } //? means that the value can be null
+        public string? Publisher { get; set; } //? means that the value can be null
         public bool Available { get; set; }
 
-        public Book() { }
+        public Book() { } //empty constructor for Entity Framework
 
         public Book(string pTitle, string pAuthor, string pPublisher)
         {
             Title = pTitle;
 
+            //checks for empty strings and sets the value to null if the string is empty
             if (String.IsNullOrEmpty(pAuthor))
             {
                 Author = null;
@@ -30,6 +31,7 @@ namespace Leihbuecherrei_GFS
                 Author = pAuthor;
             }
 
+            //checks for empty strings and sets the value to null if the string is empty
             if (String.IsNullOrEmpty(pPublisher))
             {
                 Publisher = null;
@@ -39,6 +41,7 @@ namespace Leihbuecherrei_GFS
                 Publisher = pPublisher;
             }
 
+            //sets the default value for Available to true
             Available = true;
         }
 

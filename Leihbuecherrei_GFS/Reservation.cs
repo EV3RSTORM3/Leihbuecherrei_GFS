@@ -12,7 +12,7 @@ namespace Leihbuecherrei_GFS
         public virtual Reader Reader { get; set; }
         public virtual Book Book { get; set; }
 
-        public Reservation() { }
+        public Reservation() { } //empty constructor for Entity Framework
 
         public Reservation(Reader pReader, Book pBook) 
         {

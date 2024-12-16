@@ -37,7 +37,7 @@
             TxtAdress = new TextBox();
             TxtName = new TextBox();
             BtnOk = new Button();
-            LblMandetoryInfos = new Label();
+            LblMandatoryInfos = new Label();
             SuspendLayout();
             // 
             // DtpBirthday
@@ -126,22 +126,22 @@
             BtnOk.UseVisualStyleBackColor = true;
             BtnOk.Click += BtnOk_Click;
             // 
-            // LblMandetoryInfos
+            // LblMandatoryInfos
             // 
-            LblMandetoryInfos.Anchor = AnchorStyles.Top;
-            LblMandetoryInfos.AutoSize = true;
-            LblMandetoryInfos.Location = new Point(50, 179);
-            LblMandetoryInfos.Name = "LblMandetoryInfos";
-            LblMandetoryInfos.Size = new Size(165, 25);
-            LblMandetoryInfos.TabIndex = 9;
-            LblMandetoryInfos.Text = "* = mandetory info";
+            LblMandatoryInfos.Anchor = AnchorStyles.Top;
+            LblMandatoryInfos.AutoSize = true;
+            LblMandatoryInfos.Location = new Point(50, 179);
+            LblMandatoryInfos.Name = "LblMandatoryInfos";
+            LblMandatoryInfos.Size = new Size(165, 25);
+            LblMandatoryInfos.TabIndex = 9;
+            LblMandatoryInfos.Text = "* = mandatory info";
             // 
             // AddReaderWindow
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(266, 272);
-            Controls.Add(LblMandetoryInfos);
+            Controls.Add(LblMandatoryInfos);
             Controls.Add(BtnOk);
             Controls.Add(TxtName);
             Controls.Add(TxtAdress);
@@ -152,7 +152,9 @@
             Controls.Add(LblName);
             Controls.Add(DtpBirthday);
             MaximizeBox = false;
+            MaximumSize = new Size(288, 328);
             MinimizeBox = false;
+            MinimumSize = new Size(288, 328);
             Name = "AddReaderWindow";
             Text = "Add reader";
             ResumeLayout(false);
@@ -170,6 +172,6 @@
         private TextBox TxtAdress;
         private TextBox TxtName;
         private Button BtnOk;
-        private Label LblMandetoryInfos;
+        private Label LblMandatoryInfos;
     }
 }

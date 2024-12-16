@@ -64,7 +64,7 @@ namespace Leihbuecherrei_GFS.GUI
             BtnOk.Enabled = true;
         }
         
-        
+        //handels the format and enabled state of the DateTimePicker for the returned on date
         private void CbReturned_CheckedChanged( object sender, EventArgs e )
         {
             BtnApply.Enabled = true;
@@ -83,6 +83,7 @@ namespace Leihbuecherrei_GFS.GUI
             }
         }
 
+        //starts the search if the user hits enter
         private void TxtSearchReader_KeyPress( object sender, KeyPressEventArgs e )
         {
             if (e.KeyChar == (char)Keys.Enter)
@@ -91,6 +92,7 @@ namespace Leihbuecherrei_GFS.GUI
             }
         }
 
+        //starts the search if the user hits enter
         private void TxtSearchBook_KeyPress( object sender, KeyPressEventArgs e )
         {
             if (e.KeyChar == (char)Keys.Enter)
@@ -99,6 +101,7 @@ namespace Leihbuecherrei_GFS.GUI
             }
         }
 
+        //deletes the BorrowEntry
         private void BtnDelete_Click( object sender, EventArgs e )
         {
             var confirmResult = MessageBox.Show("Are you sure to delete this item ??", "Confirm Delete!!", MessageBoxButtons.YesNo);
@@ -110,6 +113,7 @@ namespace Leihbuecherrei_GFS.GUI
             }
         }
 
+        //saves the changes to the database without closing the window
         private void BtnApply_Click( object sender, EventArgs e )
         {
             if (control.DisplayBorrowEntrySave(borrowEntry, LbReaders.SelectedItem as Reader, LbBooks.SelectedItem as Book, DateOnly.FromDateTime(DtpBorrowedOn.Value), DateOnly.FromDateTime(DtpDueTo.Value), CbReturned.Checked, DateOnly.FromDateTime(DtpReturnedOn.Value), CbClosed.Checked) == false)
@@ -118,6 +122,7 @@ namespace Leihbuecherrei_GFS.GUI
             }
         }
 
+        //saves the changes to the database and closes the window
         private void BtnOk_Click( object sender, EventArgs e )
         {
             if (control.DisplayBorrowEntrySave(borrowEntry, LbReaders.SelectedItem as Reader, LbBooks.SelectedItem as Book, DateOnly.FromDateTime(DtpBorrowedOn.Value), DateOnly.FromDateTime(DtpDueTo.Value), CbReturned.Checked, DateOnly.FromDateTime(DtpReturnedOn.Value), CbClosed.Checked) == false)
@@ -130,6 +135,7 @@ namespace Leihbuecherrei_GFS.GUI
             }
         }
 
+        //closes the window without saving the changes
         private void BtnCancel_Click( object sender, EventArgs e )
         {
             var confirmResult = MessageBox.Show("Changes will be discarded", "Close this Window?", MessageBoxButtons.YesNo);
@@ -139,7 +145,5 @@ namespace Leihbuecherrei_GFS.GUI
                 this.Close();
             }
         }
-
-
     }
 }
