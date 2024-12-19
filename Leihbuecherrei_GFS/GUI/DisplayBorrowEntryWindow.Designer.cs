@@ -49,7 +49,7 @@
             BtnOk = new Button();
             BtnCancel = new Button();
             BtnApply = new Button();
-            LblMandetoryInfos = new Label();
+            LblMandatoryInfos = new Label();
             GbReader.SuspendLayout();
             GbBook.SuspendLayout();
             GbReturned.SuspendLayout();
@@ -268,22 +268,22 @@
             BtnApply.UseVisualStyleBackColor = true;
             BtnApply.Click += BtnApply_Click;
             // 
-            // LblMandetoryInfos
+            // LblMandatoryInfos
             // 
-            LblMandetoryInfos.Anchor = AnchorStyles.Top;
-            LblMandetoryInfos.AutoSize = true;
-            LblMandetoryInfos.Location = new Point(494, 376);
-            LblMandetoryInfos.Name = "LblMandetoryInfos";
-            LblMandetoryInfos.Size = new Size(165, 25);
-            LblMandetoryInfos.TabIndex = 37;
-            LblMandetoryInfos.Text = "* = mandetory info";
+            LblMandatoryInfos.Anchor = AnchorStyles.Top;
+            LblMandatoryInfos.AutoSize = true;
+            LblMandatoryInfos.Location = new Point(494, 376);
+            LblMandatoryInfos.Name = "LblMandatoryInfos";
+            LblMandatoryInfos.Size = new Size(165, 25);
+            LblMandatoryInfos.TabIndex = 37;
+            LblMandatoryInfos.Text = "* = mandatory info";
             // 
             // DisplayBorrowEntryWindow
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(671, 450);
-            Controls.Add(LblMandetoryInfos);
+            Controls.Add(LblMandatoryInfos);
             Controls.Add(BtnOk);
             Controls.Add(BtnCancel);
             Controls.Add(BtnApply);
@@ -336,7 +336,7 @@
         private Button BtnOk;
         private Button BtnCancel;
         private Button BtnApply;
-        private Label LblMandetoryInfos;
+        private Label LblMandatoryInfos;
         private DateTimePicker DtpReturnedOn;
     }
 }

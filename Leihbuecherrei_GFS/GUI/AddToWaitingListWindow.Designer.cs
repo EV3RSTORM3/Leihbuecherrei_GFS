@@ -34,7 +34,7 @@
             GbBook = new GroupBox();
             LbBooks = new ListBox();
             TxtSearchBook = new TextBox();
-            LblMandetoryInfos = new Label();
+            LblMandatoryInfos = new Label();
             BtnOk = new Button();
             GbReader.SuspendLayout();
             GbBook.SuspendLayout();
@@ -102,15 +102,15 @@
             TxtSearchBook.TextAlign = HorizontalAlignment.Center;
             TxtSearchBook.KeyPress += TxtSearchBook_KeyPress;
             // 
-            // LblMandetoryInfos
+            // LblMandatoryInfos
             // 
-            LblMandetoryInfos.Anchor = AnchorStyles.Top;
-            LblMandetoryInfos.AutoSize = true;
-            LblMandetoryInfos.Location = new Point(173, 251);
-            LblMandetoryInfos.Name = "LblMandetoryInfos";
-            LblMandetoryInfos.Size = new Size(165, 25);
-            LblMandetoryInfos.TabIndex = 12;
-            LblMandetoryInfos.Text = "* = mandetory info";
+            LblMandatoryInfos.Anchor = AnchorStyles.Top;
+            LblMandatoryInfos.AutoSize = true;
+            LblMandatoryInfos.Location = new Point(173, 251);
+            LblMandatoryInfos.Name = "LblMandatoryInfos";
+            LblMandatoryInfos.Size = new Size(165, 25);
+            LblMandatoryInfos.TabIndex = 12;
+            LblMandatoryInfos.Text = "* = mandatory info";
             // 
             // BtnOk
             // 
@@ -127,7 +127,7 @@
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(477, 292);
-            Controls.Add(LblMandetoryInfos);
+            Controls.Add(LblMandatoryInfos);
             Controls.Add(BtnOk);
             Controls.Add(GbReader);
             Controls.Add(GbBook);
@@ -153,7 +153,7 @@
         private GroupBox GbBook;
         private ListBox LbBooks;
         private TextBox TxtSearchBook;
-        private Label LblMandetoryInfos;
+        private Label LblMandatoryInfos;
         private Button BtnOk;
     }
 }

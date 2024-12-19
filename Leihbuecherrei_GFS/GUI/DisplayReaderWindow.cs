@@ -33,7 +33,7 @@ namespace Leihbuecherrei_GFS.GUI
             TxtName.Text = reader.Name;
             TxtId.Text = Convert.ToString(reader.Id);
             TxtCity.Text = reader.City;
-            TxtAdress.Text = reader.Address;
+            TxtAddress.Text = reader.Address;
 
             //?? handles the possibility of Birthday being null
             //Have to Add a TimeOnly to the DateOnly to make a DateTime, because WinForms DateTimepicker only accepts DateTime variables
@@ -82,7 +82,7 @@ namespace Leihbuecherrei_GFS.GUI
         //saves the changes to the database without closing the window
         private void BtnApply_Click( object sender, EventArgs e )
         {
-            if (control.DisplayReaderSave(reader, TxtName.Text, TxtAdress.Text, TxtCity.Text, DateOnly.FromDateTime(DtpBirthday.Value)) == false)
+            if (control.DisplayReaderSave(reader, TxtName.Text, TxtAddress.Text, TxtCity.Text, DateOnly.FromDateTime(DtpBirthday.Value)) == false)
             {
                 MessageBox.Show("Please fill out all of the mandetory information!");
             }
@@ -107,7 +107,7 @@ namespace Leihbuecherrei_GFS.GUI
         //saves the changes to the database and closes the window
         private void BtnOk_Click( object sender, EventArgs e )
         {
-            if (control.DisplayReaderSave(reader, TxtName.Text, TxtAdress.Text, TxtCity.Text, DateOnly.FromDateTime(DtpBirthday.Value)) == false)
+            if (control.DisplayReaderSave(reader, TxtName.Text, TxtAddress.Text, TxtCity.Text, DateOnly.FromDateTime(DtpBirthday.Value)) == false)
             {
                 MessageBox.Show("Please fill out all of the mandetory information!");
             }

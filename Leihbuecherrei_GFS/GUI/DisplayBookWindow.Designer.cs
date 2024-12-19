@@ -41,7 +41,7 @@
             LblPublisher = new Label();
             LblId = new Label();
             LblTitle = new Label();
-            LblMandetoryInfos = new Label();
+            LblMandatoryInfos = new Label();
             CbAvailable = new CheckBox();
             GbReservationList = new GroupBox();
             LbReservations = new ListBox();
@@ -182,15 +182,15 @@
             LblTitle.TabIndex = 16;
             LblTitle.Text = "*Title:";
             // 
-            // LblMandetoryInfos
+            // LblMandatoryInfos
             // 
-            LblMandetoryInfos.Anchor = AnchorStyles.Top;
-            LblMandetoryInfos.AutoSize = true;
-            LblMandetoryInfos.Location = new Point(623, 563);
-            LblMandetoryInfos.Name = "LblMandetoryInfos";
-            LblMandetoryInfos.Size = new Size(165, 25);
-            LblMandetoryInfos.TabIndex = 27;
-            LblMandetoryInfos.Text = "* = mandetory info";
+            LblMandatoryInfos.Anchor = AnchorStyles.Top;
+            LblMandatoryInfos.AutoSize = true;
+            LblMandatoryInfos.Location = new Point(623, 563);
+            LblMandatoryInfos.Name = "LblMandatoryInfos";
+            LblMandatoryInfos.Size = new Size(165, 25);
+            LblMandatoryInfos.TabIndex = 27;
+            LblMandatoryInfos.Text = "* = mandatory info";
             // 
             // CbAvailable
             // 
@@ -239,6 +239,7 @@
             // BtnDeleteFromReservationList
             // 
             BtnDeleteFromReservationList.Dock = DockStyle.Bottom;
+            BtnDeleteFromReservationList.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             BtnDeleteFromReservationList.Location = new Point(3, 414);
             BtnDeleteFromReservationList.Name = "BtnDeleteFromReservationList";
             BtnDeleteFromReservationList.Size = new Size(203, 34);
@@ -425,7 +426,7 @@
             CbReturned.Name = "CbReturned";
             CbReturned.Size = new Size(109, 29);
             CbReturned.TabIndex = 2;
-            CbReturned.Text = "Retruned";
+            CbReturned.Text = "Returned";
             CbReturned.ThreeState = true;
             CbReturned.UseVisualStyleBackColor = true;
             // 
@@ -447,7 +448,7 @@
             Controls.Add(GbBorrowEntries);
             Controls.Add(GbReservationList);
             Controls.Add(CbAvailable);
-            Controls.Add(LblMandetoryInfos);
+            Controls.Add(LblMandatoryInfos);
             Controls.Add(BtnDelete);
             Controls.Add(TxtAuthor);
             Controls.Add(TxtId);
@@ -490,7 +491,7 @@
         private Label LblPublisher;
         private Label LblId;
         private Label LblTitle;
-        private Label LblMandetoryInfos;
+        private Label LblMandatoryInfos;
         private CheckBox CbAvailable;
         private GroupBox GbReservationList;
         private Button BtnDeleteFromReservationList;

@@ -30,11 +30,11 @@
         {
             DtpBirthday = new DateTimePicker();
             LblName = new Label();
-            LblAdress = new Label();
+            LblAddress = new Label();
             LblCity = new Label();
             LblBirthday = new Label();
             TxtCity = new TextBox();
-            TxtAdress = new TextBox();
+            TxtAddress = new TextBox();
             TxtName = new TextBox();
             BtnOk = new Button();
             LblMandatoryInfos = new Label();
@@ -61,15 +61,15 @@
             LblName.TabIndex = 1;
             LblName.Text = "*Name:";
             // 
-            // LblAdress
+            // LblAddress
             // 
-            LblAdress.Anchor = AnchorStyles.Top;
-            LblAdress.AutoSize = true;
-            LblAdress.Location = new Point(12, 67);
-            LblAdress.Name = "LblAdress";
-            LblAdress.Size = new Size(78, 25);
-            LblAdress.TabIndex = 2;
-            LblAdress.Text = "*Adress:";
+            LblAddress.Anchor = AnchorStyles.Top;
+            LblAddress.AutoSize = true;
+            LblAddress.Location = new Point(12, 67);
+            LblAddress.Name = "LblAddress";
+            LblAddress.Size = new Size(89, 25);
+            LblAddress.TabIndex = 2;
+            LblAddress.Text = "*Address:";
             // 
             // LblCity
             // 
@@ -99,13 +99,13 @@
             TxtCity.Size = new Size(148, 31);
             TxtCity.TabIndex = 2;
             // 
-            // TxtAdress
+            // TxtAddress
             // 
-            TxtAdress.Anchor = AnchorStyles.Top;
-            TxtAdress.Location = new Point(96, 64);
-            TxtAdress.Name = "TxtAdress";
-            TxtAdress.Size = new Size(148, 31);
-            TxtAdress.TabIndex = 1;
+            TxtAddress.Anchor = AnchorStyles.Top;
+            TxtAddress.Location = new Point(96, 64);
+            TxtAddress.Name = "TxtAddress";
+            TxtAddress.Size = new Size(148, 31);
+            TxtAddress.TabIndex = 1;
             // 
             // TxtName
             // 
@@ -144,11 +144,11 @@
             Controls.Add(LblMandatoryInfos);
             Controls.Add(BtnOk);
             Controls.Add(TxtName);
-            Controls.Add(TxtAdress);
+            Controls.Add(TxtAddress);
             Controls.Add(TxtCity);
             Controls.Add(LblBirthday);
             Controls.Add(LblCity);
-            Controls.Add(LblAdress);
+            Controls.Add(LblAddress);
             Controls.Add(LblName);
             Controls.Add(DtpBirthday);
             MaximizeBox = false;
@@ -165,11 +165,11 @@
 
         private DateTimePicker DtpBirthday;
         private Label LblName;
-        private Label LblAdress;
+        private Label LblAddress;
         private Label LblCity;
         private Label LblBirthday;
         private TextBox TxtCity;
-        private TextBox TxtAdress;
+        private TextBox TxtAddress;
         private TextBox TxtName;
         private Button BtnOk;
         private Label LblMandatoryInfos;

@@ -32,18 +32,18 @@
             LblName = new Label();
             LblId = new Label();
             LblCity = new Label();
-            LblAdress = new Label();
+            LblAddress = new Label();
             LblBirthday = new Label();
             TxtName = new TextBox();
             TxtCity = new TextBox();
             TxtId = new TextBox();
-            TxtAdress = new TextBox();
+            TxtAddress = new TextBox();
             DtpBirthday = new DateTimePicker();
             BtnApply = new Button();
             BtnCancel = new Button();
             BtnOk = new Button();
             BtnDelete = new Button();
-            LblMandetoryInfos = new Label();
+            LblMandatoryInfos = new Label();
             GbReservationList = new GroupBox();
             LbReservations = new ListBox();
             BtnDeleteFromReservationList = new Button();
@@ -99,14 +99,14 @@
             LblCity.TabIndex = 2;
             LblCity.Text = "*City:";
             // 
-            // LblAdress
+            // LblAddress
             // 
-            LblAdress.AutoSize = true;
-            LblAdress.Location = new Point(230, 60);
-            LblAdress.Name = "LblAdress";
-            LblAdress.Size = new Size(78, 25);
-            LblAdress.TabIndex = 3;
-            LblAdress.Text = "*Adress:";
+            LblAddress.AutoSize = true;
+            LblAddress.Location = new Point(230, 60);
+            LblAddress.Name = "LblAddress";
+            LblAddress.Size = new Size(89, 25);
+            LblAddress.TabIndex = 3;
+            LblAddress.Text = "*Address:";
             // 
             // LblBirthday
             // 
@@ -141,13 +141,13 @@
             TxtId.Size = new Size(150, 31);
             TxtId.TabIndex = 7;
             // 
-            // TxtAdress
+            // TxtAddress
             // 
-            TxtAdress.Location = new Point(314, 57);
-            TxtAdress.Name = "TxtAdress";
-            TxtAdress.Size = new Size(150, 31);
-            TxtAdress.TabIndex = 2;
-            TxtAdress.TextChanged += ContentChanged;
+            TxtAddress.Location = new Point(314, 57);
+            TxtAddress.Name = "TxtAddress";
+            TxtAddress.Size = new Size(150, 31);
+            TxtAddress.TabIndex = 2;
+            TxtAddress.TextChanged += ContentChanged;
             // 
             // DtpBirthday
             // 
@@ -203,15 +203,15 @@
             BtnDelete.UseVisualStyleBackColor = true;
             BtnDelete.Click += BtnDelete_Click;
             // 
-            // LblMandetoryInfos
+            // LblMandatoryInfos
             // 
-            LblMandetoryInfos.Anchor = AnchorStyles.Top;
-            LblMandetoryInfos.AutoSize = true;
-            LblMandetoryInfos.Location = new Point(623, 554);
-            LblMandetoryInfos.Name = "LblMandetoryInfos";
-            LblMandetoryInfos.Size = new Size(165, 25);
-            LblMandetoryInfos.TabIndex = 15;
-            LblMandetoryInfos.Text = "* = mandetory info";
+            LblMandatoryInfos.Anchor = AnchorStyles.Top;
+            LblMandatoryInfos.AutoSize = true;
+            LblMandatoryInfos.Location = new Point(623, 554);
+            LblMandatoryInfos.Name = "LblMandatoryInfos";
+            LblMandatoryInfos.Size = new Size(165, 25);
+            LblMandatoryInfos.TabIndex = 15;
+            LblMandatoryInfos.Text = "* = mandatory info";
             // 
             // GbReservationList
             // 
@@ -238,6 +238,7 @@
             // BtnDeleteFromReservationList
             // 
             BtnDeleteFromReservationList.Dock = DockStyle.Bottom;
+            BtnDeleteFromReservationList.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             BtnDeleteFromReservationList.Location = new Point(3, 411);
             BtnDeleteFromReservationList.Name = "BtnDeleteFromReservationList";
             BtnDeleteFromReservationList.Size = new Size(203, 34);
@@ -435,7 +436,7 @@
             CbReturned.Name = "CbReturned";
             CbReturned.Size = new Size(109, 29);
             CbReturned.TabIndex = 2;
-            CbReturned.Text = "Retruned";
+            CbReturned.Text = "Returned";
             CbReturned.ThreeState = true;
             CbReturned.UseVisualStyleBackColor = true;
             // 
@@ -456,18 +457,18 @@
             ClientSize = new Size(800, 637);
             Controls.Add(GbBorrowEntries);
             Controls.Add(GbReservationList);
-            Controls.Add(LblMandetoryInfos);
+            Controls.Add(LblMandatoryInfos);
             Controls.Add(BtnDelete);
             Controls.Add(BtnOk);
             Controls.Add(BtnCancel);
             Controls.Add(BtnApply);
             Controls.Add(DtpBirthday);
-            Controls.Add(TxtAdress);
+            Controls.Add(TxtAddress);
             Controls.Add(TxtId);
             Controls.Add(TxtCity);
             Controls.Add(TxtName);
             Controls.Add(LblBirthday);
-            Controls.Add(LblAdress);
+            Controls.Add(LblAddress);
             Controls.Add(LblCity);
             Controls.Add(LblId);
             Controls.Add(LblName);
@@ -490,18 +491,18 @@
         private Label LblName;
         private Label LblId;
         private Label LblCity;
-        private Label LblAdress;
+        private Label LblAddress;
         private Label LblBirthday;
         private TextBox TxtName;
         private TextBox TxtCity;
         private TextBox TxtId;
-        private TextBox TxtAdress;
+        private TextBox TxtAddress;
         private DateTimePicker DtpBirthday;
         private Button BtnApply;
         private Button BtnCancel;
         private Button BtnOk;
         private Button BtnDelete;
-        private Label LblMandetoryInfos;
+        private Label LblMandatoryInfos;
         private GroupBox GbReservationList;
         private Button BtnDeleteFromReservationList;
         private ListBox LbReservations;

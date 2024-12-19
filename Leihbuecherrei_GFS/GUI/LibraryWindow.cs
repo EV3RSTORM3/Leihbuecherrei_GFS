@@ -104,7 +104,7 @@ namespace Leihbuecherrei_GFS
             }
         }
 
-        //starst the search if the user hits search button
+        //starts the search if the user hits search button
         private void BtnBorrowEntrySearch_Click(object sender, EventArgs e)
         {
             DgvBorrowEntries.DataSource = control.SearchBorrowEntry(TxtSearchBorrowEntryReader.Text, TxtSearchBorrowEntryBook.Text, CbClosed.CheckState, CbReturned.CheckState);
