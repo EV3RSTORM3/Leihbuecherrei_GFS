@@ -21,7 +21,7 @@ namespace Leihbuecherrei_GFS
         {
             //sets up the connection to the database
             //this connection string probably needs to be changed to work with the databese on your machine if you didn't use the same name, password etc as I did
-            optionsBuilder.UseNpgsql(connectionString: "Host=localhost;Database=Leihbuecherei_GFS;Username=postgres;Password=Nilsi#2006;Timeout=10;SslMode=Prefer;Include Error Detail=True");
+            optionsBuilder.UseNpgsql(connectionString: "Host=localhost;Database=postgres;Username=postgres;Password=******;Timeout=10;SslMode=Prefer;Include Error Detail=True");
             
             //Activates Lazy Loading which will load realated entitys only when they are accessed
             optionsBuilder.UseLazyLoadingProxies();
